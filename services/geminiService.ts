@@ -1,10 +1,10 @@
 import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
 import { MessageRole, ChatMessage } from '../types';
 
-// Initialize the Gemini API client
-// NOTE: In a real production app, this should be proxied through a backend to hide the API key.
-// For this demo environment, we use process.env.API_KEY directly.
-const ai = new GoogleGenAI({ apiKey: process.env.API_KEY });
+// Initialize the Gemini API client with Emergent LLM Key
+// The EMERGENT_LLM_KEY is a universal key that works with multiple LLM providers
+const API_KEY = import.meta.env.VITE_EMERGENT_LLM_KEY || 'sk-emergent-8C52c644a808c9f080';
+const ai = new GoogleGenAI({ apiKey: API_KEY });
 
 const SAFETY_SYSTEM_INSTRUCTION = `
 You are the "Justrite Safety Advisor", an AI assistant for Justrite Romania SRL.
