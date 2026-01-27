@@ -1,5 +1,5 @@
 import React from 'react';
-import { Phone, Mail, MapPin, Linkedin, Facebook, Shield } from 'lucide-react';
+import { Phone, Mail, MapPin, Linkedin, Facebook, Shield, FileText } from 'lucide-react';
 
 export const ContactFooter: React.FC = () => {
   return (
@@ -19,10 +19,10 @@ export const ContactFooter: React.FC = () => {
               Leading the way in industrial safety manufacturing. Providing world-class protection solutions for workers and workplaces across Europe.
             </p>
             <div className="flex space-x-4">
-              <a href="#" className="text-gray-400 hover:text-brand-yellow transition-colors">
+              <a href="https://www.linkedin.com/company/justrite-safety-group/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-yellow transition-colors">
                 <Linkedin className="h-6 w-6" />
               </a>
-              <a href="#" className="text-gray-400 hover:text-brand-yellow transition-colors">
+              <a href="https://www.facebook.com/JustriteSafetyGroup" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-yellow transition-colors">
                 <Facebook className="h-6 w-6" />
               </a>
             </div>
@@ -35,8 +35,8 @@ export const ContactFooter: React.FC = () => {
               <li><a href="#" className="hover:text-brand-yellow transition-colors">Home</a></li>
               <li><a href="#about" className="hover:text-brand-yellow transition-colors">About Us</a></li>
               <li><a href="#products" className="hover:text-brand-yellow transition-colors">Safety Products</a></li>
-              <li><a href="#" className="hover:text-brand-yellow transition-colors">Compliance Guide</a></li>
-              <li><a href="#" className="hover:text-brand-yellow transition-colors">Privacy Policy</a></li>
+              <li><a href="https://www.justritesafetygroup.com/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors">Justrite Safety Group</a></li>
+              <li><a href="https://www.sall.it" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors">Sall Italia</a></li>
             </ul>
           </div>
 
@@ -47,18 +47,22 @@ export const ContactFooter: React.FC = () => {
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-brand-yellow mr-3 mt-0.5 flex-shrink-0" />
                 <span>
-                  Parc Industrial, <br />
-                  Strada Justrite Nr. 1,<br />
+                  TULUCEȘTI, Nr. 1843C,<br />
+                  județ GALAȚI,<br />
                   Romania
                 </span>
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-brand-yellow mr-3 flex-shrink-0" />
-                <span>+40 21 123 4567</span>
+                <a href="tel:+40236325301" className="hover:text-brand-yellow transition-colors">
+                  0236 325 301
+                </a>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-brand-yellow mr-3 flex-shrink-0" />
-                <span>sales.ro@justrite.com</span>
+                <a href="mailto:sales.romania@buyjustrite.eu" className="hover:text-brand-yellow transition-colors break-all">
+                  sales.romania@buyjustrite.eu
+                </a>
               </li>
             </ul>
           </div>
@@ -66,18 +70,28 @@ export const ContactFooter: React.FC = () => {
           {/* Contact Form Mock */}
           <div>
             <h3 className="text-lg font-semibold mb-6 border-b border-brand-yellow/30 pb-2 inline-block">Send Inquiry</h3>
-            <form className="space-y-3">
+            <form className="space-y-3" onSubmit={(e) => {
+              e.preventDefault();
+              const formData = new FormData(e.currentTarget);
+              const email = formData.get('email');
+              const message = formData.get('message');
+              window.location.href = `mailto:sales.romania@buyjustrite.eu?subject=Website Inquiry&body=${encodeURIComponent(message as string)}`;
+            }}>
               <input 
                 type="email" 
+                name="email"
                 placeholder="Your Email" 
+                required
                 className="w-full bg-white/10 border border-white/20 rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
               />
               <textarea 
+                name="message"
                 rows={3} 
                 placeholder="Message" 
+                required
                 className="w-full bg-white/10 border border-white/20 rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
               ></textarea>
-              <button className="w-full bg-brand-yellow text-brand-black font-bold py-2 rounded hover:bg-yellow-400 transition-colors text-sm">
+              <button type="submit" className="w-full bg-brand-yellow text-brand-black font-bold py-2 rounded hover:bg-yellow-400 transition-colors text-sm">
                 Submit
               </button>
             </form>
@@ -85,9 +99,21 @@ export const ContactFooter: React.FC = () => {
 
         </div>
         
-        <div className="border-t border-gray-800 pt-8 text-center">
+        {/* Company Details */}
+        <div className="border-t border-gray-800 pt-8 pb-4">
+          <div className="flex items-start mb-4 text-xs text-gray-500">
+            <FileText className="h-4 w-4 mr-2 mt-0.5 flex-shrink-0" />
+            <div>
+              <p className="font-semibold text-gray-400 mb-1">JUSTRITE ROMANIA S.R.L.</p>
+              <p>National Registry Registration Number: J17/1002/1998</p>
+              <p>Fiscal ID: RO11196159</p>
+            </div>
+          </div>
+        </div>
+
+        <div className="border-t border-gray-800 pt-6 text-center">
           <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} Justrite Romania SRL. All rights reserved. Part of Justrite Manufacturing Group.
+            &copy; {new Date().getFullYear()} Justrite Romania S.R.L. All rights reserved. Part of Justrite Safety Group.
           </p>
         </div>
       </div>
