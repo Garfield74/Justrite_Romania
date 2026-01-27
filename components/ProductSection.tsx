@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from '../types';
-import { Flame, Home, Droplets, Shower, Wind, Users } from 'lucide-react';
+import { Flame, Home, Droplets, ShowerHead, Wind, Users } from 'lucide-react';
 
 const products: Product[] = [
   {
