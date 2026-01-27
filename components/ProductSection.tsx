@@ -52,7 +52,7 @@ const getIcon = (id: string) => {
     'safety-cans': <Flame className="h-8 w-8 text-brand-red" />,
     'outdoor-storage': <Home className="h-8 w-8 text-brand-red" />,
     'spill-containment': <Droplets className="h-8 w-8 text-brand-red" />,
-    'emergency-equipment': <Shower className="h-8 w-8 text-brand-red" />,
+    'emergency-equipment': <ShowerHead className="h-8 w-8 text-brand-red" />,
     'gas-cylinder': <Wind className="h-8 w-8 text-brand-red" />,
     'ergonomic-solutions': <Users className="h-8 w-8 text-brand-red" />
   };
