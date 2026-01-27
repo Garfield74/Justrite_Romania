@@ -8,11 +8,17 @@ export default defineConfig(({ mode }) => {
       server: {
         port: 3000,
         host: '0.0.0.0',
+        allowedHosts: [
+          'justrite-corp.preview.emergentagent.com',
+          '.preview.emergentagent.com',
+          'localhost',
+          '.localhost'
+        ],
       },
       plugins: [react()],
       define: {
-        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY),
-        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY)
+        'process.env.API_KEY': JSON.stringify(env.GEMINI_API_KEY || env.VITE_EMERGENT_LLM_KEY),
+        'process.env.GEMINI_API_KEY': JSON.stringify(env.GEMINI_API_KEY || env.VITE_EMERGENT_LLM_KEY)
       },
       resolve: {
         alias: {
