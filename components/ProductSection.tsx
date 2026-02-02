@@ -4,46 +4,46 @@ import { Flame, Home, Droplets, ShowerHead, Wind, Users } from 'lucide-react';
 
 const products: Product[] = [
   {
-    id: 'safety-cans',
-    title: 'Safety Cans & Cabinets',
-    description: 'Industry-leading storage solutions for flammable liquids, featuring our legendary safety can design alongside fire-rated cabinets for bulk storage. Available in multiple capacities with advanced venting systems.',
-    imageUrl: 'https://images.unsplash.com/photo-1722227089176-a981d2544b5f?auto=format&fit=crop&q=80&w=600&h=400',
-    features: ['FM Approved', 'Fire-rated cabinets', 'Advanced venting', 'Multiple capacities']
+    id: 'industrial-metal-containers',
+    title: 'Industrial Metal Containers',
+    description: 'Versatile storage solutions including sheet metal containers, wire mesh containers, metal containers with wolf mouth, and folding metal containers for efficient warehouse organization.',
+    imageUrl: 'https://images.unsplash.com/photo-1759647028384-1efcc6e0eff4?auto=format&fit=crop&q=80&w=600&h=400',
+    features: ['Sheet Metal Containers', 'Wire Mesh Containers', 'Wolf Mouth Design', 'Folding Options']
   },
   {
-    id: 'outdoor-storage',
-    title: 'Outdoor Storage Systems',
-    description: 'Weather-resistant, secure storage buildings and lockers for hazardous materials requiring exterior placement. Engineered for temperature control and environmental protection.',
-    imageUrl: 'https://images.unsplash.com/photo-1759277700771-137173db0e5b?auto=format&fit=crop&q=80&w=600&h=400',
-    features: ['Weather-resistant', 'Secure locking', 'Temperature control', 'EU certified']
+    id: 'liquid-containment-tank',
+    title: 'Liquid Containment Tank',
+    description: 'Professional spill containment solutions featuring steel collection tanks, drum trolleys with integrated collection systems, and floor-mounted steel collection tanks for leak prevention.',
+    imageUrl: 'https://images.unsplash.com/photo-1743228746138-c8690a2f7ffa?auto=format&fit=crop&q=80&w=600&h=400',
+    features: ['Steel Collection Tank', 'Drum Trolleys', 'Floor Collection Systems', 'Spill Prevention']
   },
   {
-    id: 'spill-containment',
-    title: 'Spill Containment',
-    description: 'Steel spill pallets, drum storage platforms, and containment systems designed to capture leaks and prevent environmental contamination. Custom configurations available for IBC tanks and bulk storage.',
-    imageUrl: 'https://images.unsplash.com/photo-1768759578182-b686cf94ddff?auto=format&fit=crop&q=80&w=600&h=400',
-    features: ['Steel construction', 'Custom sizes', 'Environmental protection', 'IBC compatible']
+    id: 'metal-pallets',
+    title: 'Metal Pallets',
+    description: 'Durable metal pallet systems including stackable free-standing designs, pallet bar holders, fabric pallets, and specialized pallets & cylinder baskets for diverse storage needs.',
+    imageUrl: 'https://images.unsplash.com/photo-1573845949327-18db541e187f?auto=format&fit=crop&q=80&w=600&h=400',
+    features: ['Stackable Design', 'Free-Standing', 'Pallet Bar Holder', 'Cylinder Baskets']
   },
   {
-    id: 'emergency-equipment',
-    title: 'Emergency Equipment',
-    description: 'ANSI-compliant safety showers and eye/face wash stations for immediate response to chemical exposure incidents. Available in plumbed and self-contained models.',
-    imageUrl: 'https://images.unsplash.com/photo-1664285831203-fc5687b44e2a?auto=format&fit=crop&q=80&w=600&h=400',
-    features: ['ANSI compliant', 'Quick response', 'Multiple models', 'Easy installation']
+    id: 'open-bottom-containers',
+    title: 'Open Bottom Containers',
+    description: 'Specialized open bottom container systems designed for efficient loading, unloading, and material handling in industrial environments.',
+    imageUrl: 'https://images.unsplash.com/photo-1616614979687-8a8fece9cfb2?auto=format&fit=crop&q=80&w=600&h=400',
+    features: ['Easy Loading', 'Efficient Unloading', 'Industrial Grade', 'Durable Construction']
   },
   {
-    id: 'gas-cylinder',
-    title: 'Gas Cylinder Storage',
-    description: 'Secure storage cages, racks, and cabinets for compressed gas cylinders. Features segregation systems for incompatible materials and chain restraint options.',
-    imageUrl: 'https://images.unsplash.com/photo-1664396113489-e50bddd4a777?auto=format&fit=crop&q=80&w=600&h=400',
-    features: ['Secure cages', 'Segregation systems', 'Chain restraints', 'Compliant design']
+    id: 'big-bag-holders',
+    title: 'Big Bag Holders',
+    description: 'Robust FIBC (Flexible Intermediate Bulk Container) holders and frames designed for safe handling and storage of bulk materials in large bags.',
+    imageUrl: 'https://images.unsplash.com/photo-1762033159465-9d9e0e1e7401?auto=format&fit=crop&q=80&w=600&h=400',
+    features: ['FIBC Compatible', 'Heavy Duty Frame', 'Safe Handling', 'Bulk Storage']
   },
   {
-    id: 'ergonomic-solutions',
-    title: 'Ergonomic Solutions',
-    description: 'Anti-fatigue mats and ergonomic flooring from NoTrax, reducing workplace injury and improving employee comfort in standing work environments.',
-    imageUrl: 'https://images.unsplash.com/photo-1717386255773-1e3037c81788?auto=format&fit=crop&q=80&w=600&h=400',
-    features: ['Anti-fatigue design', 'NoTrax quality', 'Comfort improvement', 'Injury prevention']
+    id: 'waste-cans-receptacles',
+    title: 'Waste Cans & Receptacles',
+    description: 'Industry-leading safety waste containers including oily waste cans, safety plunger cans, and safety bench cans for compliant hazardous material disposal.',
+    imageUrl: 'https://images.unsplash.com/photo-1763310225071-af00bef26d1c?auto=format&fit=crop&q=80&w=600&h=400',
+    features: ['Oily Waste Cans', 'Safety Plunger Cans', 'Safety Bench Cans', 'FM Approved']
   }
 ];
 
