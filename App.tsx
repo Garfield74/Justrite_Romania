@@ -6,6 +6,7 @@ import { StatisticsSection } from './components/StatisticsSection';
 import { ProductSection } from './components/ProductSection';
 import { SallAdvantageSection } from './components/SallAdvantageSection';
 import { IndustriesSection } from './components/IndustriesSection';
+import { ResourcesSection } from './components/ResourcesSection';
 import { MissionSection } from './components/MissionSection';
 import { SafetyAssistant } from './components/SafetyAssistant';
 import { ContactFooter } from './components/ContactFooter';
@@ -21,6 +22,7 @@ function App() {
         <ProductSection />
         <SallAdvantageSection />
         <IndustriesSection />
+        <ResourcesSection />
         <MissionSection />
       </main>
       <SafetyAssistant />
