@@ -19,7 +19,7 @@ export const SafetySurveySection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Send email to sales.romania@buyjustrite.eu
+    // Send email to sales.ro@justrite.com
     const emailBody = `
 STUD-E™ Site Safety Assessment Request
 
@@ -36,7 +36,7 @@ ${formData.additionalInfo}
 Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
     `.trim();
 
-    window.location.href = `mailto:sales.romania@buyjustrite.eu?subject=STUD-E Survey Request&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = `mailto:sales.ro@justrite.com?subject=STUD-E Survey Request&body=${encodeURIComponent(emailBody)}`;
     setSubmitted(true);
   };
 
@@ -372,10 +372,10 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:sales.romania@buyjustrite.eu"
+              href="mailto:sales.ro@justrite.com"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-brand-black bg-brand-yellow hover:bg-yellow-400 transition-colors"
             >
-              Email: sales.romania@buyjustrite.eu
+              Email: sales.ro@justrite.com
             </a>
             <a
               href="tel:+40236325301"

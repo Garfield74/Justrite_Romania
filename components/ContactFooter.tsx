@@ -60,8 +60,8 @@ export const ContactFooter: React.FC = () => {
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-brand-yellow mr-3 flex-shrink-0" />
-                <a href="mailto:sales.romania@buyjustrite.eu" className="hover:text-brand-yellow transition-colors break-all">
-                  sales.romania@buyjustrite.eu
+                <a href="mailto:sales.ro@justrite.com" className="hover:text-brand-yellow transition-colors break-all">
+                  sales.ro@justrite.com
                 </a>
               </li>
             </ul>
@@ -75,7 +75,7 @@ export const ContactFooter: React.FC = () => {
               const formData = new FormData(e.currentTarget);
               const email = formData.get('email');
               const message = formData.get('message');
-              window.location.href = `mailto:sales.romania@buyjustrite.eu?subject=Website Inquiry&body=${encodeURIComponent(message as string)}`;
+              window.location.href = `mailto:sales.ro@justrite.com?subject=Website Inquiry&body=${encodeURIComponent(message as string)}`;
             }}>
               <input 
                 type="email" 

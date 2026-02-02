@@ -178,7 +178,7 @@ export const ResourcesSection: React.FC = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
-              href="mailto:sales.romania@buyjustrite.eu"
+              href="mailto:sales.ro@justrite.com"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-brand-black bg-brand-yellow hover:bg-yellow-400 transition-colors"
             >
               Email Technical Team
