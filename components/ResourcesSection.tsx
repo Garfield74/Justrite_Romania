@@ -114,12 +114,19 @@ export const ResourcesSection: React.FC = () => {
               {/* Brand Badge */}
               <div className={`bg-gradient-to-r ${catalogue.color} p-4 relative`}>
                 <div className="flex items-center justify-between">
-                  <div>
-                    <span className="text-white text-xs font-bold uppercase tracking-wider">
+                  <div className="flex items-center gap-3">
+                    <div className={`${catalogue.brandColor} p-2 rounded-lg bg-white/20 backdrop-blur-sm`}>
+                      <div className="text-white">
+                        {catalogue.icon}
+                      </div>
+                    </div>
+                    <span className="text-white text-sm font-bold uppercase tracking-wider">
                       {catalogue.brand}
                     </span>
                   </div>
-                  <span className="text-3xl">{catalogue.icon}</span>
+                  <div className="absolute top-2 right-2 bg-white/10 backdrop-blur-sm px-2 py-1 rounded text-white text-xs font-semibold">
+                    PDF
+                  </div>
                 </div>
               </div>
 
@@ -148,9 +155,12 @@ export const ResourcesSection: React.FC = () => {
 
               {/* File Info */}
               <div className="px-6 pb-4">
-                <div className="flex items-center text-xs text-gray-500">
-                  <FileText className="h-4 w-4 mr-1" />
-                  <span>PDF Document</span>
+                <div className="flex items-center justify-between text-xs text-gray-500">
+                  <div className="flex items-center">
+                    <FileText className="h-4 w-4 mr-1" />
+                    <span>PDF Document</span>
+                  </div>
+                  <span className="text-gray-400">Click to open</span>
                 </div>
               </div>
             </div>
