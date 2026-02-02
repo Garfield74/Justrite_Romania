@@ -21,22 +21,22 @@ export const SafetySurveySection: React.FC = () => {
     e.preventDefault();
     // Send email to sales.romania@buyjustrite.eu
     const emailBody = `
-Solicitare Evaluare Siguranță Site STUD-E™
+STUD-E™ Site Safety Assessment Request
 
-Tip utilizator: ${formData.userType}
-Nume: ${formData.firstName} ${formData.lastName}
-Companie: ${formData.company}
+User Type: ${formData.userType}
+Name: ${formData.firstName} ${formData.lastName}
+Company: ${formData.company}
 Email: ${formData.email}
-Cod Poștal: ${formData.postalCode}
-Telefon: ${formData.phone}
+Postal Code: ${formData.postalCode}
+Phone: ${formData.phone}
 
-Informații Adiționale:
+Additional Information:
 ${formData.additionalInfo}
 
-Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
+Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
     `.trim();
 
-    window.location.href = `mailto:sales.romania@buyjustrite.eu?subject=Solicitare STUD-E Survey&body=${encodeURIComponent(emailBody)}`;
+    window.location.href = `mailto:sales.romania@buyjustrite.eu?subject=STUD-E Survey Request&body=${encodeURIComponent(emailBody)}`;
     setSubmitted(true);
   };
 
@@ -60,10 +60,10 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
             </div>
           </div>
           <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
-            STUD-E™ Evaluare Siguranță la Locul de Muncă
+            STUD-E™ Workplace Safety Survey
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Preveniți accidentele la locul de muncă cu o evaluare gratuită a siguranței de la experții Justrite România
+            Prevent accidents in the workplace with a free safety assessment from Justrite Romania experts
           </p>
         </div>
 
@@ -73,52 +73,51 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
           {/* Left Side - Information */}
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Protejați Oamenii, Proprietatea și Mediul™
+              Protect People, Property, and the Planet™
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Accidentele la locul de muncă se întâmplă și pot fi costisitoare. O stropire cu substanțe chimice periculoase 
-              care duce la pierderea vederii ar putea costa o companie sute de mii de euro. Permiteți-ne să vă ajutăm să 
-              evitați accidentele cu soluții adecvate pentru depozitarea materialelor periculoase, containere pentru scurgeri, 
-              identificare siguranță, dușuri de urgență și spălătoare pentru ochi, și mai mult!
+              Workplace accidents happen and they can be costly. A hazardous chemical splash resulting in vision loss 
+              could cost a company hundreds of thousands of euros. Let us help you avoid accidents with proper storage 
+              of hazardous materials, spill containment, safety identification, emergency shower and eye wash, and more!
             </p>
             
             <div className="bg-brand-black text-white p-6 rounded-lg mb-6">
               <h4 className="text-brand-yellow font-bold text-xl mb-4">
-                Evaluarea Noastră Gratuită Atenuează Riscul
+                Our Complimentary Site Assessment Mitigates Risk
               </h4>
               <p className="text-gray-300">
-                Oferim un expert în siguranță în facilitatea dumneavoastră pentru a identifica pericolele și 
-                recomanda soluții pentru un loc de muncă sigur și conform.
+                It puts a safety expert in your facility to identify hazards and recommend solutions for a safe 
+                and compliant workplace.
               </p>
             </div>
 
             {/* Benefits */}
             <div className="space-y-4">
-              <h4 className="font-bold text-gray-900 mb-4">STUD-E™ prioritizează problemele critice de siguranță:</h4>
+              <h4 className="font-bold text-gray-900 mb-4">STUD-E™ prioritizes critical safety issues:</h4>
               
               <div className="flex items-start">
                 <CheckCircle className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Prevenirea încălcărilor conformității (standarde românești și UE)</span>
+                <span className="text-gray-700">Preventing compliance violations from Romanian and EU regulations</span>
               </div>
               
               <div className="flex items-start">
                 <TrendingDown className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Evitarea amenzilor costisitoare</span>
+                <span className="text-gray-700">Avoiding costly fines</span>
               </div>
               
               <div className="flex items-start">
                 <Shield className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Prevenirea reclamațiilor privind compensarea lucrătorilor</span>
+                <span className="text-gray-700">Preventing workers compensation claims</span>
               </div>
               
               <div className="flex items-start">
                 <TrendingDown className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Reducerea primelor de asigurare</span>
+                <span className="text-gray-700">Lowering insurance premiums</span>
               </div>
               
               <div className="flex items-start">
                 <Award className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Îmbunătățirea proceselor operaționale</span>
+                <span className="text-gray-700">Enhancing process improvements</span>
               </div>
             </div>
           </div>
@@ -126,7 +125,7 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
           {/* Right Side - Form */}
           <div className="bg-white rounded-xl shadow-xl p-8 border border-gray-200">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Solicitați o Evaluare a Siguranței Site-ului
+              Request a Site Safety Assessment
             </h3>
 
             {submitted ? (
@@ -136,9 +135,9 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
                     <CheckCircle className="h-12 w-12 text-green-600" />
                   </div>
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">Mulțumim!</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-2">Thank You!</h4>
                 <p className="text-gray-600">
-                  Cererea dumneavoastră a fost trimisă. Echipa noastră vă va contacta în curând.
+                  Your request has been submitted. Our team will contact you shortly.
                 </p>
               </div>
             ) : (
@@ -146,7 +145,7 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Eu Sunt Un<span className="text-red-600">*</span>
+                    I Am A<span className="text-red-600">*</span>
                   </label>
                   <select
                     name="userType"
@@ -155,17 +154,17 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-yellow focus:border-transparent"
                   >
-                    <option value="">--Selectați--</option>
-                    <option value="end-user">Utilizator Final</option>
-                    <option value="distributor">Distribuitor</option>
-                    <option value="other">Altul</option>
+                    <option value="">--Select--</option>
+                    <option value="end-user">End User</option>
+                    <option value="distributor">Distributor</option>
+                    <option value="other">Other</option>
                   </select>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Prenume<span className="text-red-600">*</span>
+                      First Name<span className="text-red-600">*</span>
                     </label>
                     <input
                       type="text"
@@ -179,7 +178,7 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Nume<span className="text-red-600">*</span>
+                      Last Name<span className="text-red-600">*</span>
                     </label>
                     <input
                       type="text"
@@ -194,7 +193,7 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Companie<span className="text-red-600">*</span>
+                    Company<span className="text-red-600">*</span>
                   </label>
                   <input
                     type="text"
@@ -223,7 +222,7 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Cod Poștal<span className="text-red-600">*</span>
+                      Zip / Postal Code<span className="text-red-600">*</span>
                     </label>
                     <input
                       type="text"
@@ -237,7 +236,7 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Telefon<span className="text-red-600">*</span>
+                      Phone<span className="text-red-600">*</span>
                     </label>
                     <input
                       type="tel"
@@ -252,14 +251,14 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Informații Adiționale
+                    Additional Information Needed
                   </label>
                   <textarea
                     name="additionalInfo"
                     rows={4}
                     value={formData.additionalInfo}
                     onChange={handleChange}
-                    placeholder="Descrieți pe scurt nevoile dvs. de siguranță..."
+                    placeholder="Briefly describe your safety needs..."
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-yellow focus:border-transparent"
                   ></textarea>
                 </div>
@@ -274,13 +273,13 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
                       className="mt-1 mr-2"
                     />
                     <span className="text-sm text-gray-600">
-                      Sunt de acord să primesc e-mailuri de marketing de la Justrite Romania și înțeleg că mă pot dezabona oricând.
+                      I agree to receive marketing emails from Justrite Safety Group and understand I can unsubscribe anytime.
                     </span>
                   </label>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Sunteți de acord cu politica de confidențialitate?<span className="text-red-600">*</span>
+                      Do you agree to our privacy policy?<span className="text-red-600">*</span>
                     </label>
                     <select
                       name="agreePrivacy"
@@ -289,15 +288,15 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-yellow focus:border-transparent"
                     >
-                      <option value="">--Selectați--</option>
-                      <option value="yes">Da</option>
-                      <option value="no">Nu</option>
+                      <option value="">--Select--</option>
+                      <option value="yes">Yes</option>
+                      <option value="no">No</option>
                     </select>
                   </div>
 
                   <p className="text-xs text-gray-500">
-                    Înțeleg că prin trimiterea informațiilor mele de contact, furnizez aceste informații personale către 
-                    Justrite Romania S.R.L. și acestea pot fi folosite în scopurile pentru care au fost furnizate.
+                    I understand by submitting my contact information, I am providing that personal information to 
+                    Justrite Romania S.R.L. and they may use this information for the purposes which it was provided.
                   </p>
                 </div>
 
@@ -306,7 +305,7 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
                   className="w-full bg-brand-yellow text-brand-black font-bold py-3 px-6 rounded-md hover:bg-yellow-400 transition-colors text-lg"
                   data-testid="submit-survey-request"
                 >
-                  Trimiteți Solicitarea
+                  Submit Request
                 </button>
               </form>
             )}
@@ -316,7 +315,7 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
         {/* How It Works Section */}
         <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-16">
           <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            Cum Funcționează STUD-E™?
+            How Does STUD-E™ Work?
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -326,7 +325,7 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
               </div>
               <h4 className="font-bold text-gray-900 mb-2">Contact</h4>
               <p className="text-gray-600 text-sm">
-                Discutați cu unul dintre experții noștri pentru a programa o vizită la fața locului
+                Talk with one of our experts to schedule a site visit
               </p>
             </div>
 
@@ -334,9 +333,9 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
               <div className="bg-brand-yellow rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand-black font-bold text-2xl">2</span>
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">Evaluare</h4>
+              <h4 className="font-bold text-gray-900 mb-2">Assessment</h4>
               <p className="text-gray-600 text-sm">
-                Realizăm o evaluare completă a facilității dumneavoastră
+                We conduct a walk through of your facility
               </p>
             </div>
 
@@ -344,9 +343,9 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
               <div className="bg-brand-yellow rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand-black font-bold text-2xl">3</span>
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">Analiză</h4>
+              <h4 className="font-bold text-gray-900 mb-2">Analysis</h4>
               <p className="text-gray-600 text-sm">
-                Identificăm vulnerabilitățile actuale și potențiale
+                We identify current and potential vulnerabilities
               </p>
             </div>
 
@@ -354,9 +353,9 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
               <div className="bg-brand-yellow rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand-black font-bold text-2xl">4</span>
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">Raport</h4>
+              <h4 className="font-bold text-gray-900 mb-2">Report</h4>
               <p className="text-gray-600 text-sm">
-                Primiți un raport detaliat cu recomandări pentru conformitate
+                Receive a report with recommendations for compliance
               </p>
             </div>
           </div>
@@ -365,11 +364,11 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
         {/* Contact CTA */}
         <div className="bg-brand-black rounded-2xl p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
-            Sunteți Gata să Îmbunătățiți Siguranța la Locul de Muncă?
+            Ready to Improve Workplace Safety?
           </h3>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Contactați-ne astăzi pentru a programa evaluarea gratuită STUD-E™ și aflați cum putem ajuta 
-            să faceți locul de muncă mai sigur și conform.
+            Contact us today to schedule your free STUD-E™ assessment and learn how we can help 
+            make your workplace safer and compliant.
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
@@ -382,7 +381,7 @@ Marketing: ${formData.agreeMarketing ? 'Da' : 'Nu'}
               href="tel:+40236325301"
               className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition-colors"
             >
-              Telefon: 0236 325 301
+              Phone: 0236 325 301
             </a>
           </div>
         </div>
