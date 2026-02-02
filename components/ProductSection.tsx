@@ -1,6 +1,6 @@
 import React from 'react';
 import { Product } from '../types';
-import { Flame, Home, Droplets, ShowerHead, Wind, Users } from 'lucide-react';
+import { Box, Droplets, Layers, PackageOpen, Package, Trash2 } from 'lucide-react';
 
 const products: Product[] = [
   {
@@ -49,14 +49,14 @@ const products: Product[] = [
 
 const getIcon = (id: string) => {
   const icons: { [key: string]: React.ReactNode } = {
-    'safety-cans': <Flame className="h-8 w-8 text-brand-red" />,
-    'outdoor-storage': <Home className="h-8 w-8 text-brand-red" />,
-    'spill-containment': <Droplets className="h-8 w-8 text-brand-red" />,
-    'emergency-equipment': <ShowerHead className="h-8 w-8 text-brand-red" />,
-    'gas-cylinder': <Wind className="h-8 w-8 text-brand-red" />,
-    'ergonomic-solutions': <Users className="h-8 w-8 text-brand-red" />
+    'industrial-metal-containers': <Box className="h-8 w-8 text-brand-red" />,
+    'liquid-containment-tank': <Droplets className="h-8 w-8 text-brand-red" />,
+    'metal-pallets': <Layers className="h-8 w-8 text-brand-red" />,
+    'open-bottom-containers': <PackageOpen className="h-8 w-8 text-brand-red" />,
+    'big-bag-holders': <Package className="h-8 w-8 text-brand-red" />,
+    'waste-cans-receptacles': <Trash2 className="h-8 w-8 text-brand-red" />
   };
-  return icons[id] || <Flame className="h-8 w-8 text-brand-red" />;
+  return icons[id] || <Box className="h-8 w-8 text-brand-red" />;
 };
 
 export const ProductSection: React.FC = () => {
