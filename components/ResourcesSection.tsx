@@ -1,5 +1,5 @@
 import React from 'react';
-import { Download, FileText, ExternalLink } from 'lucide-react';
+import { Download, FileText, ExternalLink, Factory, Flame, Footprints, Droplet, Cable, ShieldCheck } from 'lucide-react';
 
 interface Catalogue {
   id: string;
@@ -7,8 +7,9 @@ interface Catalogue {
   title: string;
   description: string;
   filename: string;
-  icon: string;
+  icon: React.ReactNode;
   color: string;
+  brandColor: string;
 }
 
 const catalogues: Catalogue[] = [
