@@ -17,64 +17,71 @@ const catalogues: Catalogue[] = [
     id: 'sall',
     brand: 'Sall',
     title: 'Materials Storage and Handling Essentials',
-    description: 'Complete range of Italian-engineered storage solutions for industrial materials',
+    description: 'Complete range of Italian-engineered storage solutions for industrial materials and hazardous substance containment',
     filename: 'Sall-Materials-Storage-and-Handling-Essentials.pdf',
-    icon: '🏗️',
-    color: 'from-blue-500 to-blue-700'
+    icon: <Factory className="h-8 w-8" />,
+    color: 'from-blue-600 to-blue-800',
+    brandColor: 'bg-blue-600'
   },
   {
     id: 'justrite-industrial',
     brand: 'Justrite',
     title: 'Industrial Storage & Handling Solutions for Hazardous Materials',
-    description: 'Comprehensive guide to safe storage and handling of hazardous industrial materials',
+    description: 'Comprehensive guide to safe storage and handling of hazardous industrial materials with fire safety heritage',
     filename: 'Justrite-Industrial-Storage-Handling-Solutions-for-Hazardous-Materials.pdf',
-    icon: '⚠️',
-    color: 'from-red-500 to-red-700'
+    icon: <ShieldCheck className="h-8 w-8" />,
+    color: 'from-red-600 to-red-800',
+    brandColor: 'bg-red-600'
   },
   {
     id: 'justrite-safety',
     brand: 'Justrite',
     title: 'Safety Cans & Material Handling Solutions',
-    description: 'Industry-leading safety cans and material handling equipment specifications',
+    description: 'Industry-leading safety cans and material handling equipment specifications with fire safety focus',
     filename: 'Justrite-Safety-Cans-Material-Handling-Solutions.pdf',
-    icon: '🛢️',
-    color: 'from-red-500 to-red-700'
+    icon: <Flame className="h-8 w-8" />,
+    color: 'from-red-600 to-red-800',
+    brandColor: 'bg-red-600'
   },
   {
     id: 'notrax-ergonomic',
     brand: 'NoTrax',
     title: 'Ergonomic, Anti-Fatigue & Safety Matting',
-    description: 'Reduce workplace fatigue and improve safety with premium ergonomic matting',
+    description: 'Reduce workplace fatigue and improve safety with premium ergonomic matting - ISO-certified manufacturing',
     filename: 'NoTrax-Ergonomic-Anti-Fatigue-Safety-Matting.pdf',
-    icon: '🦺',
-    color: 'from-green-500 to-green-700'
+    icon: <Footprints className="h-8 w-8" />,
+    color: 'from-green-600 to-green-800',
+    brandColor: 'bg-green-600'
   },
   {
     id: 'notrax-dust',
     brand: 'NoTrax',
     title: 'Dust Control & Entrance Matting',
-    description: 'Keep facilities clean and safe with professional entrance matting systems',
+    description: 'Keep facilities clean and safe with professional entrance matting systems and custom logo options',
     filename: 'NoTrax-Dust-Control-Entrance-Matting.pdf',
-    icon: '🚪',
-    color: 'from-green-500 to-green-700'
+    icon: <Footprints className="h-8 w-8" />,
+    color: 'from-green-600 to-green-800',
+    brandColor: 'bg-green-600'
   },
   {
     id: 'hughes',
     brand: 'Hughes',
     title: 'Emergency Safety Showers & Eye Washes',
-    description: 'ANSI-compliant emergency response equipment for chemical exposure protection',
+    description: 'ANSI Z358.1 compliant emergency response equipment for chemical exposure protection - Over 50 years experience',
     filename: 'Hughes-Emergency-Safety-Showers-Eye-Washes.pdf',
-    icon: '🚿',
-    color: 'from-yellow-500 to-orange-600'
+    icon: <Droplet className="h-8 w-8" />,
+    color: 'from-cyan-600 to-blue-700',
+    brandColor: 'bg-cyan-600'
   },
   {
     id: 'checkers',
     brand: 'Checkers',
     title: 'Cable Management, Vehicle Safety, and Ground Protection',
-    description: 'Professional solutions for cable management and workplace vehicle safety',
+    description: 'Professional solutions for cable management and workplace vehicle safety - Made in USA with high-visibility designs',
     filename: 'Checkers-Cable-Management-Vehicle-Safety-Ground-Protection.pdf',
-    icon: '🚧',
-    color: 'from-purple-500 to-purple-700'
+    icon: <Cable className="h-8 w-8" />,
+    color: 'from-yellow-500 to-orange-600',
+    brandColor: 'bg-yellow-500'
   }
 ];
 
