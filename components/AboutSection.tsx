@@ -51,8 +51,8 @@ export const AboutSection: React.FC = () => {
           <div className="relative">
             <div className="aspect-w-3 aspect-h-2 rounded-lg shadow-xl overflow-hidden">
                <img
-                src="https://images.unsplash.com/photo-1581091226825-a6a2a5aee158?ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80"
-                alt="Justrite Manufacturing Heritage"
+                src="https://images.unsplash.com/photo-1763076470513-c21b9d7f7e75?crop=entropy&cs=srgb&fm=jpg&ixid=M3w3NTY2NzF8MHwxfHNlYXJjaHwzfHx2aW50YWdlJTIwbWV0YWwlMjBjb250YWluZXJ8ZW58MHx8fHwxNzcwMDY3NTIwfDA&ixlib=rb-4.1.0&q=85"
+                alt="Vintage Justrite Safety Can - Heritage Since 1906"
                 className="object-cover w-full h-full transform hover:scale-105 transition-transform duration-500"
               />
             </div>
