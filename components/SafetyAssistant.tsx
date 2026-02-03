@@ -168,6 +168,29 @@ export const SafetyAssistant: React.FC = () => {
                 </div>
               </div>
             ))}
+            
+            {/* Quick Questions Section */}
+            {showQuickQuestions && messages.length === 1 && !isGenerating && (
+              <div className="space-y-2 pt-2">
+                <div className="flex items-center gap-1 text-xs text-gray-500 px-1">
+                  <Sparkles className="h-3 w-3" />
+                  <span>Try asking:</span>
+                </div>
+                <div className="flex flex-wrap gap-2">
+                  {QUICK_QUESTIONS.map((question, idx) => (
+                    <button
+                      key={idx}
+                      onClick={() => handleQuickQuestion(question)}
+                      data-testid={`quick-question-${idx}`}
+                      className="text-xs bg-white border border-gray-200 text-gray-700 px-3 py-1.5 rounded-full hover:bg-brand-yellow hover:border-brand-yellow hover:text-brand-black transition-all duration-200 shadow-sm"
+                    >
+                      {question}
+                    </button>
+                  ))}
+                </div>
+              </div>
+            )}
+            
             <div ref={messagesEndRef} />
           </div>
 
