@@ -42,7 +42,7 @@ export const SafetyAssistant: React.FC = () => {
       // Create a placeholder for the model response
       setMessages(prev => [...prev, { role: MessageRole.MODEL, text: '', isThinking: true }]);
 
-      const stream = await chatSessionRef.current!.sendMessage(userMsg);
+      const stream = await chatSessionRef.current.sendMessage(userMsg);
       
       let fullText = '';
       
@@ -63,7 +63,11 @@ export const SafetyAssistant: React.FC = () => {
 
     } catch (error) {
       console.error("Chat error", error);
-      setMessages(prev => [...prev, { role: MessageRole.MODEL, text: "I apologize, but I'm having trouble connecting right now. Please try again or contact us at sales.ro@justrite.com or call 0236 325 301." }]);
+      // Remove the thinking placeholder and add error message
+      setMessages(prev => {
+        const filtered = prev.filter(m => !(m.role === MessageRole.MODEL && m.isThinking));
+        return [...filtered, { role: MessageRole.MODEL, text: "I apologize, but I'm having trouble connecting right now. Please try again or contact us at sales.ro@justrite.com or call 0236 325 301." }];
+      });
     } finally {
       setIsGenerating(false);
     }
