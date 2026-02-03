@@ -1,10 +1,14 @@
-import { GoogleGenAI, Chat, GenerateContentResponse } from "@google/genai";
-import { MessageRole, ChatMessage } from '../types';
+import OpenAI from 'openai';
 
-// Initialize the Gemini API client with Emergent LLM Key
-// The EMERGENT_LLM_KEY is a universal key that works with multiple LLM providers
+// Initialize OpenAI client with Emergent LLM Key
+// The EMERGENT_LLM_KEY works with OpenAI-compatible endpoints
 const API_KEY = import.meta.env.VITE_EMERGENT_LLM_KEY || 'sk-emergent-8C52c644a808c9f080';
-const ai = new GoogleGenAI({ apiKey: API_KEY });
+
+const client = new OpenAI({
+  apiKey: API_KEY,
+  baseURL: 'https://api.studio.emergentagents.com/v1',
+  dangerouslyAllowBrowser: true
+});
 
 const SAFETY_SYSTEM_INSTRUCTION = `
 You are the "Justrite Safety Advisor", an AI assistant for Justrite Romania S.R.L.
@@ -84,26 +88,65 @@ Always emphasize that we are located in Galați, Romania but uphold strict US an
 Be professional, knowledgeable, and safety-oriented. Provide specific product recommendations when appropriate.
 `;
 
+// Simple message history type
+export interface ChatMessage {
+  role: 'system' | 'user' | 'assistant';
+  content: string;
+}
 
-export const createSafetyChat = (): Chat => {
-  return ai.chats.create({
-    model: 'gemini-2.5-flash',
-    config: {
-      systemInstruction: SAFETY_SYSTEM_INSTRUCTION,
-      temperature: 0.7,
-    },
-  });
-};
+export class SafetyChat {
+  private messages: ChatMessage[] = [];
 
-export const sendMessageToSafetyAdvisor = async (
-  chat: Chat,
-  message: string
-): Promise<AsyncIterable<GenerateContentResponse>> => {
-  try {
-    const streamResult = await chat.sendMessageStream({ message });
-    return streamResult;
-  } catch (error) {
-    console.error("Error calling Gemini API:", error);
-    throw error;
+  constructor() {
+    // Initialize with system message
+    this.messages.push({
+      role: 'system',
+      content: SAFETY_SYSTEM_INSTRUCTION
+    });
   }
+
+  async sendMessage(userMessage: string): Promise<AsyncIterable<string>> {
+    // Add user message to history
+    this.messages.push({
+      role: 'user',
+      content: userMessage
+    });
+
+    // Create streaming response
+    const stream = await client.chat.completions.create({
+      model: 'google/gemini-2.0-flash-exp:free',
+      messages: this.messages,
+      stream: true,
+      temperature: 0.7,
+      max_tokens: 1000,
+    });
+
+    // Return async generator that yields text chunks
+    return this.streamText(stream);
+  }
+
+  private async *streamText(stream: AsyncIterable<OpenAI.Chat.Completions.ChatCompletionChunk>): AsyncIterable<string> {
+    let fullResponse = '';
+    
+    for await (const chunk of stream) {
+      const content = chunk.choices[0]?.delta?.content || '';
+      if (content) {
+        fullResponse += content;
+        yield content;
+      }
+    }
+
+    // Add assistant response to history
+    if (fullResponse) {
+      this.messages.push({
+        role: 'assistant',
+        content: fullResponse
+      });
+    }
+  }
+}
+
+// Export factory function
+export const createSafetyChat = (): SafetyChat => {
+  return new SafetyChat();
 };
