@@ -91,6 +91,10 @@ export const SafetyAssistant: React.FC = () => {
     }
   };
 
+  const handleQuickQuestion = (question: string) => {
+    handleSendMessage(question);
+  };
+
   return (
     <section id="safety-assistant" className="fixed bottom-6 right-6 z-40">
       {/* Toggle Button */}
