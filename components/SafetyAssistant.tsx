@@ -86,6 +86,7 @@ export const SafetyAssistant: React.FC = () => {
       {!isOpen && (
         <button
           onClick={() => setIsOpen(true)}
+          data-testid="chat-toggle-btn"
           className="bg-brand-yellow text-brand-black p-4 rounded-full shadow-xl hover:bg-yellow-400 transition-all duration-300 flex items-center gap-2 font-bold border-2 border-white group"
         >
           <MessageSquare className="h-6 w-6" />
