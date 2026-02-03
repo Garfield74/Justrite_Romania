@@ -165,11 +165,13 @@ export const SafetyAssistant: React.FC = () => {
                 onKeyDown={handleKeyPress}
                 placeholder="Ask about plunger cans..."
                 disabled={isGenerating}
+                data-testid="chat-input"
                 className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow disabled:bg-gray-100"
               />
               <button
                 onClick={handleSendMessage}
                 disabled={!input.trim() || isGenerating}
+                data-testid="chat-send-btn"
                 className="bg-brand-yellow text-brand-black p-2 rounded-full hover:bg-yellow-400 disabled:opacity-50 disabled:cursor-not-allowed transition-colors"
               >
                 {isGenerating ? <Loader2 className="h-5 w-5 animate-spin" /> : <Send className="h-5 w-5" />}
