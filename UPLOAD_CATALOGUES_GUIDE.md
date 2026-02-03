@@ -61,7 +61,7 @@ After uploading, your catalogues will be accessible at:
 - `https://your-domain.com/catalogues/[filename].pdf`
 
 For example:
-- `https://justrite-corp.preview.emergentagent.com/catalogues/Sall-Materials-Storage-and-Handling-Essentials.pdf`
+- `https://safety-advisor-5.preview.emergentagent.com/catalogues/Sall-Materials-Storage-and-Handling-Essentials.pdf`
 
 ## 🎨 How It Appears on the Website
 
