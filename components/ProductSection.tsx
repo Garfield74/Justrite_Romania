@@ -81,7 +81,7 @@ export const ProductSection: React.FC = () => {
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-gray-100"
               data-testid={`product-${product.id}`}
             >
-              <div className="h-56 w-full overflow-hidden relative group bg-gray-100">
+              <div className="h-56 w-full overflow-hidden relative group bg-white">
                 <img 
                   src={product.imageUrl} 
                   alt={product.title} 
