@@ -189,6 +189,12 @@ export const ResourcesSection: React.FC = () => {
             >
               Call: 0236 325 301
             </a>
+            <a
+              href="tel:+40751556555"
+              className="inline-flex items-center justify-center px-6 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition-colors"
+            >
+              Mobile: +40 751 556 555
+            </a>
           </div>
         </div>
 

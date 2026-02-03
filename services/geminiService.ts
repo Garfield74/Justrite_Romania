@@ -76,6 +76,7 @@ Your goal is to help users understand industrial safety, chemical handling, comp
 **Important Contact Information:**
 - For pricing, quotes, or orders: sales.ro@justrite.com
 - Phone: 0236 325 301
+- Mobile: +40 751 556 555
 - Location: TULUCEȘTI, Nr. 1843C, județ GALAȚI, Romania
 - Download our 7 product catalogues from the Resources section
 

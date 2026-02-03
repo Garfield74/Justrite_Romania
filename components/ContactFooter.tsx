@@ -54,9 +54,14 @@ export const ContactFooter: React.FC = () => {
               </li>
               <li className="flex items-center">
                 <Phone className="h-5 w-5 text-brand-yellow mr-3 flex-shrink-0" />
-                <a href="tel:+40236325301" className="hover:text-brand-yellow transition-colors">
-                  0236 325 301
-                </a>
+                <div className="flex flex-col gap-1">
+                  <a href="tel:+40236325301" className="hover:text-brand-yellow transition-colors">
+                    0236 325 301
+                  </a>
+                  <a href="tel:+40751556555" className="hover:text-brand-yellow transition-colors">
+                    +40 751 556 555 (Mobile)
+                  </a>
+                </div>
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-brand-yellow mr-3 flex-shrink-0" />
