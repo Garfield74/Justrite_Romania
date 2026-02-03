@@ -43,14 +43,12 @@ export const SafetyAssistant: React.FC = () => {
       // Create a placeholder for the model response
       setMessages(prev => [...prev, { role: MessageRole.MODEL, text: '', isThinking: true }]);
 
-      const stream = await sendMessageToSafetyAdvisor(chatSessionRef.current, userMsg);
+      const stream = await chatSessionRef.current!.sendMessage(userMsg);
       
       let fullText = '';
       
       for await (const chunk of stream) {
-         const c = chunk as GenerateContentResponse;
-         const chunkText = c.text || '';
-         fullText += chunkText;
+         fullText += chunk;
          
          // Update the last message (Model's response) in real-time
          setMessages(prev => {
@@ -66,7 +64,7 @@ export const SafetyAssistant: React.FC = () => {
 
     } catch (error) {
       console.error("Chat error", error);
-      setMessages(prev => [...prev, { role: MessageRole.MODEL, text: "I apologize, but I'm having trouble connecting to the safety database right now. Please try again later." }]);
+      setMessages(prev => [...prev, { role: MessageRole.MODEL, text: "I apologize, but I'm having trouble connecting right now. Please try again or contact us at sales.ro@justrite.com or call 0236 325 301." }]);
     } finally {
       setIsGenerating(false);
     }
