@@ -7,7 +7,7 @@ const products: Product[] = [
     id: 'industrial-metal-containers',
     title: 'Industrial Metal Containers',
     description: 'Versatile storage solutions including sheet metal containers, wire mesh containers, metal containers with wolf mouth, and folding metal containers for efficient warehouse organization.',
-    imageUrl: 'https://images.unsplash.com/photo-1759647028384-1efcc6e0eff4?auto=format&fit=crop&q=80&w=600&h=400',
+    imageUrl: '/industrial_metal_containers.jpg',
     features: ['Sheet Metal Containers', 'Wire Mesh Containers', 'Wolf Mouth Design', 'Folding Options']
   },
   {
