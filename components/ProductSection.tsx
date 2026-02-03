@@ -81,13 +81,13 @@ export const ProductSection: React.FC = () => {
               className="bg-white rounded-xl shadow-md overflow-hidden hover:shadow-2xl transition-shadow duration-300 border border-gray-100"
               data-testid={`product-${product.id}`}
             >
-              <div className="h-48 w-full overflow-hidden relative group">
+              <div className="h-56 w-full overflow-hidden relative group bg-gray-100">
                 <img 
                   src={product.imageUrl} 
                   alt={product.title} 
-                  className="w-full h-full object-cover transform group-hover:scale-110 transition-transform duration-500"
+                  className="w-full h-full object-contain transform group-hover:scale-105 transition-transform duration-500 p-4"
                 />
-                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/0 transition-colors duration-300" />
+                <div className="absolute inset-0 bg-black/10 group-hover:bg-black/0 transition-colors duration-300" />
               </div>
               <div className="p-6">
                 <div className="flex items-center mb-4">
