@@ -14,35 +14,35 @@ const products: Product[] = [
     id: 'liquid-containment-tank',
     title: 'Liquid Containment Tank',
     description: 'Professional spill containment solutions featuring steel collection tanks, drum trolleys with integrated collection systems, and floor-mounted steel collection tanks for leak prevention.',
-    imageUrl: 'https://images.unsplash.com/photo-1743228746138-c8690a2f7ffa?auto=format&fit=crop&q=80&w=600&h=400',
+    imageUrl: '/liquid_containment_tank.jpg',
     features: ['Steel Collection Tank', 'Drum Trolleys', 'Floor Collection Systems', 'Spill Prevention']
   },
   {
     id: 'metal-pallets',
     title: 'Metal Pallets',
     description: 'Durable metal pallet systems including stackable free-standing designs, pallet bar holders, fabric pallets, and specialized pallets & cylinder baskets for diverse storage needs.',
-    imageUrl: 'https://images.unsplash.com/photo-1573845949327-18db541e187f?auto=format&fit=crop&q=80&w=600&h=400',
+    imageUrl: '/metal_pallets.jpg',
     features: ['Stackable Design', 'Free-Standing', 'Pallet Bar Holder', 'Cylinder Baskets']
   },
   {
     id: 'open-bottom-containers',
     title: 'Open Bottom Containers',
     description: 'Specialized open bottom container systems designed for efficient loading, unloading, and material handling in industrial environments.',
-    imageUrl: 'https://images.unsplash.com/photo-1616614979687-8a8fece9cfb2?auto=format&fit=crop&q=80&w=600&h=400',
+    imageUrl: '/open_bottom_containers.jpg',
     features: ['Easy Loading', 'Efficient Unloading', 'Industrial Grade', 'Durable Construction']
   },
   {
     id: 'big-bag-holders',
     title: 'Big Bag Holders',
     description: 'Robust FIBC (Flexible Intermediate Bulk Container) holders and frames designed for safe handling and storage of bulk materials in large bags.',
-    imageUrl: 'https://images.unsplash.com/photo-1762033159465-9d9e0e1e7401?auto=format&fit=crop&q=80&w=600&h=400',
+    imageUrl: '/big_bag_holders.jpg',
     features: ['FIBC Compatible', 'Heavy Duty Frame', 'Safe Handling', 'Bulk Storage']
   },
   {
     id: 'waste-cans-receptacles',
     title: 'Waste Cans & Receptacles',
     description: 'Industry-leading safety waste containers including oily waste cans, safety plunger cans, and safety bench cans for compliant hazardous material disposal.',
-    imageUrl: 'https://images.unsplash.com/photo-1763310225071-af00bef26d1c?auto=format&fit=crop&q=80&w=600&h=400',
+    imageUrl: '/waste_cans.jpg',
     features: ['Oily Waste Cans', 'Safety Plunger Cans', 'Safety Bench Cans', 'FM Approved']
   }
 ];
