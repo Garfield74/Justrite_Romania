@@ -38,21 +38,22 @@ export const SafetyAssistant: React.FC = () => {
     messagesEndRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages, isOpen]);
 
-  const handleSendMessage = useCallback(async () => {
-    if (!input.trim() || !chatSessionRef.current || isGenerating) return;
+  const handleSendMessage = useCallback(async (quickQuestion?: string) => {
+    const messageToSend = quickQuestion || input.trim();
+    if (!messageToSend || !chatSessionRef.current || isGenerating) return;
 
-    const userMsg = input.trim();
     setInput('');
     setIsGenerating(true);
+    setShowQuickQuestions(false); // Hide quick questions after first message
 
     // Add User Message
-    setMessages(prev => [...prev, { role: MessageRole.USER, text: userMsg }]);
+    setMessages(prev => [...prev, { role: MessageRole.USER, text: messageToSend }]);
 
     try {
       // Create a placeholder for the model response
       setMessages(prev => [...prev, { role: MessageRole.MODEL, text: '', isThinking: true }]);
 
-      const stream = await chatSessionRef.current.sendMessage(userMsg);
+      const stream = await chatSessionRef.current.sendMessage(messageToSend);
       
       let fullText = '';
       
