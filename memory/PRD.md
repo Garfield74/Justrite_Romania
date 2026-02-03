@@ -51,6 +51,7 @@ Located in `/app/public/catalogues/`:
 - [x] Llama 3.1 70B Instruct model
 - [x] Multi-turn conversation support
 - [x] Contact information in responses
+- [x] Quick Questions feature with 5 common queries
 
 ## Technical Architecture
 
