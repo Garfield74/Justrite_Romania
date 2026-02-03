@@ -1,8 +1,7 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { MessageSquare, Send, User, Bot, Loader2, X } from 'lucide-react';
-import { createSafetyChat, sendMessageToSafetyAdvisor } from '../services/geminiService';
+import { MessageSquare, Send, Bot, Loader2, X } from 'lucide-react';
+import { createSafetyChat, SafetyChat } from '../services/geminiService';
 import { ChatMessage, MessageRole } from '../types';
-import { Chat, GenerateContentResponse } from '@google/genai';
 
 export const SafetyAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -14,7 +13,7 @@ export const SafetyAssistant: React.FC = () => {
   ]);
   const [input, setInput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
-  const chatSessionRef = useRef<Chat | null>(null);
+  const chatSessionRef = useRef<SafetyChat | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
   // Initialize Chat Session once
