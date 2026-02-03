@@ -40,7 +40,7 @@ const products: Product[] = [
   },
   {
     id: 'waste-cans-receptacles',
-    title: 'Waste Cans & Receptacles',
+    title: 'Waste & Plunger Cans',
     description: 'Industry-leading safety waste containers including oily waste cans, safety plunger cans, and safety bench cans for compliant hazardous material disposal.',
     imageUrl: '/waste_cans.jpg',
     features: ['Oily Waste Cans', 'Safety Plunger Cans', 'Safety Bench Cans', 'FM Approved']
