@@ -108,7 +108,7 @@ export const SafetyAssistant: React.FC = () => {
                 <h3 className="text-white font-bold text-sm">Justrite Safety Advisor</h3>
                 <p className="text-xs text-gray-400 flex items-center gap-1">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  Powered by Gemini 2.5
+                  Powered by Llama 3.1
                 </p>
               </div>
             </div>
