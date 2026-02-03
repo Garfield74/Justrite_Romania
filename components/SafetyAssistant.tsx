@@ -1,7 +1,16 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { MessageSquare, Send, Bot, Loader2, X } from 'lucide-react';
+import { MessageSquare, Send, Bot, Loader2, X, Sparkles } from 'lucide-react';
 import { createSafetyChat, SafetyChat } from '../services/geminiService';
 import { ChatMessage, MessageRole } from '../types';
+
+// Quick questions for users to get started
+const QUICK_QUESTIONS = [
+  "What spill pallets do you offer?",
+  "Tell me about safety cans",
+  "What certifications do your products have?",
+  "Do you have emergency showers?",
+  "What anti-fatigue mats are available?"
+];
 
 export const SafetyAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -13,6 +22,7 @@ export const SafetyAssistant: React.FC = () => {
   ]);
   const [input, setInput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
+  const [showQuickQuestions, setShowQuickQuestions] = useState(true);
   const chatSessionRef = useRef<SafetyChat | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
 
