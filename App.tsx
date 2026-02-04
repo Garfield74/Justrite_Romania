@@ -1,6 +1,7 @@
 import React, { useEffect } from 'react';
 import { LanguageProvider } from './i18n';
 import { SEOHead } from './components/SEOHead';
+import { CookieConsent } from './components/CookieConsent';
 import { initAnalytics } from './utils/analytics';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -16,7 +17,7 @@ import { SafetyAssistant } from './components/SafetyAssistant';
 import { ContactFooter } from './components/ContactFooter';
 
 function App() {
-  // Initialize analytics on app load
+  // Initialize analytics on app load (respects cookie consent)
   useEffect(() => {
     initAnalytics();
   }, []);
@@ -40,6 +41,7 @@ function App() {
         <SafetyAssistant />
         <ContactFooter />
       </div>
+      <CookieConsent />
     </LanguageProvider>
   );
 }
