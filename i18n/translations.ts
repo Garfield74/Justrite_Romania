@@ -178,6 +178,89 @@ export const translations = {
     benefit2: { en: 'Avoiding costly fines', ro: 'Evitarea amenzilor costisitoare' },
     benefit3: { en: 'Preventing workers compensation claims', ro: 'Prevenirea cererilor de despăgubire a lucrătorilor' },
     benefit4: { en: 'Lowering insurance premiums', ro: 'Reducerea primelor de asigurare' },
+
+  // Sall Advantage Section
+  sallAdvantage: {
+    subtitle: { en: 'The Sall Advantage', ro: 'Avantajul Sall' },
+    title: { en: 'Italian Engineering Excellence', ro: 'Excelență în Inginerie Italiană' },
+    paragraph1: {
+      en: 'Since 1975, Sall has defined the standard for European industrial safety equipment from their facility in Corte Tegge, Italy. Acquired by Justrite Safety Group in 2017, Sall brings uncompromising Italian engineering and EU compliance expertise to our Romanian operations.',
+      ro: 'Din 1975, Sall a definit standardul pentru echipamentele de siguranță industrială europeană din facilitatea lor din Corte Tegge, Italia. Achiziționată de Justrite Safety Group în 2017, Sall aduce ingineria italiană fără compromisuri și expertiza în conformitate UE operațiunilor noastre din România.'
+    },
+    paragraph2: {
+      en: 'Every Sall product features robust steel construction, certified to meet or exceed EU safety norms. Their specialization in hazardous material management—from chemical storage to waste handling—complements Justrite\'s broader portfolio, creating a comprehensive safety solution unavailable elsewhere in Eastern Europe.',
+      ro: 'Fiecare produs Sall prezintă o construcție robustă din oțel, certificată pentru a îndeplini sau depăși normele de siguranță UE. Specializarea lor în gestionarea materialelor periculoase — de la depozitarea substanțelor chimice la manipularea deșeurilor — completează portofoliul mai larg al Justrite, creând o soluție completă de siguranță indisponibilă în altă parte în Europa de Est.'
+    },
+    certifiedSteel: { en: 'Certified Steel Construction', ro: 'Construcție din Oțel Certificat' },
+    certifiedSteelDesc: {
+      en: 'Heavy-gauge steel with corrosion-resistant finishes, engineered for decades of reliable service in demanding industrial environments.',
+      ro: 'Oțel de calibru greu cu finisaje rezistente la coroziune, proiectat pentru decenii de serviciu fiabil în medii industriale solicitante.'
+    },
+    euCompliance: { en: 'EU Compliance Guarantee', ro: 'Garanție de Conformitate UE' },
+    euComplianceDesc: {
+      en: 'All products certified to current European safety directives, ensuring your facility meets regulatory requirements without exception.',
+      ro: 'Toate produsele certificate conform directivelor europene actuale de siguranță, asigurând că facilitatea dumneavoastră îndeplinește cerințele de reglementare fără excepție.'
+    },
+    customConfig: { en: 'Custom Configuration', ro: 'Configurare Personalizată' },
+    customConfigDesc: {
+      en: 'Modular design allows tailored solutions matching your exact spatial constraints and operational workflow requirements.',
+      ro: 'Designul modular permite soluții personalizate care se potrivesc exact constrângerilor spațiale și cerințelor fluxului operațional.'
+    },
+    fiveDecades: { en: 'Five Decades', ro: 'Cinci Decenii' },
+    precisionManufacturing: { en: 'of Precision Manufacturing Since 1975', ro: 'de Producție de Precizie din 1975' },
+  },
+
+  // Industries Section
+  industries: {
+    subtitle: { en: 'Industries We Serve', ro: 'Industriile pe Care le Deservim' },
+    title: { en: 'Protecting Romania\'s Most Demanding Industrial Sectors', ro: 'Protejăm Cele Mai Solicitante Sectoare Industriale din România' },
+    description: {
+      en: 'From Galați\'s steel mills to Bucharest\'s pharmaceutical labs, we understand the unique hazards facing Romanian businesses.',
+      ro: 'De la combinatele siderurgice din Galați până la laboratoarele farmaceutice din București, înțelegem pericolele unice cu care se confruntă afacerile românești.'
+    },
+    manufacturing: {
+      title: { en: 'Manufacturing & Production', ro: 'Producție și Fabricație' },
+      description: {
+        en: 'Comprehensive solutions for automotive, electronics, and general manufacturing facilities handling flammable materials and industrial chemicals.',
+        ro: 'Soluții complete pentru facilități auto, electronice și de producție generală care manipulează materiale inflamabile și substanțe chimice industriale.'
+      }
+    },
+    chemical: {
+      title: { en: 'Chemical & Petrochemical', ro: 'Chimic și Petrochimic' },
+      description: {
+        en: 'Specialized containment and storage for hazardous substances, meeting stringent safety protocols for reactive materials and toxic compounds.',
+        ro: 'Retenție și depozitare specializată pentru substanțe periculoase, îndeplinind protocoale stricte de siguranță pentru materiale reactive și compuși toxici.'
+      }
+    },
+    food: {
+      title: { en: 'Food & Beverage', ro: 'Alimentar și Băuturi' },
+      description: {
+        en: 'Sanitary storage solutions and ergonomic equipment designed for food-grade facilities with strict hygiene and safety requirements.',
+        ro: 'Soluții de depozitare sanitară și echipamente ergonomice proiectate pentru facilități alimentare cu cerințe stricte de igienă și siguranță.'
+      }
+    },
+    healthcare: {
+      title: { en: 'Healthcare & Laboratories', ro: 'Sănătate și Laboratoare' },
+      description: {
+        en: 'Compliant storage for medical waste, laboratory chemicals, and pharmaceutical materials requiring precise environmental controls.',
+        ro: 'Depozitare conformă pentru deșeuri medicale, substanțe chimice de laborator și materiale farmaceutice care necesită controale precise de mediu.'
+      }
+    },
+    construction: {
+      title: { en: 'Construction & Mining', ro: 'Construcții și Minerit' },
+      description: {
+        en: 'Durable outdoor storage and portable containment systems engineered for rugged job sites and remote extraction operations.',
+        ro: 'Sisteme durabile de depozitare în aer liber și retenție portabilă proiectate pentru șantiere dificile și operațiuni de extracție la distanță.'
+      }
+    },
+    logistics: {
+      title: { en: 'Logistics & Distribution', ro: 'Logistică și Distribuție' },
+      description: {
+        en: 'Efficient storage systems and safety equipment designed for high-volume material handling in warehousing and transportation hubs.',
+        ro: 'Sisteme eficiente de depozitare și echipamente de siguranță proiectate pentru manipularea materialelor de volum mare în depozite și hub-uri de transport.'
+      }
+    }
+  },
     benefit5: { en: 'Enhancing process improvements', ro: 'Îmbunătățirea proceselor' },
     requestTitle: { en: 'Request a Site Safety Assessment', ro: 'Solicită o Evaluare de Siguranță a Locației' },
     iAmA: { en: 'I Am A', ro: 'Sunt' },
