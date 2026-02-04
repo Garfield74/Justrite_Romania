@@ -1,5 +1,6 @@
 import React from 'react';
 import { Download, FileText, ExternalLink, Factory, Flame, Footprints, Droplet, Cable, ShieldCheck } from 'lucide-react';
+import { useLanguage, translations } from '../i18n';
 
 interface Catalogue {
   id: string;
@@ -86,20 +87,22 @@ const catalogues: Catalogue[] = [
 ];
 
 export const ResourcesSection: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations.resources;
+
   return (
     <section id="resources" className="py-20 bg-gradient-to-b from-gray-50 to-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         {/* Section Header */}
         <div className="text-center mb-16">
           <h2 className="text-base text-brand-red font-semibold tracking-wide uppercase">
-            Resources & Downloads
+            {t.title[language]}
           </h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            Product Catalogues & Technical Documentation
+            {t.cataloguesTitle[language]}
           </p>
           <p className="max-w-2xl text-xl text-gray-500 lg:mx-auto mt-4">
-            Download comprehensive product catalogues from our family of brands. Each catalogue includes 
-            detailed specifications, certifications, and ordering information.
+            {t.cataloguesDesc[language]}
           </p>
         </div>
 
@@ -148,7 +151,7 @@ export const ResourcesSection: React.FC = () => {
                   data-testid={`download-${catalogue.id}`}
                 >
                   <Download className="h-5 w-5" />
-                  <span>Download PDF</span>
+                  <span>{t.downloadPdf[language]}</span>
                   <ExternalLink className="h-4 w-4 opacity-60" />
                 </a>
               </div>
@@ -158,9 +161,9 @@ export const ResourcesSection: React.FC = () => {
                 <div className="flex items-center justify-between text-xs text-gray-500">
                   <div className="flex items-center">
                     <FileText className="h-4 w-4 mr-1" />
-                    <span>PDF Document</span>
+                    <span>{t.pdfDocument[language]}</span>
                   </div>
-                  <span className="text-gray-400">Click to open</span>
+                  <span className="text-gray-400">{t.clickToOpen[language]}</span>
                 </div>
               </div>
             </div>
@@ -170,18 +173,17 @@ export const ResourcesSection: React.FC = () => {
         {/* Additional Info */}
         <div className="mt-16 bg-brand-black rounded-2xl p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
-            Need Technical Assistance?
+            {t.needHelp[language]}
           </h3>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Our technical team is available to help you select the right products for your specific requirements. 
-            Contact us for personalized recommendations and custom solutions.
+            {t.needHelpDesc[language]}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
               href="mailto:sales.ro@justrite.com"
               className="inline-flex items-center justify-center px-6 py-3 border border-transparent text-base font-medium rounded-md text-brand-black bg-brand-yellow hover:bg-yellow-400 transition-colors"
             >
-              Email Technical Team
+              {t.emailTechnical[language]}
             </a>
             <a
               href="tel:+40236325301"
@@ -200,7 +202,7 @@ export const ResourcesSection: React.FC = () => {
 
         {/* Quick Links to Main Brands */}
         <div className="mt-12 text-center">
-          <p className="text-sm text-gray-600 mb-4">Explore our brand websites for more resources:</p>
+          <p className="text-sm text-gray-600 mb-4">{t.exploreBrands[language]}</p>
           <div className="flex flex-wrap justify-center gap-4">
             <a 
               href="https://www.justritesafetygroup.com" 

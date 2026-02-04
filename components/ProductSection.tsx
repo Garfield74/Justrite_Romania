@@ -1,51 +1,6 @@
 import React from 'react';
-import { Product } from '../types';
 import { Box, Droplets, Layers, PackageOpen, Package, Trash2 } from 'lucide-react';
-
-const products: Product[] = [
-  {
-    id: 'industrial-metal-containers',
-    title: 'Industrial Metal Containers',
-    description: 'Versatile storage solutions including sheet metal containers, wire mesh containers, metal containers with wolf mouth, and folding metal containers for efficient warehouse organization.',
-    imageUrl: '/industrial_metal_containers.jpg',
-    features: ['Sheet Metal Containers', 'Wire Mesh Containers', 'Wolf Mouth Design', 'Folding Options']
-  },
-  {
-    id: 'liquid-containment-tank',
-    title: 'Liquid Containment Tank',
-    description: 'Professional spill containment solutions featuring steel collection tanks, drum trolleys with integrated collection systems, and floor-mounted steel collection tanks for leak prevention.',
-    imageUrl: '/liquid_containment_tank.jpg',
-    features: ['Steel Collection Tank', 'Drum Trolleys', 'Floor Collection Systems', 'Spill Prevention']
-  },
-  {
-    id: 'metal-pallets',
-    title: 'Metal Pallets',
-    description: 'Durable metal pallet systems including stackable free-standing designs, pallet bar holders, fabric pallets, and specialized pallets & cylinder baskets for diverse storage needs.',
-    imageUrl: '/metal_pallets.jpg',
-    features: ['Stackable Design', 'Free-Standing', 'Pallet Bar Holder', 'Cylinder Baskets']
-  },
-  {
-    id: 'open-bottom-containers',
-    title: 'Open Bottom Containers',
-    description: 'Specialized open bottom container systems designed for efficient loading, unloading, and material handling in industrial environments.',
-    imageUrl: '/open_bottom_containers.jpg',
-    features: ['Easy Loading', 'Efficient Unloading', 'Industrial Grade', 'Durable Construction']
-  },
-  {
-    id: 'big-bag-holders',
-    title: 'Big Bag Holders',
-    description: 'Robust FIBC (Flexible Intermediate Bulk Container) holders and frames designed for safe handling and storage of bulk materials in large bags.',
-    imageUrl: '/big_bag_holders.jpg',
-    features: ['FIBC Compatible', 'Heavy Duty Frame', 'Safe Handling', 'Bulk Storage']
-  },
-  {
-    id: 'waste-cans-receptacles',
-    title: 'Waste & Plunger Cans',
-    description: 'Industry-leading safety waste containers including oily waste cans, safety plunger cans, and safety bench cans for compliant hazardous material disposal.',
-    imageUrl: '/waste_cans.jpg',
-    features: ['Oily Waste Cans', 'Safety Plunger Cans', 'Safety Bench Cans', 'FM Approved']
-  }
-];
+import { useLanguage, translations } from '../i18n';
 
 const getIcon = (id: string) => {
   const icons: { [key: string]: React.ReactNode } = {
@@ -60,17 +15,77 @@ const getIcon = (id: string) => {
 };
 
 export const ProductSection: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations.products;
+  const pt = translations.productItems;
+
+  const products = [
+    {
+      id: 'industrial-metal-containers',
+      title: pt.industrialContainers.title[language],
+      description: pt.industrialContainers.description[language],
+      imageUrl: '/industrial_metal_containers.jpg',
+      features: language === 'en' 
+        ? ['Sheet Metal Containers', 'Wire Mesh Containers', 'Wolf Mouth Design', 'Folding Options']
+        : ['Containere din Tablă', 'Containere din Plasă', 'Design Gură de Lup', 'Opțiuni Pliabile']
+    },
+    {
+      id: 'liquid-containment-tank',
+      title: pt.liquidTank.title[language],
+      description: pt.liquidTank.description[language],
+      imageUrl: '/liquid_containment_tank.jpg',
+      features: language === 'en'
+        ? ['Steel Collection Tank', 'Drum Trolleys', 'Floor Collection Systems', 'Spill Prevention']
+        : ['Tanc Colectare Oțel', 'Cărucioare Butoaie', 'Sisteme Colectare Podea', 'Prevenire Scurgeri']
+    },
+    {
+      id: 'metal-pallets',
+      title: pt.metalPallets.title[language],
+      description: pt.metalPallets.description[language],
+      imageUrl: '/metal_pallets.jpg',
+      features: language === 'en'
+        ? ['Stackable Design', 'Free-Standing', 'Pallet Bar Holder', 'Cylinder Baskets']
+        : ['Design Stivuibil', 'Autoportant', 'Suport Bare Paleți', 'Coșuri Cilindri']
+    },
+    {
+      id: 'open-bottom-containers',
+      title: pt.openBottomContainers.title[language],
+      description: pt.openBottomContainers.description[language],
+      imageUrl: '/open_bottom_containers.jpg',
+      features: language === 'en'
+        ? ['Easy Loading', 'Efficient Unloading', 'Industrial Grade', 'Durable Construction']
+        : ['Încărcare Ușoară', 'Descărcare Eficientă', 'Grad Industrial', 'Construcție Durabilă']
+    },
+    {
+      id: 'big-bag-holders',
+      title: pt.bigBagHolders.title[language],
+      description: pt.bigBagHolders.description[language],
+      imageUrl: '/big_bag_holders.jpg',
+      features: language === 'en'
+        ? ['FIBC Compatible', 'Heavy Duty Frame', 'Safe Handling', 'Bulk Storage']
+        : ['Compatibil FIBC', 'Cadru Rezistent', 'Manipulare Sigură', 'Depozitare în Vrac']
+    },
+    {
+      id: 'waste-cans-receptacles',
+      title: pt.wasteCans.title[language],
+      description: pt.wasteCans.description[language],
+      imageUrl: '/waste_cans.jpg',
+      features: language === 'en'
+        ? ['Oily Waste Cans', 'Safety Plunger Cans', 'Safety Bench Cans', 'FM Approved']
+        : ['Recipiente Deșeuri Uleioase', 'Recipiente Plunger', 'Recipiente Banc', 'Aprobat FM']
+    }
+  ];
+
   return (
     <section id="products" className="py-20 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-base text-brand-red font-semibold tracking-wide uppercase">Comprehensive Product Portfolio</h2>
+          <h2 className="text-base text-brand-red font-semibold tracking-wide uppercase">{t.portfolioTitle[language]}</h2>
           <p className="mt-2 text-3xl leading-8 font-extrabold tracking-tight text-gray-900 sm:text-4xl">
-            Built for Safety. Built to Last.
+            {t.builtForSafety[language]}
           </p>
           <p className="max-w-2xl text-xl text-gray-500 lg:mx-auto mt-4">
-            From flammable liquid storage to emergency response equipment, our extensive range addresses every aspect of industrial safety. 
-            Each product line is engineered to the highest standards and certified for compliance with stringent EU regulations.
+            {t.portfolioDesc[language]}
           </p>
         </div>
 
@@ -113,7 +128,7 @@ export const ProductSection: React.FC = () => {
                   href="#contact"
                   className="block w-full text-center bg-brand-black text-white py-2 rounded-md font-semibold hover:bg-gray-800 transition-colors text-sm"
                 >
-                  Request Information
+                  {t.requestInfo[language]}
                 </a>
               </div>
             </div>
@@ -123,7 +138,7 @@ export const ProductSection: React.FC = () => {
         {/* Why Choose Us Section */}
         <div className="mt-20 bg-white rounded-2xl shadow-lg p-8 md:p-12">
           <div className="text-center mb-8">
-            <h3 className="text-2xl font-bold text-gray-900">Why Romanian Businesses Choose Justrite</h3>
+            <h3 className="text-2xl font-bold text-gray-900">{t.whyChoose[language]}</h3>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
             <div className="flex items-start">
@@ -131,9 +146,9 @@ export const ProductSection: React.FC = () => {
                 <span className="text-brand-black font-bold text-lg">✓</span>
               </div>
               <div className="ml-4">
-                <h4 className="font-bold text-gray-900">Local Expertise, Global Standards</h4>
+                <h4 className="font-bold text-gray-900">{t.localExpertise[language]}</h4>
                 <p className="text-gray-600 text-sm mt-1">
-                  Our Galați facility combines the accessibility of local service with the quality standards of a global leader.
+                  {t.localExpertiseDesc[language]}
                 </p>
               </div>
             </div>
@@ -142,9 +157,9 @@ export const ProductSection: React.FC = () => {
                 <span className="text-brand-black font-bold text-lg">✓</span>
               </div>
               <div className="ml-4">
-                <h4 className="font-bold text-gray-900">Rapid Delivery & Support</h4>
+                <h4 className="font-bold text-gray-900">{t.rapidDelivery[language]}</h4>
                 <p className="text-gray-600 text-sm mt-1">
-                  Immediate access to engineering support and consultation services—all delivered in Romanian.
+                  {t.rapidDeliveryDesc[language]}
                 </p>
               </div>
             </div>
@@ -153,9 +168,9 @@ export const ProductSection: React.FC = () => {
                 <span className="text-brand-black font-bold text-lg">✓</span>
               </div>
               <div className="ml-4">
-                <h4 className="font-bold text-gray-900">Romanian Compliance Knowledge</h4>
+                <h4 className="font-bold text-gray-900">{t.romanianCompliance[language]}</h4>
                 <p className="text-gray-600 text-sm mt-1">
-                  We understand Romanian workplace regulations and the specific challenges facing Eastern European industries.
+                  {t.romanianComplianceDesc[language]}
                 </p>
               </div>
             </div>
@@ -164,9 +179,9 @@ export const ProductSection: React.FC = () => {
                 <span className="text-brand-black font-bold text-lg">✓</span>
               </div>
               <div className="ml-4">
-                <h4 className="font-bold text-gray-900">Comprehensive Solutions</h4>
+                <h4 className="font-bold text-gray-900">{t.comprehensiveSolutions[language]}</h4>
                 <p className="text-gray-600 text-sm mt-1">
-                  From chemical storage to waste handling, we offer integrated safety solutions unavailable elsewhere.
+                  {t.comprehensiveSolutionsDesc[language]}
                 </p>
               </div>
             </div>
