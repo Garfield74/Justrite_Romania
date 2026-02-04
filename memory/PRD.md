@@ -56,7 +56,16 @@ Located in `/app/public/catalogues/`:
 - [x] Clear Chat button to start fresh conversation
 - [x] Multi-language support (English/Romanian)
 
-### 5. Multi-Language Support ✅ COMPLETED (Feb 4, 2025)
+### 6. Contact Form ✅ IMPROVED (Feb 4, 2025)
+- [x] Enhanced form with Name, Email, Phone (optional), Subject, Message fields
+- [x] Subject dropdown with 5 options: Quote, Product Info, Support, Partnership, Other
+- [x] Form validation with visual error indicators (red border)
+- [x] Loading state with spinner during submission
+- [x] Success/Error feedback screens with appropriate icons
+- [x] "Send Another Message" option after submission
+- [x] Submissions stored in localStorage for reference
+- [x] Multi-language support for all form elements
+- [x] Mailto integration with formatted email body
 - [x] Language toggle button in navbar (Globe icon with EN/RO)
 - [x] Complete translations for:
   - Navigation menu
