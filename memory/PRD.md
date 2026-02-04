@@ -3,6 +3,10 @@
 ## Original Problem Statement
 Create a feature-rich landing page for Justrite Romania S.R.L., an industrial safety solutions company. The page should include company information, product portfolio, downloadable resources, STUD-E Safety Survey section, and an AI-powered Safety Advisor chatbot.
 
+## Recent Updates (Feb 4, 2025)
+- **Logo Update:** Replaced text-based logo with new 50th anniversary Justrite Safety Group logo image in Navbar and Footer
+- **Bug Fix:** Fixed translation file structure issue (sallAdvantage and industries were incorrectly nested in survey object)
+
 ## Company Details
 - **Company**: JUSTRITE ROMANIA S.R.L.
 - **Registry**: J17/1002/1998
