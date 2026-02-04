@@ -1,7 +1,115 @@
-import React from 'react';
-import { Phone, Mail, MapPin, Linkedin, Facebook, Shield, FileText } from 'lucide-react';
+import React, { useState } from 'react';
+import { Phone, Mail, MapPin, Linkedin, Facebook, Shield, FileText, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { useLanguage, translations } from '../i18n';
+
+type FormStatus = 'idle' | 'sending' | 'success' | 'error';
+
+interface FormData {
+  name: string;
+  email: string;
+  phone: string;
+  company: string;
+  subject: string;
+  message: string;
+}
+
+const initialFormData: FormData = {
+  name: '',
+  email: '',
+  phone: '',
+  company: '',
+  subject: 'quote',
+  message: '',
+};
 
 export const ContactFooter: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations.contact;
+  const navT = translations.nav;
+  
+  const [formData, setFormData] = useState<FormData>(initialFormData);
+  const [status, setStatus] = useState<FormStatus>('idle');
+  const [errors, setErrors] = useState<Partial<FormData>>({});
+
+  const validateForm = (): boolean => {
+    const newErrors: Partial<FormData> = {};
+    
+    if (!formData.name.trim()) {
+      newErrors.name = 'Required';
+    }
+    
+    if (!formData.email.trim()) {
+      newErrors.email = 'Required';
+    } else if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(formData.email)) {
+      newErrors.email = 'Invalid email';
+    }
+    
+    if (!formData.message.trim()) {
+      newErrors.message = 'Required';
+    }
+    
+    setErrors(newErrors);
+    return Object.keys(newErrors).length === 0;
+  };
+
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+    const { name, value } = e.target;
+    setFormData(prev => ({ ...prev, [name]: value }));
+    // Clear error when user starts typing
+    if (errors[name as keyof FormData]) {
+      setErrors(prev => ({ ...prev, [name]: undefined }));
+    }
+  };
+
+  const handleSubmit = async (e: React.FormEvent) => {
+    e.preventDefault();
+    
+    if (!validateForm()) return;
+    
+    setStatus('sending');
+    
+    // Simulate API call - in production, this would send to your backend
+    try {
+      // Create mailto link with all form data
+      const subjectText = t.subjects[formData.subject as keyof typeof t.subjects]?.[language] || formData.subject;
+      const body = `
+Name: ${formData.name}
+Email: ${formData.email}
+Phone: ${formData.phone || 'Not provided'}
+Company: ${formData.company || 'Not provided'}
+
+Message:
+${formData.message}
+      `.trim();
+      
+      // Store submission in localStorage for reference
+      const submissions = JSON.parse(localStorage.getItem('contact_submissions') || '[]');
+      submissions.push({
+        ...formData,
+        timestamp: new Date().toISOString(),
+      });
+      localStorage.setItem('contact_submissions', JSON.stringify(submissions.slice(-10))); // Keep last 10
+      
+      // Simulate network delay
+      await new Promise(resolve => setTimeout(resolve, 1500));
+      
+      // Open mailto
+      window.location.href = `mailto:sales.ro@justrite.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(body)}`;
+      
+      setStatus('success');
+      setFormData(initialFormData);
+    } catch (error) {
+      console.error('Form submission error:', error);
+      setStatus('error');
+    }
+  };
+
+  const resetForm = () => {
+    setStatus('idle');
+    setFormData(initialFormData);
+    setErrors({});
+  };
+
   return (
     <footer id="contact" className="bg-brand-black text-white pt-16 pb-8">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -16,7 +124,7 @@ export const ContactFooter: React.FC = () => {
               </span>
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
-              Leading the way in industrial safety manufacturing. Providing world-class protection solutions for workers and workplaces across Europe.
+              {t.brandDescription[language]}
             </p>
             <div className="flex space-x-4">
               <a href="https://www.linkedin.com/company/justrite-safety-group/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-yellow transition-colors">
@@ -30,11 +138,11 @@ export const ContactFooter: React.FC = () => {
 
           {/* Quick Links */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 border-b border-brand-yellow/30 pb-2 inline-block">Quick Links</h3>
+            <h3 className="text-lg font-semibold mb-6 border-b border-brand-yellow/30 pb-2 inline-block">{t.quickLinks[language]}</h3>
             <ul className="space-y-3 text-sm text-gray-400">
-              <li><a href="#" className="hover:text-brand-yellow transition-colors">Home</a></li>
-              <li><a href="#about" className="hover:text-brand-yellow transition-colors">About Us</a></li>
-              <li><a href="#products" className="hover:text-brand-yellow transition-colors">Safety Products</a></li>
+              <li><a href="#" className="hover:text-brand-yellow transition-colors">{navT.home[language]}</a></li>
+              <li><a href="#about" className="hover:text-brand-yellow transition-colors">{navT.aboutUs[language]}</a></li>
+              <li><a href="#products" className="hover:text-brand-yellow transition-colors">{t.safetyProducts[language]}</a></li>
               <li><a href="https://www.justritesafetygroup.com/" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors">Justrite Safety Group</a></li>
               <li><a href="https://www.sall.it" target="_blank" rel="noopener noreferrer" className="hover:text-brand-yellow transition-colors">Sall Italia</a></li>
             </ul>
@@ -42,7 +150,7 @@ export const ContactFooter: React.FC = () => {
 
           {/* Contact Info */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 border-b border-brand-yellow/30 pb-2 inline-block">Contact Us</h3>
+            <h3 className="text-lg font-semibold mb-6 border-b border-brand-yellow/30 pb-2 inline-block">{t.contactUs[language]}</h3>
             <ul className="space-y-4 text-sm text-gray-400">
               <li className="flex items-start">
                 <MapPin className="h-5 w-5 text-brand-yellow mr-3 mt-0.5 flex-shrink-0" />
@@ -72,34 +180,132 @@ export const ContactFooter: React.FC = () => {
             </ul>
           </div>
 
-          {/* Contact Form Mock */}
+          {/* Contact Form */}
           <div>
-            <h3 className="text-lg font-semibold mb-6 border-b border-brand-yellow/30 pb-2 inline-block">Send Inquiry</h3>
-            <form className="space-y-3" onSubmit={(e) => {
-              e.preventDefault();
-              const formData = new FormData(e.currentTarget);
-              const email = formData.get('email');
-              const message = formData.get('message');
-              window.location.href = `mailto:sales.ro@justrite.com?subject=Website Inquiry&body=${encodeURIComponent(message as string)}`;
-            }}>
-              <input 
-                type="email" 
-                name="email"
-                placeholder="Your Email" 
-                required
-                className="w-full bg-white/10 border border-white/20 rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
-              />
-              <textarea 
-                name="message"
-                rows={3} 
-                placeholder="Message" 
-                required
-                className="w-full bg-white/10 border border-white/20 rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow"
-              ></textarea>
-              <button type="submit" className="w-full bg-brand-yellow text-brand-black font-bold py-2 rounded hover:bg-yellow-400 transition-colors text-sm">
-                Submit
-              </button>
-            </form>
+            <h3 className="text-lg font-semibold mb-6 border-b border-brand-yellow/30 pb-2 inline-block">{t.sendInquiry[language]}</h3>
+            
+            {status === 'success' ? (
+              <div className="text-center py-6" data-testid="contact-success">
+                <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-3" />
+                <h4 className="text-white font-semibold mb-2">{t.successTitle[language]}</h4>
+                <p className="text-gray-400 text-sm mb-4">{t.successMessage[language]}</p>
+                <button
+                  onClick={resetForm}
+                  className="text-brand-yellow hover:text-yellow-300 text-sm underline"
+                >
+                  {t.sendAnother[language]}
+                </button>
+              </div>
+            ) : status === 'error' ? (
+              <div className="text-center py-6" data-testid="contact-error">
+                <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-3" />
+                <h4 className="text-white font-semibold mb-2">{t.errorTitle[language]}</h4>
+                <p className="text-gray-400 text-sm mb-4">{t.errorMessage[language]}</p>
+                <button
+                  onClick={resetForm}
+                  className="text-brand-yellow hover:text-yellow-300 text-sm underline"
+                >
+                  {t.sendAnother[language]}
+                </button>
+              </div>
+            ) : (
+              <form className="space-y-3" onSubmit={handleSubmit} data-testid="contact-form">
+                {/* Name */}
+                <div>
+                  <input 
+                    type="text" 
+                    name="name"
+                    value={formData.name}
+                    onChange={handleInputChange}
+                    placeholder={t.yourName[language]}
+                    data-testid="contact-name"
+                    className={`w-full bg-white/10 border rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors ${
+                      errors.name ? 'border-red-500' : 'border-white/20'
+                    }`}
+                  />
+                </div>
+                
+                {/* Email */}
+                <div>
+                  <input 
+                    type="email" 
+                    name="email"
+                    value={formData.email}
+                    onChange={handleInputChange}
+                    placeholder={t.yourEmail[language]}
+                    data-testid="contact-email"
+                    className={`w-full bg-white/10 border rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors ${
+                      errors.email ? 'border-red-500' : 'border-white/20'
+                    }`}
+                  />
+                </div>
+                
+                {/* Phone (optional) */}
+                <div>
+                  <input 
+                    type="tel" 
+                    name="phone"
+                    value={formData.phone}
+                    onChange={handleInputChange}
+                    placeholder={t.phone[language]}
+                    data-testid="contact-phone"
+                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors"
+                  />
+                </div>
+                
+                {/* Subject */}
+                <div>
+                  <select
+                    name="subject"
+                    value={formData.subject}
+                    onChange={handleInputChange}
+                    data-testid="contact-subject"
+                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-2 text-sm text-white focus:outline-none focus:border-brand-yellow transition-colors cursor-pointer"
+                  >
+                    <option value="quote" className="bg-gray-800">{t.subjects.quote[language]}</option>
+                    <option value="product" className="bg-gray-800">{t.subjects.product[language]}</option>
+                    <option value="support" className="bg-gray-800">{t.subjects.support[language]}</option>
+                    <option value="partnership" className="bg-gray-800">{t.subjects.partnership[language]}</option>
+                    <option value="other" className="bg-gray-800">{t.subjects.other[language]}</option>
+                  </select>
+                </div>
+                
+                {/* Message */}
+                <div>
+                  <textarea 
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={3} 
+                    placeholder={t.message[language]}
+                    data-testid="contact-message"
+                    className={`w-full bg-white/10 border rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors resize-none ${
+                      errors.message ? 'border-red-500' : 'border-white/20'
+                    }`}
+                  ></textarea>
+                </div>
+                
+                {/* Submit Button */}
+                <button 
+                  type="submit" 
+                  disabled={status === 'sending'}
+                  data-testid="contact-submit"
+                  className="w-full bg-brand-yellow text-brand-black font-bold py-2.5 rounded hover:bg-yellow-400 transition-colors text-sm flex items-center justify-center gap-2 disabled:opacity-70 disabled:cursor-not-allowed"
+                >
+                  {status === 'sending' ? (
+                    <>
+                      <Loader2 className="h-4 w-4 animate-spin" />
+                      {t.sending[language]}
+                    </>
+                  ) : (
+                    <>
+                      <Send className="h-4 w-4" />
+                      {t.submit[language]}
+                    </>
+                  )}
+                </button>
+              </form>
+            )}
           </div>
 
         </div>
@@ -118,7 +324,7 @@ export const ContactFooter: React.FC = () => {
 
         <div className="border-t border-gray-800 pt-6 text-center">
           <p className="text-sm text-gray-500">
-            &copy; {new Date().getFullYear()} Justrite Romania S.R.L. All rights reserved. Part of Justrite Safety Group.
+            &copy; {new Date().getFullYear()} Justrite Romania S.R.L. {t.allRightsReserved[language]}
           </p>
         </div>
       </div>
