@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { CheckCircle, Shield, TrendingDown, Award } from 'lucide-react';
 import { useLanguage, translations } from '../i18n';
+import { trackSurveySubmission } from '../utils/analytics';
 
 export const SafetySurveySection: React.FC = () => {
   const { language } = useLanguage();
