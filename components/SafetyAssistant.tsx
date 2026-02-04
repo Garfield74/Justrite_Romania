@@ -50,9 +50,14 @@ const loadChatHistory = (): ChatMessage[] => {
 // Save chat history to localStorage
 const saveChatHistory = (messages: ChatMessage[]) => {
   try {
-    // Don't save if only welcome message
+    // Only save if we have actual conversation (more than welcome message)
     if (messages.length > 1) {
-      localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(messages));
+      // Serialize only necessary fields
+      const toSave = messages.map(m => ({
+        role: m.role,
+        text: m.text
+      }));
+      localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(toSave));
     }
   } catch (e) {
     console.error('Failed to save chat history:', e);
