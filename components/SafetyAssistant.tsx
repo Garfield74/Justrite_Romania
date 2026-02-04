@@ -1,7 +1,10 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
-import { MessageSquare, Send, Bot, Loader2, X, Sparkles } from 'lucide-react';
+import { MessageSquare, Send, Bot, Loader2, X, Sparkles, RotateCcw } from 'lucide-react';
 import { createSafetyChat, SafetyChat } from '../services/geminiService';
 import { ChatMessage, MessageRole } from '../types';
+
+// LocalStorage key for chat history
+const CHAT_HISTORY_KEY = 'justrite_chat_history';
 
 // Quick questions for users to get started
 const QUICK_QUESTIONS = [
@@ -12,19 +15,49 @@ const QUICK_QUESTIONS = [
   "What anti-fatigue mats are available?"
 ];
 
+// Default welcome message
+const WELCOME_MESSAGE: ChatMessage = {
+  role: MessageRole.MODEL,
+  text: "Hello! I'm the Justrite Safety Advisor. Ask me about our plunger cans, oily waste containers, or general industrial safety standards."
+};
+
+// Load chat history from localStorage
+const loadChatHistory = (): ChatMessage[] => {
+  try {
+    const saved = localStorage.getItem(CHAT_HISTORY_KEY);
+    if (saved) {
+      const parsed = JSON.parse(saved);
+      if (Array.isArray(parsed) && parsed.length > 0) {
+        return parsed;
+      }
+    }
+  } catch (e) {
+    console.error('Failed to load chat history:', e);
+  }
+  return [WELCOME_MESSAGE];
+};
+
+// Save chat history to localStorage
+const saveChatHistory = (messages: ChatMessage[]) => {
+  try {
+    // Don't save if only welcome message
+    if (messages.length > 1) {
+      localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(messages));
+    }
+  } catch (e) {
+    console.error('Failed to save chat history:', e);
+  }
+};
+
 export const SafetyAssistant: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>([
-    {
-      role: MessageRole.MODEL,
-      text: "Hello! I'm the Justrite Safety Advisor. Ask me about our plunger cans, oily waste containers, or general industrial safety standards."
-    }
-  ]);
+  const [messages, setMessages] = useState<ChatMessage[]>(loadChatHistory);
   const [input, setInput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [showQuickQuestions, setShowQuickQuestions] = useState(true);
   const chatSessionRef = useRef<SafetyChat | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
+  const historyRestoredRef = useRef(false);
 
   // Initialize Chat Session once
   useEffect(() => {
