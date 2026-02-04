@@ -59,12 +59,31 @@ export const SafetyAssistant: React.FC = () => {
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const historyRestoredRef = useRef(false);
 
-  // Initialize Chat Session once
+  // Initialize Chat Session and restore history
   useEffect(() => {
     if (!chatSessionRef.current) {
       chatSessionRef.current = createSafetyChat();
+      
+      // Restore conversation history to the chat session (skip welcome message)
+      if (!historyRestoredRef.current && messages.length > 1) {
+        const historyToRestore = messages.slice(1).filter(m => !m.isThinking);
+        chatSessionRef.current.restoreHistory(historyToRestore);
+        historyRestoredRef.current = true;
+        setShowQuickQuestions(false); // Hide quick questions if we have history
+      }
     }
   }, []);
+
+  // Save messages to localStorage whenever they change
+  useEffect(() => {
+    const messagesToSave = messages.filter(m => !m.isThinking);
+    saveChatHistory(messagesToSave);
+    
+    // Hide quick questions if we have conversation history
+    if (messages.length > 1) {
+      setShowQuickQuestions(false);
+    }
+  }, [messages]);
 
   // Auto-scroll to bottom
   useEffect(() => {
