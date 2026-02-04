@@ -3,15 +3,23 @@ import OpenAI from 'openai';
 
 const OPENROUTER_API_KEY = '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';
 
-const client = new OpenAI({
-  apiKey: OPENROUTER_API_KEY,
-  baseURL: 'https://openrouter.ai/api/v1',
-  dangerouslyAllowBrowser: true,
-  defaultHeaders: {
-    'HTTP-Referer': window.location.origin,
-    'X-Title': 'Justrite Romania Safety Advisor'
+// Initialize client lazily to avoid window reference issues
+let _client: OpenAI | null = null;
+
+const getClient = (): OpenAI => {
+  if (!_client) {
+    _client = new OpenAI({
+      apiKey: OPENROUTER_API_KEY,
+      baseURL: 'https://openrouter.ai/api/v1',
+      dangerouslyAllowBrowser: true,
+      defaultHeaders: {
+        'HTTP-Referer': typeof window !== 'undefined' ? window.location.origin : 'https://justrite-romania.com',
+        'X-Title': 'Justrite Romania Safety Advisor'
+      }
+    });
   }
-});
+  return _client;
+};
 
 // Comprehensive product knowledge base from all 7 catalogues
 const PRODUCT_KNOWLEDGE_BASE = `
