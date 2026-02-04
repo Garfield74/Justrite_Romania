@@ -58,11 +58,17 @@ Located in `/app/public/catalogues/`:
 
 ### 5. Multi-Language Support ✅ COMPLETED (Feb 4, 2025)
 - [x] Language toggle button in navbar (Globe icon with EN/RO)
-- [x] Complete translations for:
+- [x] Complete translations for ALL sections:
   - Navigation menu
   - Hero section
-  - AI Chatbot (title, quick questions, placeholder, disclaimer)
-  - Contact form and footer
+  - About Us section (heritage, timeline, features)
+  - Statistics section
+  - Products section (6 categories with descriptions & features)
+  - Resources section (catalogues, technical assistance)
+  - STUD-E Safety Survey section (full form + process steps)
+  - Mission section
+  - Contact footer
+  - AI Chatbot
 - [x] Language preference persisted in localStorage
 - [x] Instant UI updates when switching languages
 
