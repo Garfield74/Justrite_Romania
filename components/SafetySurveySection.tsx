@@ -1,7 +1,11 @@
 import React, { useState } from 'react';
-import { CheckCircle, Shield, TrendingDown, Award, FileCheck, Building2 } from 'lucide-react';
+import { CheckCircle, Shield, TrendingDown, Award } from 'lucide-react';
+import { useLanguage, translations } from '../i18n';
 
 export const SafetySurveySection: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations.survey;
+
   const [formData, setFormData] = useState({
     userType: '',
     firstName: '',
@@ -19,7 +23,6 @@ export const SafetySurveySection: React.FC = () => {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Send email to sales.ro@justrite.com
     const emailBody = `
 STUD-E™ Site Safety Assessment Request
 
@@ -60,10 +63,10 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
             </div>
           </div>
           <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
-            STUD-E™ Workplace Safety Survey
+            {t.title[language]}
           </h2>
           <p className="text-xl text-gray-600 max-w-3xl mx-auto">
-            Prevent accidents in the workplace with a free safety assessment from Justrite Romania experts
+            {t.subtitle[language]}
           </p>
         </div>
 
@@ -73,51 +76,48 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
           {/* Left Side - Information */}
           <div>
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Protect People, Property, and the Planet™
+              {t.protectTitle[language]}
             </h3>
             <p className="text-gray-600 mb-6 leading-relaxed">
-              Workplace accidents happen and they can be costly. A hazardous chemical splash resulting in vision loss 
-              could cost a company hundreds of thousands of euros. Let us help you avoid accidents with proper storage 
-              of hazardous materials, spill containment, safety identification, emergency shower and eye wash, and more!
+              {t.protectDesc[language]}
             </p>
             
             <div className="bg-brand-black text-white p-6 rounded-lg mb-6">
               <h4 className="text-brand-yellow font-bold text-xl mb-4">
-                Our Complimentary Site Assessment Mitigates Risk
+                {t.assessmentTitle[language]}
               </h4>
               <p className="text-gray-300">
-                It puts a safety expert in your facility to identify hazards and recommend solutions for a safe 
-                and compliant workplace.
+                {t.assessmentDesc[language]}
               </p>
             </div>
 
             {/* Benefits */}
             <div className="space-y-4">
-              <h4 className="font-bold text-gray-900 mb-4">STUD-E™ prioritizes critical safety issues:</h4>
+              <h4 className="font-bold text-gray-900 mb-4">{t.prioritizes[language]}</h4>
               
               <div className="flex items-start">
                 <CheckCircle className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Preventing compliance violations from Romanian and EU regulations</span>
+                <span className="text-gray-700">{t.benefit1[language]}</span>
               </div>
               
               <div className="flex items-start">
                 <TrendingDown className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Avoiding costly fines</span>
+                <span className="text-gray-700">{t.benefit2[language]}</span>
               </div>
               
               <div className="flex items-start">
                 <Shield className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Preventing workers compensation claims</span>
+                <span className="text-gray-700">{t.benefit3[language]}</span>
               </div>
               
               <div className="flex items-start">
                 <TrendingDown className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Lowering insurance premiums</span>
+                <span className="text-gray-700">{t.benefit4[language]}</span>
               </div>
               
               <div className="flex items-start">
                 <Award className="h-6 w-6 text-brand-yellow mr-3 flex-shrink-0 mt-0.5" />
-                <span className="text-gray-700">Enhancing process improvements</span>
+                <span className="text-gray-700">{t.benefit5[language]}</span>
               </div>
             </div>
           </div>
@@ -125,7 +125,7 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
           {/* Right Side - Form */}
           <div className="bg-white rounded-xl shadow-xl p-8 border border-gray-200">
             <h3 className="text-2xl font-bold text-gray-900 mb-6">
-              Request a Site Safety Assessment
+              {t.requestTitle[language]}
             </h3>
 
             {submitted ? (
@@ -135,9 +135,9 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
                     <CheckCircle className="h-12 w-12 text-green-600" />
                   </div>
                 </div>
-                <h4 className="text-xl font-bold text-gray-900 mb-2">Thank You!</h4>
+                <h4 className="text-xl font-bold text-gray-900 mb-2">{t.thankYou[language]}</h4>
                 <p className="text-gray-600">
-                  Your request has been submitted. Our team will contact you shortly.
+                  {t.thankYouDesc[language]}
                 </p>
               </div>
             ) : (
@@ -145,7 +145,7 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
                 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    I Am A<span className="text-red-600">*</span>
+                    {t.iAmA[language]}<span className="text-red-600">*</span>
                   </label>
                   <select
                     name="userType"
@@ -154,17 +154,17 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
                     onChange={handleChange}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-yellow focus:border-transparent"
                   >
-                    <option value="">--Select--</option>
-                    <option value="end-user">End User</option>
-                    <option value="distributor">Distributor</option>
-                    <option value="other">Other</option>
+                    <option value="">{t.select[language]}</option>
+                    <option value="end-user">{t.endUser[language]}</option>
+                    <option value="distributor">{t.distributor[language]}</option>
+                    <option value="other">{t.other[language]}</option>
                   </select>
                 </div>
 
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      First Name<span className="text-red-600">*</span>
+                      {t.firstName[language]}<span className="text-red-600">*</span>
                     </label>
                     <input
                       type="text"
@@ -178,7 +178,7 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Last Name<span className="text-red-600">*</span>
+                      {t.lastName[language]}<span className="text-red-600">*</span>
                     </label>
                     <input
                       type="text"
@@ -193,7 +193,7 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Company<span className="text-red-600">*</span>
+                    {t.company[language]}<span className="text-red-600">*</span>
                   </label>
                   <input
                     type="text"
@@ -207,7 +207,7 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Email<span className="text-red-600">*</span>
+                    {t.email[language]}<span className="text-red-600">*</span>
                   </label>
                   <input
                     type="email"
@@ -222,7 +222,7 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
                 <div className="grid grid-cols-2 gap-4">
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Zip / Postal Code<span className="text-red-600">*</span>
+                      {t.postalCode[language]}<span className="text-red-600">*</span>
                     </label>
                     <input
                       type="text"
@@ -236,7 +236,7 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
                   
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-1">
-                      Phone<span className="text-red-600">*</span>
+                      {t.phone[language]}<span className="text-red-600">*</span>
                     </label>
                     <input
                       type="tel"
@@ -251,14 +251,14 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
 
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-1">
-                    Additional Information Needed
+                    {t.additionalInfo[language]}
                   </label>
                   <textarea
                     name="additionalInfo"
                     rows={4}
                     value={formData.additionalInfo}
                     onChange={handleChange}
-                    placeholder="Briefly describe your safety needs..."
+                    placeholder={t.additionalPlaceholder[language]}
                     className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-yellow focus:border-transparent"
                   ></textarea>
                 </div>
@@ -273,13 +273,13 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
                       className="mt-1 mr-2"
                     />
                     <span className="text-sm text-gray-600">
-                      I agree to receive marketing emails from Justrite Safety Group and understand I can unsubscribe anytime.
+                      {t.marketingConsent[language]}
                     </span>
                   </label>
 
                   <div>
                     <label className="block text-sm font-medium text-gray-700 mb-2">
-                      Do you agree to our privacy policy?<span className="text-red-600">*</span>
+                      {t.privacyQuestion[language]}<span className="text-red-600">*</span>
                     </label>
                     <select
                       name="agreePrivacy"
@@ -288,15 +288,14 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
                       onChange={handleChange}
                       className="w-full px-4 py-2 border border-gray-300 rounded-md focus:ring-2 focus:ring-brand-yellow focus:border-transparent"
                     >
-                      <option value="">--Select--</option>
-                      <option value="yes">Yes</option>
-                      <option value="no">No</option>
+                      <option value="">{t.select[language]}</option>
+                      <option value="yes">{t.yes[language]}</option>
+                      <option value="no">{t.no[language]}</option>
                     </select>
                   </div>
 
                   <p className="text-xs text-gray-500">
-                    I understand by submitting my contact information, I am providing that personal information to 
-                    Justrite Romania S.R.L. and they may use this information for the purposes which it was provided.
+                    {t.privacyNotice[language]}
                   </p>
                 </div>
 
@@ -305,7 +304,7 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
                   className="w-full bg-brand-yellow text-brand-black font-bold py-3 px-6 rounded-md hover:bg-yellow-400 transition-colors text-lg"
                   data-testid="submit-survey-request"
                 >
-                  Submit Request
+                  {t.submitRequest[language]}
                 </button>
               </form>
             )}
@@ -315,7 +314,7 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
         {/* How It Works Section */}
         <div className="bg-white rounded-xl shadow-lg p-8 md:p-12 mb-16">
           <h3 className="text-3xl font-bold text-center text-gray-900 mb-12">
-            How Does STUD-E™ Work?
+            {t.howItWorks[language]}
           </h3>
           
           <div className="grid grid-cols-1 md:grid-cols-4 gap-8">
@@ -323,9 +322,9 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
               <div className="bg-brand-yellow rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand-black font-bold text-2xl">1</span>
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">Contact</h4>
+              <h4 className="font-bold text-gray-900 mb-2">{t.step1Title[language]}</h4>
               <p className="text-gray-600 text-sm">
-                Talk with one of our experts to schedule a site visit
+                {t.step1Desc[language]}
               </p>
             </div>
 
@@ -333,9 +332,9 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
               <div className="bg-brand-yellow rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand-black font-bold text-2xl">2</span>
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">Assessment</h4>
+              <h4 className="font-bold text-gray-900 mb-2">{t.step2Title[language]}</h4>
               <p className="text-gray-600 text-sm">
-                We conduct a walk through of your facility
+                {t.step2Desc[language]}
               </p>
             </div>
 
@@ -343,9 +342,9 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
               <div className="bg-brand-yellow rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand-black font-bold text-2xl">3</span>
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">Analysis</h4>
+              <h4 className="font-bold text-gray-900 mb-2">{t.step3Title[language]}</h4>
               <p className="text-gray-600 text-sm">
-                We identify current and potential vulnerabilities
+                {t.step3Desc[language]}
               </p>
             </div>
 
@@ -353,9 +352,9 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
               <div className="bg-brand-yellow rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
                 <span className="text-brand-black font-bold text-2xl">4</span>
               </div>
-              <h4 className="font-bold text-gray-900 mb-2">Report</h4>
+              <h4 className="font-bold text-gray-900 mb-2">{t.step4Title[language]}</h4>
               <p className="text-gray-600 text-sm">
-                Receive a report with recommendations for compliance
+                {t.step4Desc[language]}
               </p>
             </div>
           </div>
@@ -364,11 +363,10 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
         {/* Contact CTA */}
         <div className="bg-brand-black rounded-2xl p-8 text-center">
           <h3 className="text-2xl font-bold text-white mb-4">
-            Ready to Improve Workplace Safety?
+            {t.readyTitle[language]}
           </h3>
           <p className="text-gray-300 mb-6 max-w-2xl mx-auto">
-            Contact us today to schedule your free STUD-E™ assessment and learn how we can help 
-            make your workplace safer and compliant.
+            {t.readyDesc[language]}
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <a
