@@ -28,11 +28,21 @@ const loadChatHistory = (): ChatMessage[] => {
     if (saved) {
       const parsed = JSON.parse(saved);
       if (Array.isArray(parsed) && parsed.length > 0) {
-        return parsed;
+        // Ensure all messages have valid text strings
+        const validMessages = parsed.map((msg: any) => ({
+          role: msg.role as MessageRole,
+          text: String(msg.text || ''),
+          isThinking: false
+        })).filter((msg: ChatMessage) => msg.text.length > 0);
+        
+        if (validMessages.length > 0) {
+          return validMessages;
+        }
       }
     }
   } catch (e) {
     console.error('Failed to load chat history:', e);
+    localStorage.removeItem(CHAT_HISTORY_KEY);
   }
   return [WELCOME_MESSAGE];
 };
