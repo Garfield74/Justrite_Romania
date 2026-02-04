@@ -157,7 +157,7 @@ ${formData.message}
               <a href="https://www.linkedin.com/company/justrite-romania/" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-yellow transition-colors">
                 <Linkedin className="h-6 w-6" />
               </a>
-              <a href="https://www.facebook.com/profile.php?id=100075854833422" target="_blank" rel="noopener noreferrer" className="text-gray-400 hover:text-brand-yellow transition-colors">
+              <a href="https://www.facebook.com/profile.php?id=100075854833422" target="_blank" rel="noopener" className="text-gray-400 hover:text-brand-yellow transition-colors">
                 <Facebook className="h-6 w-6" />
               </a>
             </div>
