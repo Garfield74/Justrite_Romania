@@ -212,7 +212,10 @@ export const SafetyAssistant: React.FC = () => {
                 </button>
               )}
               <button 
-                onClick={() => setIsOpen(false)}
+                onClick={() => {
+                  setIsOpen(false);
+                  trackChatbotClose();
+                }}
                 className="text-gray-400 hover:text-white transition-colors"
               >
                 <X className="h-5 w-5" />
