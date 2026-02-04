@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Menu, X, ShieldCheck, Globe } from 'lucide-react';
+import { Menu, X, Globe } from 'lucide-react';
 import { useLanguage, translations } from '../i18n';
 
 export const Navbar: React.FC = () => {
