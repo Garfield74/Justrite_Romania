@@ -281,6 +281,32 @@ export const translations = {
   language: {
     switchTo: { en: 'RO', ro: 'EN' },
     currentLang: { en: 'English', ro: 'Română' },
+  },
+
+  // Cookie Consent
+  cookies: {
+    title: { en: 'Cookie Settings', ro: 'Setări Cookie-uri' },
+    message: {
+      en: 'We use cookies to enhance your browsing experience, analyze site traffic, and personalize content. By clicking "Accept All", you consent to our use of cookies.',
+      ro: 'Folosim cookie-uri pentru a îmbunătăți experiența de navigare, a analiza traficul site-ului și a personaliza conținutul. Făcând clic pe „Acceptă Toate", consimți la utilizarea cookie-urilor noastre.'
+    },
+    acceptAll: { en: 'Accept All', ro: 'Acceptă Toate' },
+    acceptNecessary: { en: 'Necessary Only', ro: 'Doar Necesare' },
+    customize: { en: 'Customize', ro: 'Personalizează' },
+    savePreferences: { en: 'Save Preferences', ro: 'Salvează Preferințele' },
+    privacyPolicy: { en: 'Privacy Policy', ro: 'Politica de Confidențialitate' },
+    necessary: {
+      title: { en: 'Necessary Cookies', ro: 'Cookie-uri Necesare' },
+      description: { en: 'Essential for the website to function properly. Cannot be disabled.', ro: 'Esențiale pentru funcționarea corectă a site-ului. Nu pot fi dezactivate.' }
+    },
+    analytics: {
+      title: { en: 'Analytics Cookies', ro: 'Cookie-uri de Analiză' },
+      description: { en: 'Help us understand how visitors interact with our website.', ro: 'Ne ajută să înțelegem cum interacționează vizitatorii cu site-ul nostru.' }
+    },
+    marketing: {
+      title: { en: 'Marketing Cookies', ro: 'Cookie-uri de Marketing' },
+      description: { en: 'Used to deliver personalized advertisements.', ro: 'Utilizate pentru a livra reclame personalizate.' }
+    }
   }
 };
 
