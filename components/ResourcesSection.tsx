@@ -148,6 +148,7 @@ export const ResourcesSection: React.FC = () => {
                   href={`/catalogues/${catalogue.filename}`}
                   target="_blank"
                   rel="noopener noreferrer"
+                  onClick={() => trackDownload(catalogue.filename, catalogue.brand)}
                   className="flex items-center justify-center gap-2 w-full bg-brand-black text-white py-3 px-4 rounded-lg font-semibold hover:bg-gray-800 transition-colors group-hover:bg-brand-red"
                   data-testid={`download-${catalogue.id}`}
                 >
