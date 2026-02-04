@@ -3,6 +3,7 @@ import { MessageSquare, Send, Bot, Loader2, X, Sparkles, RotateCcw } from 'lucid
 import { createSafetyChat, SafetyChat } from '../services/geminiService';
 import { ChatMessage, MessageRole } from '../types';
 import { useLanguage, translations, Language } from '../i18n';
+import { trackChatbotOpen, trackChatbotClose, trackChatbotMessage } from '../utils/analytics';
 
 // LocalStorage keys
 const CHAT_HISTORY_KEY = 'justrite_chat_history';
