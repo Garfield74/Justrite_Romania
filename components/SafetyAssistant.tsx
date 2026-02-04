@@ -153,12 +153,11 @@ export const SafetyAssistant: React.FC = () => {
 
   // Clear chat history and start fresh
   const handleClearChat = () => {
-    localStorage.removeItem(CHAT_HISTORY_KEY);
-    setMessages([{ role: MessageRole.MODEL, text: t.welcomeMessage[language] }]);
+    clearChatHistory();
+    setMessages([getWelcomeMessage()]);
     setShowQuickQuestions(true);
     // Reset the chat session
     chatSessionRef.current = createSafetyChat();
-    historyRestoredRef.current = false;
   };
 
   return (
