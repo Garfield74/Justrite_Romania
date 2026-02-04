@@ -260,6 +260,17 @@ INSTRUCTIONS:
     });
   }
 
+  // Restore conversation history from saved messages
+  restoreHistory(savedMessages: Array<{ role: 'user' | 'model'; text: string }>) {
+    savedMessages.forEach(msg => {
+      if (msg.role === 'user') {
+        this.messages.push({ role: 'user', content: msg.text });
+      } else if (msg.role === 'model') {
+        this.messages.push({ role: 'assistant', content: msg.text });
+      }
+    });
+  }
+
   async sendMessage(userMessage: string): Promise<AsyncIterable<string>> {
     // Add user message to history
     this.messages.push({
