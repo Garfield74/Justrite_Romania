@@ -2,66 +2,53 @@ import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { MessageSquare, Send, Bot, Loader2, X, Sparkles, RotateCcw } from 'lucide-react';
 import { createSafetyChat, SafetyChat } from '../services/geminiService';
 import { ChatMessage, MessageRole } from '../types';
-import { useLanguage, translations } from '../i18n';
+import { useLanguage, translations, Language } from '../i18n';
 
-// LocalStorage key for chat history
+// LocalStorage keys
 const CHAT_HISTORY_KEY = 'justrite_chat_history';
-
-// Load chat history from localStorage
-const loadChatHistory = (welcomeText: string): ChatMessage[] => {
-  try {
-    const saved = localStorage.getItem(CHAT_HISTORY_KEY);
-    if (saved) {
-      const parsed = JSON.parse(saved);
-      if (Array.isArray(parsed) && parsed.length > 0) {
-        // Ensure all messages have valid text strings
-        const validMessages = parsed.map((msg: any) => ({
-          role: msg.role as MessageRole,
-          text: String(msg.text || ''),
-          isThinking: false
-        })).filter((msg: ChatMessage) => msg.text.length > 0);
-        
-        if (validMessages.length > 0) {
-          return validMessages;
-        }
-      }
-    }
-  } catch (e) {
-    console.error('Failed to load chat history:', e);
-    localStorage.removeItem(CHAT_HISTORY_KEY);
-  }
-  return [{ role: MessageRole.MODEL, text: welcomeText }];
-};
+const CHAT_LANGUAGE_KEY = 'justrite_chat_language';
 
 // Save chat history to localStorage
-const saveChatHistory = (messages: ChatMessage[]) => {
+const saveChatHistory = (messages: ChatMessage[], lang: Language) => {
   try {
     // Only save if we have actual conversation (more than welcome message)
     if (messages.length > 1) {
-      // Serialize only necessary fields
       const toSave = messages.map(m => ({
         role: m.role,
         text: m.text
       }));
       localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(toSave));
+      localStorage.setItem(CHAT_LANGUAGE_KEY, lang);
     }
   } catch (e) {
     console.error('Failed to save chat history:', e);
   }
 };
 
+// Clear chat history
+const clearChatHistory = () => {
+  localStorage.removeItem(CHAT_HISTORY_KEY);
+  localStorage.removeItem(CHAT_LANGUAGE_KEY);
+};
+
 export const SafetyAssistant: React.FC = () => {
   const { language } = useLanguage();
   const t = translations.chatbot;
   
+  // Create welcome message based on current language
+  const getWelcomeMessage = useCallback((): ChatMessage => ({
+    role: MessageRole.MODEL,
+    text: t.welcomeMessage[language]
+  }), [language, t.welcomeMessage]);
+
   const [isOpen, setIsOpen] = useState(false);
-  const [messages, setMessages] = useState<ChatMessage[]>(() => loadChatHistory(t.welcomeMessage[language]));
+  const [messages, setMessages] = useState<ChatMessage[]>([getWelcomeMessage()]);
   const [input, setInput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [showQuickQuestions, setShowQuickQuestions] = useState(true);
   const chatSessionRef = useRef<SafetyChat | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
-  const historyRestoredRef = useRef(false);
+  const previousLanguageRef = useRef<Language>(language);
 
   // Quick questions based on language
   const quickQuestions = [
@@ -72,31 +59,35 @@ export const SafetyAssistant: React.FC = () => {
     t.quickQuestions.q5[language],
   ];
 
-  // Initialize Chat Session and restore history
+  // Initialize Chat Session
   useEffect(() => {
     if (!chatSessionRef.current) {
       chatSessionRef.current = createSafetyChat();
-      
-      // Restore conversation history to the chat session (skip welcome message)
-      if (!historyRestoredRef.current && messages.length > 1) {
-        const historyToRestore = messages.slice(1).filter(m => !m.isThinking);
-        chatSessionRef.current.restoreHistory(historyToRestore);
-        historyRestoredRef.current = true;
-        setShowQuickQuestions(false); // Hide quick questions if we have history
-      }
     }
   }, []);
+
+  // Handle language change - reset chat to avoid mixing languages
+  useEffect(() => {
+    if (previousLanguageRef.current !== language) {
+      // Language changed - clear chat and start fresh
+      clearChatHistory();
+      setMessages([getWelcomeMessage()]);
+      setShowQuickQuestions(true);
+      chatSessionRef.current = createSafetyChat();
+      previousLanguageRef.current = language;
+    }
+  }, [language, getWelcomeMessage]);
 
   // Save messages to localStorage whenever they change
   useEffect(() => {
     const messagesToSave = messages.filter(m => !m.isThinking);
-    saveChatHistory(messagesToSave);
+    saveChatHistory(messagesToSave, language);
     
     // Hide quick questions if we have conversation history
     if (messages.length > 1) {
       setShowQuickQuestions(false);
     }
-  }, [messages]);
+  }, [messages, language]);
 
   // Auto-scroll to bottom
   useEffect(() => {
