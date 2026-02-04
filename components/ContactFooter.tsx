@@ -208,7 +208,7 @@ ${formData.message}
               </li>
               <li className="flex items-center">
                 <Mail className="h-5 w-5 text-brand-yellow mr-3 flex-shrink-0" />
-                <a href="mailto:sales.ro@justrite.com" className="hover:text-brand-yellow transition-colors break-all">
+                <a href="mailto:sales.ro@justrite.com" onClick={() => trackContactClick('email')} className="hover:text-brand-yellow transition-colors break-all">
                   sales.ro@justrite.com
                 </a>
               </li>
