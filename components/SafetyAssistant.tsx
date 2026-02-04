@@ -261,10 +261,10 @@ export const SafetyAssistant: React.FC = () => {
               <div className="space-y-2 pt-2">
                 <div className="flex items-center gap-1 text-xs text-gray-500 px-1">
                   <Sparkles className="h-3 w-3" />
-                  <span>Try asking:</span>
+                  <span>{t.tryAsking[language]}</span>
                 </div>
                 <div className="flex flex-wrap gap-2">
-                  {QUICK_QUESTIONS.map((question, idx) => (
+                  {quickQuestions.map((question, idx) => (
                     <button
                       key={idx}
                       onClick={() => handleQuickQuestion(question)}
@@ -289,7 +289,7 @@ export const SafetyAssistant: React.FC = () => {
                 value={input}
                 onChange={(e) => setInput(e.target.value)}
                 onKeyDown={handleKeyPress}
-                placeholder="Ask about plunger cans..."
+                placeholder={t.placeholder[language]}
                 disabled={isGenerating}
                 data-testid="chat-input"
                 className="flex-1 border border-gray-300 rounded-full px-4 py-2 text-sm focus:outline-none focus:border-brand-yellow focus:ring-1 focus:ring-brand-yellow disabled:bg-gray-100"
@@ -304,7 +304,7 @@ export const SafetyAssistant: React.FC = () => {
               </button>
             </div>
             <p className="text-[10px] text-center text-gray-400 mt-2">
-              AI can make mistakes. Please verify critical safety info.
+              {t.disclaimer[language]}
             </p>
           </div>
         </div>
