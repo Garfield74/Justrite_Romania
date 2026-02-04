@@ -147,6 +147,16 @@ export const SafetyAssistant: React.FC = () => {
     handleSendMessage(question);
   };
 
+  // Clear chat history and start fresh
+  const handleClearChat = () => {
+    localStorage.removeItem(CHAT_HISTORY_KEY);
+    setMessages([WELCOME_MESSAGE]);
+    setShowQuickQuestions(true);
+    // Reset the chat session
+    chatSessionRef.current = createSafetyChat();
+    historyRestoredRef.current = false;
+  };
+
   return (
     <section id="safety-assistant" className="fixed bottom-6 right-6 z-40">
       {/* Toggle Button */}
