@@ -62,9 +62,12 @@ Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
         {/* Header */}
         <div className="text-center mb-16">
           <div className="flex justify-center mb-6">
-            <div className="bg-brand-yellow p-4 rounded-full">
-              <Shield className="h-12 w-12 text-brand-black" />
-            </div>
+            <img 
+              src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/lzh6i447_Justrite_Logo.webp" 
+              alt="Justrite" 
+              className="h-20 w-auto object-contain"
+              data-testid="stude-survey-logo"
+            />
           </div>
           <h2 className="text-4xl font-extrabold text-gray-900 mb-4">
             {t.title[language]}
