@@ -142,7 +142,7 @@ export const SafetyAssistant: React.FC = () => {
       // Remove the thinking placeholder and add error message
       setMessages(prev => {
         const filtered = prev.filter(m => !(m.role === MessageRole.MODEL && m.isThinking));
-        return [...filtered, { role: MessageRole.MODEL, text: "I apologize, but I'm having trouble connecting right now. Please try again or contact us at sales.ro@justrite.com or call 0236 325 301." }];
+        return [...filtered, { role: MessageRole.MODEL, text: t.errorMessage[language] }];
       });
     } finally {
       setIsGenerating(false);
