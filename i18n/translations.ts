@@ -162,53 +162,94 @@ export const translations = {
     }
   },
 
-  // Resources Section
-  resources: {
-    title: { en: 'Resources & Downloads', ro: 'Resurse și Descărcări' },
-    cataloguesTitle: { en: 'Product Catalogues & Documentation', ro: 'Cataloage de Produse și Documentație' },
-    cataloguesDesc: {
-      en: 'Download our comprehensive product catalogues and technical documentation to learn more about our safety solutions.',
-      ro: 'Descarcă cataloagele noastre complete de produse și documentația tehnică pentru a afla mai multe despre soluțiile noastre de siguranță.'
-    },
-    downloadPdf: { en: 'Download PDF', ro: 'Descarcă PDF' },
-  },
-
   // Safety Survey Section
   survey: {
-    title: { en: 'STUD-E Workplace Safety Survey', ro: 'Chestionar de Siguranță la Locul de Muncă STUD-E' },
-    subtitle: { en: 'Evaluate Your Facility\'s Safety Compliance', ro: 'Evaluează Conformitatea de Siguranță a Facilității Tale' },
-    description: {
-      en: 'Take our comprehensive STUD-E safety assessment to identify potential hazards and compliance gaps in your workplace. Our expert team will analyze your responses and provide customized recommendations.',
-      ro: 'Completează evaluarea noastră completă de siguranță STUD-E pentru a identifica pericolele potențiale și lacunele de conformitate la locul tău de muncă. Echipa noastră de experți va analiza răspunsurile tale și va oferi recomandări personalizate.'
+    title: { en: 'STUD-E™ Workplace Safety Survey', ro: 'Chestionar de Siguranță la Locul de Muncă STUD-E™' },
+    subtitle: { en: 'Prevent accidents in the workplace with a free safety assessment from Justrite Romania experts', ro: 'Preveniți accidentele la locul de muncă cu o evaluare gratuită de siguranță de la experții Justrite România' },
+    protectTitle: { en: 'Protect People, Property, and the Planet™', ro: 'Protejați Oamenii, Proprietatea și Planeta™' },
+    protectDesc: {
+      en: 'Workplace accidents happen and they can be costly. A hazardous chemical splash resulting in vision loss could cost a company hundreds of thousands of euros. Let us help you avoid accidents with proper storage of hazardous materials, spill containment, safety identification, emergency shower and eye wash, and more!',
+      ro: 'Accidentele la locul de muncă se întâmplă și pot fi costisitoare. O stropire cu substanțe chimice periculoase care duce la pierderea vederii poate costa o companie sute de mii de euro. Permiteți-ne să vă ajutăm să evitați accidentele cu depozitarea corespunzătoare a materialelor periculoase, reținerea scurgerilor, identificarea siguranței, dușuri de urgență și spălătoare de ochi și multe altele!'
     },
-    startSurvey: { en: 'Start Safety Survey', ro: 'Începe Chestionarul de Siguranță' },
+    assessmentTitle: { en: 'Our Complimentary Site Assessment Mitigates Risk', ro: 'Evaluarea Gratuită a Locației Noastre Reduce Riscul' },
+    assessmentDesc: { en: 'It puts a safety expert in your facility to identify hazards and recommend solutions for a safe and compliant workplace.', ro: 'Plasează un expert în siguranță în facilitatea dumneavoastră pentru a identifica pericolele și a recomanda soluții pentru un loc de muncă sigur și conform.' },
+    prioritizes: { en: 'STUD-E™ prioritizes critical safety issues:', ro: 'STUD-E™ prioritizează problemele critice de siguranță:' },
+    benefit1: { en: 'Preventing compliance violations from Romanian and EU regulations', ro: 'Prevenirea încălcărilor conformității cu reglementările românești și UE' },
+    benefit2: { en: 'Avoiding costly fines', ro: 'Evitarea amenzilor costisitoare' },
+    benefit3: { en: 'Preventing workers compensation claims', ro: 'Prevenirea cererilor de despăgubire a lucrătorilor' },
+    benefit4: { en: 'Lowering insurance premiums', ro: 'Reducerea primelor de asigurare' },
+    benefit5: { en: 'Enhancing process improvements', ro: 'Îmbunătățirea proceselor' },
+    requestTitle: { en: 'Request a Site Safety Assessment', ro: 'Solicită o Evaluare de Siguranță a Locației' },
+    iAmA: { en: 'I Am A', ro: 'Sunt' },
+    select: { en: '--Select--', ro: '--Selectează--' },
+    endUser: { en: 'End User', ro: 'Utilizator Final' },
+    distributor: { en: 'Distributor', ro: 'Distribuitor' },
+    other: { en: 'Other', ro: 'Altele' },
     firstName: { en: 'First Name', ro: 'Prenume' },
     lastName: { en: 'Last Name', ro: 'Nume' },
-    email: { en: 'Email Address', ro: 'Adresa de Email' },
-    company: { en: 'Company Name', ro: 'Numele Companiei' },
-    postalCode: { en: 'Postal Code', ro: 'Cod Poștal' },
-    industry: { en: 'Industry', ro: 'Industrie' },
-    selectIndustry: { en: 'Select your industry', ro: 'Selectează industria' },
-    submitRequest: { en: 'Submit Survey Request', ro: 'Trimite Cererea de Chestionar' },
+    company: { en: 'Company', ro: 'Companie' },
+    email: { en: 'Email', ro: 'Email' },
+    postalCode: { en: 'Zip / Postal Code', ro: 'Cod Poștal' },
+    phone: { en: 'Phone', ro: 'Telefon' },
+    additionalInfo: { en: 'Additional Information Needed', ro: 'Informații Suplimentare Necesare' },
+    additionalPlaceholder: { en: 'Briefly describe your safety needs...', ro: 'Descrieți pe scurt nevoile dumneavoastră de siguranță...' },
+    marketingConsent: { en: 'I agree to receive marketing emails from Justrite Safety Group and understand I can unsubscribe anytime.', ro: 'Sunt de acord să primesc emailuri de marketing de la Justrite Safety Group și înțeleg că mă pot dezabona oricând.' },
+    privacyQuestion: { en: 'Do you agree to our privacy policy?', ro: 'Sunteți de acord cu politica noastră de confidențialitate?' },
+    yes: { en: 'Yes', ro: 'Da' },
+    no: { en: 'No', ro: 'Nu' },
+    privacyNotice: { en: 'I understand by submitting my contact information, I am providing that personal information to Justrite Romania S.R.L. and they may use this information for the purposes which it was provided.', ro: 'Înțeleg că prin trimiterea informațiilor mele de contact, furnizez aceste informații personale către Justrite Romania S.R.L. și aceștia le pot folosi în scopurile pentru care au fost furnizate.' },
+    submitRequest: { en: 'Submit Request', ro: 'Trimite Cererea' },
+    thankYou: { en: 'Thank You!', ro: 'Mulțumim!' },
+    thankYouDesc: { en: 'Your request has been submitted. Our team will contact you shortly.', ro: 'Cererea dumneavoastră a fost trimisă. Echipa noastră vă va contacta în curând.' },
+    howItWorks: { en: 'How Does STUD-E™ Work?', ro: 'Cum Funcționează STUD-E™?' },
+    step1Title: { en: 'Contact', ro: 'Contact' },
+    step1Desc: { en: 'Talk with one of our experts to schedule a site visit', ro: 'Vorbiți cu unul dintre experții noștri pentru a programa o vizită la locație' },
+    step2Title: { en: 'Assessment', ro: 'Evaluare' },
+    step2Desc: { en: 'We conduct a walk through of your facility', ro: 'Efectuăm o inspecție a facilității dumneavoastră' },
+    step3Title: { en: 'Analysis', ro: 'Analiză' },
+    step3Desc: { en: 'We identify current and potential vulnerabilities', ro: 'Identificăm vulnerabilitățile curente și potențiale' },
+    step4Title: { en: 'Report', ro: 'Raport' },
+    step4Desc: { en: 'Receive a report with recommendations for compliance', ro: 'Primiți un raport cu recomandări pentru conformitate' },
+    readyTitle: { en: 'Ready to Improve Workplace Safety?', ro: 'Pregătiți să Îmbunătățiți Siguranța la Locul de Muncă?' },
+    readyDesc: { en: 'Contact us today to schedule your free STUD-E™ assessment and learn how we can help make your workplace safer and compliant.', ro: 'Contactați-ne astăzi pentru a programa evaluarea STUD-E™ gratuită și aflați cum vă putem ajuta să faceți locul de muncă mai sigur și conform.' },
   },
 
   // Statistics Section
   stats: {
-    title: { en: 'Trusted by Industry Leaders', ro: 'De Încredere pentru Liderii din Industrie' },
     yearsExperience: { en: 'Years of Experience', ro: 'Ani de Experiență' },
-    productsDelivered: { en: 'Products Delivered', ro: 'Produse Livrate' },
+    yearsDesc: { en: 'Over a century of safety innovation', ro: 'Peste un secol de inovație în siguranță' },
+    euCompliance: { en: 'EU Compliance', ro: 'Conformitate UE' },
+    euDesc: { en: 'Every product certified to European standards', ro: 'Fiecare produs certificat conform standardelor europene' },
+    integratedBrands: { en: 'Integrated Brands', ro: 'Mărci Integrate' },
+    brandsDesc: { en: 'Justrite, Sall, Eagle, NoTrax, Checkers', ro: 'Justrite, Sall, Eagle, NoTrax, Checkers' },
     countriesServed: { en: 'Countries Served', ro: 'Țări Deservite' },
-    certifications: { en: 'Certifications', ro: 'Certificări' },
+    countriesDesc: { en: 'Global expertise with local presence', ro: 'Expertiză globală cu prezență locală' },
   },
 
   // Mission Section
   mission: {
-    title: { en: 'Our Mission', ro: 'Misiunea Noastră' },
-    subtitle: { en: 'Protecting People. Preserving the Planet.', ro: 'Protejăm Oamenii. Păstrăm Planeta.' },
-    description: {
-      en: 'We are committed to creating safer workplaces and a more sustainable future through innovative safety solutions that protect both people and the environment.',
-      ro: 'Ne angajăm să creăm locuri de muncă mai sigure și un viitor mai durabil prin soluții inovatoare de siguranță care protejează atât oamenii, cât și mediul.'
-    },
+    title: { en: 'Our Mission: Protecting People, Property & Planet', ro: 'Misiunea Noastră: Protejăm Oamenii, Proprietatea și Planeta' },
+    workforce: { en: 'Workforce Protection', ro: 'Protecția Forței de Muncă' },
+    workforceDesc: { en: 'Every solution we engineer prioritizes employee safety, reducing exposure to hazardous materials and minimizing workplace injury risk through intelligent design.', ro: 'Fiecare soluție pe care o proiectăm prioritizează siguranța angajaților, reducând expunerea la materiale periculoase și minimizând riscul de accidentare la locul de muncă prin design inteligent.' },
+    asset: { en: 'Asset Security', ro: 'Securitatea Activelor' },
+    assetDesc: { en: 'Preventing spills, fires, and contamination incidents protects your valuable equipment, inventory, and facility infrastructure from catastrophic loss.', ro: 'Prevenirea scurgerilor, incendiilor și incidentelor de contaminare protejează echipamentele valoroase, inventarul și infrastructura facilității de pierderi catastrofale.' },
+    environmental: { en: 'Environmental Stewardship', ro: 'Responsabilitate de Mediu' },
+    environmentalDesc: { en: 'Robust containment systems prevent environmental contamination, ensuring your operations meet sustainability goals and regulatory standards.', ro: 'Sistemele robuste de retenție previn contaminarea mediului, asigurând că operațiunile dumneavoastră îndeplinesc obiectivele de sustenabilitate și standardele de reglementare.' },
+    philosophy: { en: 'We believe workplace safety extends beyond compliance—it\'s about creating a culture where every employee returns home safely, every facility operates without incident, and every community benefits from responsible industrial practices. This philosophy has guided us since 1906 and drives our commitment to Romanian industries today.', ro: 'Credem că siguranța la locul de muncă se extinde dincolo de conformitate — este despre crearea unei culturi în care fiecare angajat se întoarce acasă în siguranță, fiecare facilitate operează fără incidente și fiecare comunitate beneficiază de practici industriale responsabile. Această filosofie ne-a ghidat din 1906 și conduce angajamentul nostru față de industriile din România astăzi.' },
+  },
+
+  // Resources Section  
+  resources: {
+    title: { en: 'Resources & Downloads', ro: 'Resurse și Descărcări' },
+    cataloguesTitle: { en: 'Product Catalogues & Technical Documentation', ro: 'Cataloage de Produse și Documentație Tehnică' },
+    cataloguesDesc: { en: 'Download comprehensive product catalogues from our family of brands. Each catalogue includes detailed specifications, certifications, and ordering information.', ro: 'Descărcați cataloagele complete de produse de la familia noastră de mărci. Fiecare catalog include specificații detaliate, certificări și informații pentru comandă.' },
+    downloadPdf: { en: 'Download PDF', ro: 'Descarcă PDF' },
+    clickToOpen: { en: 'Click to open', ro: 'Click pentru deschidere' },
+    pdfDocument: { en: 'PDF Document', ro: 'Document PDF' },
+    needHelp: { en: 'Need Technical Assistance?', ro: 'Aveți Nevoie de Asistență Tehnică?' },
+    needHelpDesc: { en: 'Our technical team is available to help you select the right products for your specific requirements. Contact us for personalized recommendations and custom solutions.', ro: 'Echipa noastră tehnică este disponibilă să vă ajute să selectați produsele potrivite pentru cerințele dumneavoastră specifice. Contactați-ne pentru recomandări personalizate și soluții customizate.' },
+    emailTechnical: { en: 'Email Technical Team', ro: 'Email Echipa Tehnică' },
+    exploreBrands: { en: 'Explore our brand websites for more resources:', ro: 'Explorați site-urile mărcilor noastre pentru mai multe resurse:' },
   },
 
   // Safety Assistant / Chatbot
