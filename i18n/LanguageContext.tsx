@@ -1,5 +1,6 @@
 import React, { createContext, useContext, useState, useEffect, ReactNode } from 'react';
 import { Language } from './translations';
+import { trackLanguageChange } from '../utils/analytics';
 
 interface LanguageContextType {
   language: Language;
@@ -29,11 +30,16 @@ export const LanguageProvider: React.FC<{ children: ReactNode }> = ({ children }
   }, [language]);
 
   const setLanguage = (lang: Language) => {
+    if (lang !== language) {
+      trackLanguageChange(language, lang);
+    }
     setLanguageState(lang);
   };
 
   const toggleLanguage = () => {
-    setLanguageState(prev => prev === 'en' ? 'ro' : 'en');
+    const newLang = language === 'en' ? 'ro' : 'en';
+    trackLanguageChange(language, newLang);
+    setLanguageState(newLang);
   };
 
   return (
