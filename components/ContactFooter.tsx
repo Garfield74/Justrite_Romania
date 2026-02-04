@@ -148,11 +148,13 @@ ${formData.message}
           
           {/* Brand Info */}
           <div>
-            <div className="flex items-center gap-2 mb-6">
-              <Shield className="h-8 w-8 text-brand-yellow" />
-              <span className="font-bold text-2xl tracking-tight">
-                Justrite <span className="text-brand-yellow">Romania</span>
-              </span>
+            <div className="flex items-center mb-6">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/vko0e048_Logo-1024x1024.png" 
+                alt="Justrite Safety Group - 50 Years" 
+                className="h-20 w-auto object-contain"
+                data-testid="footer-logo"
+              />
             </div>
             <p className="text-gray-400 text-sm leading-relaxed mb-6">
               {t.brandDescription[language]}

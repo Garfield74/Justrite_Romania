@@ -21,12 +21,14 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-20">
           <div className="flex-shrink-0 flex items-center">
-            <div className="flex items-center gap-2">
-              <ShieldCheck className="h-8 w-8 text-brand-yellow" />
-              <span className="font-bold text-2xl text-brand-black tracking-tight">
-                Justrite <span className="text-brand-yellow">Romania</span>
-              </span>
-            </div>
+            <a href="#" className="flex items-center">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/vko0e048_Logo-1024x1024.png" 
+                alt="Justrite Safety Group - 50 Years" 
+                className="h-16 w-auto object-contain"
+                data-testid="navbar-logo"
+              />
+            </a>
           </div>
           
           <div className="hidden md:flex md:items-center md:space-x-6">
