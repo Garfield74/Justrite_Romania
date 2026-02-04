@@ -1,31 +1,35 @@
 import React from 'react';
 import { Award, Globe, Users, TrendingUp } from 'lucide-react';
+import { useLanguage, translations } from '../i18n';
 
 export const StatisticsSection: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations.stats;
+
   const stats = [
     {
       icon: <Award className="h-10 w-10 text-brand-yellow" />,
       value: '118',
-      label: 'Years of Experience',
-      description: 'Over a century of safety innovation'
+      label: t.yearsExperience[language],
+      description: t.yearsDesc[language]
     },
     {
       icon: <TrendingUp className="h-10 w-10 text-brand-yellow" />,
       value: '100%',
-      label: 'EU Compliance',
-      description: 'Every product certified to European standards'
+      label: t.euCompliance[language],
+      description: t.euDesc[language]
     },
     {
       icon: <Users className="h-10 w-10 text-brand-yellow" />,
       value: '6',
-      label: 'Integrated Brands',
-      description: 'Justrite, Sall, Eagle, NoTrax, Checkers'
+      label: t.integratedBrands[language],
+      description: t.brandsDesc[language]
     },
     {
       icon: <Globe className="h-10 w-10 text-brand-yellow" />,
       value: '50+',
-      label: 'Countries Served',
-      description: 'Global expertise with local presence'
+      label: t.countriesServed[language],
+      description: t.countriesDesc[language]
     }
   ];
 
@@ -37,7 +41,7 @@ export const StatisticsSection: React.FC = () => {
             <div 
               key={index} 
               className="text-center p-6 bg-white/5 rounded-lg border border-white/10 hover:bg-white/10 transition-all duration-300"
-              data-testid={`stat-${stat.label.toLowerCase().replace(/\s+/g, '-')}`}
+              data-testid={`stat-${index}`}
             >
               <div className="flex justify-center mb-4">
                 {stat.icon}
