@@ -40,6 +40,9 @@ ${formData.additionalInfo}
 Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
     `.trim();
 
+    // Track survey submission
+    trackSurveySubmission(formData.userType);
+
     window.location.href = `mailto:sales.ro@justrite.com?subject=STUD-E Survey Request&body=${encodeURIComponent(emailBody)}`;
     setSubmitted(true);
   };
