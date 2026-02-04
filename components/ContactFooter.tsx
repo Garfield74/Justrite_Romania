@@ -159,11 +159,7 @@ ${formData.message}
               </a>
               <a 
                 href="https://www.facebook.com/profile.php?id=100075854833422" 
-                onClick={(e) => {
-                  e.preventDefault();
-                  window.open('https://www.facebook.com/profile.php?id=100075854833422', '_blank');
-                }}
-                className="text-gray-400 hover:text-brand-yellow transition-colors cursor-pointer"
+                className="text-gray-400 hover:text-brand-yellow transition-colors"
               >
                 <Facebook className="h-6 w-6" />
               </a>
