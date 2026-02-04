@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Phone, Mail, MapPin, Linkedin, Facebook, Shield, FileText, Send, Loader2, CheckCircle, AlertCircle } from 'lucide-react';
+import { Phone, Mail, MapPin, Linkedin, Facebook, Shield, FileText, Send, Loader2, CheckCircle, AlertCircle, Copy, Check } from 'lucide-react';
 import { useLanguage, translations } from '../i18n';
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';
@@ -30,6 +30,8 @@ export const ContactFooter: React.FC = () => {
   const [formData, setFormData] = useState<FormData>(initialFormData);
   const [status, setStatus] = useState<FormStatus>('idle');
   const [errors, setErrors] = useState<Partial<FormData>>({});
+  const [copied, setCopied] = useState(false);
+  const [submittedData, setSubmittedData] = useState<{subject: string; body: string} | null>(null);
 
   const validateForm = (): boolean => {
     const newErrors: Partial<FormData> = {};
@@ -55,7 +57,6 @@ export const ContactFooter: React.FC = () => {
   const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({ ...prev, [name]: value }));
-    // Clear error when user starts typing
     if (errors[name as keyof FormData]) {
       setErrors(prev => ({ ...prev, [name]: undefined }));
     }
@@ -68,33 +69,35 @@ export const ContactFooter: React.FC = () => {
     
     setStatus('sending');
     
-    // Simulate API call - in production, this would send to your backend
     try {
-      // Create mailto link with all form data
       const subjectText = t.subjects[formData.subject as keyof typeof t.subjects]?.[language] || formData.subject;
       const body = `
-Name: ${formData.name}
+${language === 'en' ? 'Name' : 'Nume'}: ${formData.name}
 Email: ${formData.email}
-Phone: ${formData.phone || 'Not provided'}
-Company: ${formData.company || 'Not provided'}
+${language === 'en' ? 'Phone' : 'Telefon'}: ${formData.phone || (language === 'en' ? 'Not provided' : 'Nespecificat')}
+${language === 'en' ? 'Company' : 'Companie'}: ${formData.company || (language === 'en' ? 'Not provided' : 'Nespecificat')}
 
-Message:
+${language === 'en' ? 'Message' : 'Mesaj'}:
 ${formData.message}
       `.trim();
       
-      // Store submission in localStorage for reference
+      // Store submission in localStorage
       const submissions = JSON.parse(localStorage.getItem('contact_submissions') || '[]');
       submissions.push({
         ...formData,
         timestamp: new Date().toISOString(),
       });
-      localStorage.setItem('contact_submissions', JSON.stringify(submissions.slice(-10))); // Keep last 10
+      localStorage.setItem('contact_submissions', JSON.stringify(submissions.slice(-10)));
       
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 1500));
+      // Store for potential copy
+      setSubmittedData({ subject: subjectText, body });
       
-      // Open mailto
-      window.location.href = `mailto:sales.ro@justrite.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(body)}`;
+      // Small delay for UX
+      await new Promise(resolve => setTimeout(resolve, 800));
+      
+      // Try to open mailto
+      const mailtoLink = `mailto:sales.ro@justrite.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(body)}`;
+      window.location.href = mailtoLink;
       
       setStatus('success');
       setFormData(initialFormData);
@@ -104,10 +107,34 @@ ${formData.message}
     }
   };
 
+  const copyToClipboard = async () => {
+    if (!submittedData) return;
+    
+    const textToCopy = `To: sales.ro@justrite.com\nSubject: ${submittedData.subject}\n\n${submittedData.body}`;
+    
+    try {
+      await navigator.clipboard.writeText(textToCopy);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    } catch (err) {
+      // Fallback for older browsers
+      const textArea = document.createElement('textarea');
+      textArea.value = textToCopy;
+      document.body.appendChild(textArea);
+      textArea.select();
+      document.execCommand('copy');
+      document.body.removeChild(textArea);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   const resetForm = () => {
     setStatus('idle');
     setFormData(initialFormData);
     setErrors({});
+    setSubmittedData(null);
+    setCopied(false);
   };
 
   return (
@@ -185,63 +212,78 @@ ${formData.message}
             <h3 className="text-lg font-semibold mb-6 border-b border-brand-yellow/30 pb-2 inline-block">{t.sendInquiry[language]}</h3>
             
             {status === 'success' ? (
-              <div className="text-center py-6" data-testid="contact-success">
-                <CheckCircle className="h-12 w-12 text-green-500 mx-auto mb-3" />
+              <div className="text-center py-4" data-testid="contact-success">
+                <CheckCircle className="h-10 w-10 text-green-500 mx-auto mb-3" />
                 <h4 className="text-white font-semibold mb-2">{t.successTitle[language]}</h4>
-                <p className="text-gray-400 text-sm mb-4">{t.successMessage[language]}</p>
+                <p className="text-gray-400 text-xs mb-3">{t.successMessage[language]}</p>
+                
+                {/* Copy to clipboard option */}
+                <button
+                  onClick={copyToClipboard}
+                  className="flex items-center justify-center gap-2 w-full bg-white/10 text-white py-2 px-3 rounded text-xs hover:bg-white/20 transition-colors mb-3"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="h-3 w-3 text-green-400" />
+                      <span className="text-green-400">{language === 'en' ? 'Copied!' : 'Copiat!'}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-3 w-3" />
+                      <span>{language === 'en' ? 'Copy message to clipboard' : 'Copiază mesajul'}</span>
+                    </>
+                  )}
+                </button>
+                
                 <button
                   onClick={resetForm}
-                  className="text-brand-yellow hover:text-yellow-300 text-sm underline"
+                  className="text-brand-yellow hover:text-yellow-300 text-xs underline"
                 >
                   {t.sendAnother[language]}
                 </button>
               </div>
             ) : status === 'error' ? (
-              <div className="text-center py-6" data-testid="contact-error">
-                <AlertCircle className="h-12 w-12 text-red-500 mx-auto mb-3" />
+              <div className="text-center py-4" data-testid="contact-error">
+                <AlertCircle className="h-10 w-10 text-red-500 mx-auto mb-3" />
                 <h4 className="text-white font-semibold mb-2">{t.errorTitle[language]}</h4>
-                <p className="text-gray-400 text-sm mb-4">{t.errorMessage[language]}</p>
+                <p className="text-gray-400 text-xs mb-3">{t.errorMessage[language]}</p>
                 <button
                   onClick={resetForm}
-                  className="text-brand-yellow hover:text-yellow-300 text-sm underline"
+                  className="text-brand-yellow hover:text-yellow-300 text-xs underline"
                 >
                   {t.sendAnother[language]}
                 </button>
               </div>
             ) : (
-              <form className="space-y-3" onSubmit={handleSubmit} data-testid="contact-form">
+              <form className="space-y-2.5" onSubmit={handleSubmit} data-testid="contact-form">
                 {/* Name */}
-                <div>
-                  <input 
-                    type="text" 
-                    name="name"
-                    value={formData.name}
-                    onChange={handleInputChange}
-                    placeholder={t.yourName[language]}
-                    data-testid="contact-name"
-                    className={`w-full bg-white/10 border rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors ${
-                      errors.name ? 'border-red-500' : 'border-white/20'
-                    }`}
-                  />
-                </div>
+                <input 
+                  type="text" 
+                  name="name"
+                  value={formData.name}
+                  onChange={handleInputChange}
+                  placeholder={t.yourName[language]}
+                  data-testid="contact-name"
+                  className={`w-full bg-white/10 border rounded px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors ${
+                    errors.name ? 'border-red-500' : 'border-white/20'
+                  }`}
+                />
                 
                 {/* Email */}
-                <div>
-                  <input 
-                    type="email" 
-                    name="email"
-                    value={formData.email}
-                    onChange={handleInputChange}
-                    placeholder={t.yourEmail[language]}
-                    data-testid="contact-email"
-                    className={`w-full bg-white/10 border rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors ${
-                      errors.email ? 'border-red-500' : 'border-white/20'
-                    }`}
-                  />
-                </div>
+                <input 
+                  type="email" 
+                  name="email"
+                  value={formData.email}
+                  onChange={handleInputChange}
+                  placeholder={t.yourEmail[language]}
+                  data-testid="contact-email"
+                  className={`w-full bg-white/10 border rounded px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors ${
+                    errors.email ? 'border-red-500' : 'border-white/20'
+                  }`}
+                />
                 
-                {/* Phone (optional) */}
-                <div>
+                {/* Phone & Company in row */}
+                <div className="grid grid-cols-2 gap-2">
                   <input 
                     type="tel" 
                     name="phone"
@@ -249,41 +291,46 @@ ${formData.message}
                     onChange={handleInputChange}
                     placeholder={t.phone[language]}
                     data-testid="contact-phone"
-                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors"
+                    className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors"
+                  />
+                  <input 
+                    type="text" 
+                    name="company"
+                    value={formData.company}
+                    onChange={handleInputChange}
+                    placeholder={t.company[language]}
+                    data-testid="contact-company"
+                    className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors"
                   />
                 </div>
                 
                 {/* Subject */}
-                <div>
-                  <select
-                    name="subject"
-                    value={formData.subject}
-                    onChange={handleInputChange}
-                    data-testid="contact-subject"
-                    className="w-full bg-white/10 border border-white/20 rounded px-4 py-2 text-sm text-white focus:outline-none focus:border-brand-yellow transition-colors cursor-pointer"
-                  >
-                    <option value="quote" className="bg-gray-800">{t.subjects.quote[language]}</option>
-                    <option value="product" className="bg-gray-800">{t.subjects.product[language]}</option>
-                    <option value="support" className="bg-gray-800">{t.subjects.support[language]}</option>
-                    <option value="partnership" className="bg-gray-800">{t.subjects.partnership[language]}</option>
-                    <option value="other" className="bg-gray-800">{t.subjects.other[language]}</option>
-                  </select>
-                </div>
+                <select
+                  name="subject"
+                  value={formData.subject}
+                  onChange={handleInputChange}
+                  data-testid="contact-subject"
+                  className="w-full bg-white/10 border border-white/20 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-brand-yellow transition-colors cursor-pointer"
+                >
+                  <option value="quote" className="bg-gray-800">{t.subjects.quote[language]}</option>
+                  <option value="product" className="bg-gray-800">{t.subjects.product[language]}</option>
+                  <option value="support" className="bg-gray-800">{t.subjects.support[language]}</option>
+                  <option value="partnership" className="bg-gray-800">{t.subjects.partnership[language]}</option>
+                  <option value="other" className="bg-gray-800">{t.subjects.other[language]}</option>
+                </select>
                 
                 {/* Message */}
-                <div>
-                  <textarea 
-                    name="message"
-                    value={formData.message}
-                    onChange={handleInputChange}
-                    rows={3} 
-                    placeholder={t.message[language]}
-                    data-testid="contact-message"
-                    className={`w-full bg-white/10 border rounded px-4 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors resize-none ${
-                      errors.message ? 'border-red-500' : 'border-white/20'
-                    }`}
-                  ></textarea>
-                </div>
+                <textarea 
+                  name="message"
+                  value={formData.message}
+                  onChange={handleInputChange}
+                  rows={3} 
+                  placeholder={t.message[language]}
+                  data-testid="contact-message"
+                  className={`w-full bg-white/10 border rounded px-3 py-2 text-sm text-white placeholder-gray-500 focus:outline-none focus:border-brand-yellow transition-colors resize-none ${
+                    errors.message ? 'border-red-500' : 'border-white/20'
+                  }`}
+                ></textarea>
                 
                 {/* Submit Button */}
                 <button 
