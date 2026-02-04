@@ -1,16 +1,19 @@
 import React, { useState } from 'react';
-import { Menu, X, ShieldCheck } from 'lucide-react';
+import { Menu, X, ShieldCheck, Globe } from 'lucide-react';
+import { useLanguage, translations } from '../i18n';
 
 export const Navbar: React.FC = () => {
   const [isOpen, setIsOpen] = useState(false);
+  const { language, toggleLanguage } = useLanguage();
+  const t = translations.nav;
 
   const navLinks = [
-    { name: 'Home', href: '#' },
-    { name: 'About Us', href: '#about' },
-    { name: 'Products', href: '#products' },
-    { name: 'Resources', href: '#resources' },
-    { name: 'STUD-E Survey', href: '#safety-survey' },
-    { name: 'Contact', href: '#contact' },
+    { name: t.home[language], href: '#' },
+    { name: t.aboutUs[language], href: '#about' },
+    { name: t.products[language], href: '#products' },
+    { name: t.resources[language], href: '#resources' },
+    { name: t.studeSurvey[language], href: '#safety-survey' },
+    { name: t.contact[language], href: '#contact' },
   ];
 
   return (
@@ -26,7 +29,7 @@ export const Navbar: React.FC = () => {
             </div>
           </div>
           
-          <div className="hidden md:flex md:items-center md:space-x-8">
+          <div className="hidden md:flex md:items-center md:space-x-6">
             {navLinks.map((link) => (
               <a
                 key={link.name}
@@ -36,15 +39,36 @@ export const Navbar: React.FC = () => {
                 {link.name}
               </a>
             ))}
+            
+            {/* Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              data-testid="language-toggle"
+              className="flex items-center gap-1.5 px-3 py-1.5 rounded-md border border-gray-300 text-gray-700 hover:border-brand-yellow hover:text-brand-yellow transition-colors text-sm font-medium"
+              title={language === 'en' ? 'Switch to Romanian' : 'Schimbă în Engleză'}
+            >
+              <Globe className="h-4 w-4" />
+              <span>{language === 'en' ? 'RO' : 'EN'}</span>
+            </button>
+            
             <a
               href="#contact"
               className="bg-brand-yellow text-brand-black px-5 py-2 rounded-md font-semibold hover:bg-yellow-400 transition-colors shadow-sm"
             >
-              Get a Quote
+              {t.getQuote[language]}
             </a>
           </div>
 
-          <div className="flex items-center md:hidden">
+          <div className="flex items-center md:hidden gap-2">
+            {/* Mobile Language Toggle */}
+            <button
+              onClick={toggleLanguage}
+              className="flex items-center gap-1 px-2 py-1 rounded border border-gray-300 text-gray-700 text-sm"
+            >
+              <Globe className="h-4 w-4" />
+              <span>{language === 'en' ? 'RO' : 'EN'}</span>
+            </button>
+            
             <button
               onClick={() => setIsOpen(!isOpen)}
               className="text-gray-700 hover:text-brand-yellow focus:outline-none p-2"
