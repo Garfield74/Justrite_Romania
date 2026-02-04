@@ -1,5 +1,7 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 import { LanguageProvider } from './i18n';
+import { SEOHead } from './components/SEOHead';
+import { initAnalytics } from './utils/analytics';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -14,8 +16,14 @@ import { SafetyAssistant } from './components/SafetyAssistant';
 import { ContactFooter } from './components/ContactFooter';
 
 function App() {
+  // Initialize analytics on app load
+  useEffect(() => {
+    initAnalytics();
+  }, []);
+
   return (
     <LanguageProvider>
+      <SEOHead />
       <div className="min-h-screen bg-white font-sans">
         <Navbar />
         <main>
