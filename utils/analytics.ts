@@ -8,6 +8,20 @@ declare global {
   }
 }
 
+// Check if analytics consent is given
+const hasAnalyticsConsent = (): boolean => {
+  try {
+    const consent = localStorage.getItem('justrite_cookie_consent');
+    if (consent) {
+      const parsed = JSON.parse(consent);
+      return parsed.analytics === true;
+    }
+  } catch (e) {
+    console.error('Error checking analytics consent:', e);
+  }
+  return false;
+};
+
 // Event categories
 export const EventCategory = {
   NAVIGATION: 'navigation',
@@ -20,6 +34,8 @@ export const EventCategory = {
 
 // Track page view
 export const trackPageView = (pagePath: string, pageTitle: string) => {
+  if (!hasAnalyticsConsent()) return;
+  
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', 'page_view', {
       page_path: pagePath,
@@ -36,6 +52,8 @@ export const trackEvent = (
   value?: number,
   additionalParams?: Record<string, any>
 ) => {
+  if (!hasAnalyticsConsent()) return;
+  
   if (typeof window !== 'undefined' && window.gtag) {
     window.gtag('event', eventName, {
       event_category: category,
