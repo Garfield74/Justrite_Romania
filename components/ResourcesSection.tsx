@@ -1,6 +1,7 @@
 import React from 'react';
 import { Download, FileText, ExternalLink, Factory, Flame, Footprints, Droplet, Cable, ShieldCheck } from 'lucide-react';
 import { useLanguage, translations } from '../i18n';
+import { trackDownload, trackExternalLink } from '../utils/analytics';
 
 interface Catalogue {
   id: string;
