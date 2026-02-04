@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Phone, Mail, MapPin, Linkedin, Facebook, Shield, FileText, Send, Loader2, CheckCircle, AlertCircle, Copy, Check } from 'lucide-react';
 import { useLanguage, translations } from '../i18n';
+import { trackFormSubmission, trackContactClick, trackExternalLink } from '../utils/analytics';
 
 type FormStatus = 'idle' | 'sending' | 'success' | 'error';
 
