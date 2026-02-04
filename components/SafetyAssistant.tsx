@@ -99,6 +99,9 @@ export const SafetyAssistant: React.FC = () => {
     const messageToSend = quickQuestion || input.trim();
     if (!messageToSend || !chatSessionRef.current || isGenerating) return;
 
+    // Track message type
+    trackChatbotMessage(quickQuestion ? 'quick_question' : 'user');
+
     setInput('');
     setIsGenerating(true);
     setShowQuickQuestions(false); // Hide quick questions after first message
