@@ -1,7 +1,11 @@
 import React from 'react';
 import { ChevronRight } from 'lucide-react';
+import { useLanguage, translations } from '../i18n';
 
 export const Hero: React.FC = () => {
+  const { language } = useLanguage();
+  const t = translations.hero;
+
   return (
     <div className="relative bg-brand-black overflow-hidden">
       <div className="absolute inset-0">
@@ -16,12 +20,11 @@ export const Hero: React.FC = () => {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24 md:py-32 lg:py-40">
         <div className="lg:w-2/3">
           <h1 className="text-4xl md:text-5xl lg:text-6xl font-bold text-white tracking-tight mb-6" data-testid="hero-heading">
-            Industrial Safety Solutions <br />
-            <span className="text-brand-yellow">for Romanian Workplaces</span>
+            {t.title1[language]} <br />
+            <span className="text-brand-yellow">{t.title2[language]}</span>
           </h1>
           <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-2xl leading-relaxed">
-            Comprehensive hazardous material handling and storage solutions from Justrite Safety Group, 
-            delivered locally through our Galați facility.
+            {t.description[language]}
           </p>
           <div className="flex flex-col sm:flex-row gap-4">
             <a
@@ -29,7 +32,7 @@ export const Hero: React.FC = () => {
               className="inline-flex items-center justify-center px-8 py-3 border border-transparent text-base font-medium rounded-md text-brand-black bg-brand-yellow hover:bg-yellow-400 transition-all duration-200 shadow-lg shadow-yellow-500/30"
               data-testid="explore-solutions-btn"
             >
-              Explore Solutions
+              {t.exploreSolutions[language]}
               <ChevronRight className="ml-2 h-5 w-5" />
             </a>
             <a
@@ -37,7 +40,7 @@ export const Hero: React.FC = () => {
               className="inline-flex items-center justify-center px-8 py-3 border border-white text-base font-medium rounded-md text-white hover:bg-white/10 transition-all duration-200"
               data-testid="contact-us-btn"
             >
-              Contact Us
+              {t.contactUs[language]}
             </a>
           </div>
         </div>
