@@ -159,6 +159,7 @@ ${formData.message}
               </a>
               <a 
                 href="https://www.facebook.com/profile.php?id=100075854833422" 
+                target="_blank"
                 className="text-gray-400 hover:text-brand-yellow transition-colors"
               >
                 <Facebook className="h-6 w-6" />
