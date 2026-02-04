@@ -163,7 +163,7 @@ export const SafetyAssistant: React.FC = () => {
   // Clear chat history and start fresh
   const handleClearChat = () => {
     localStorage.removeItem(CHAT_HISTORY_KEY);
-    setMessages([WELCOME_MESSAGE]);
+    setMessages([{ role: MessageRole.MODEL, text: t.welcomeMessage[language] }]);
     setShowQuickQuestions(true);
     // Reset the chat session
     chatSessionRef.current = createSafetyChat();
@@ -181,7 +181,7 @@ export const SafetyAssistant: React.FC = () => {
         >
           <MessageSquare className="h-6 w-6" />
           <span className="max-w-0 overflow-hidden group-hover:max-w-xs transition-all duration-300 whitespace-nowrap">
-            Ask Safety AI
+            {t.askSafetyAI[language]}
           </span>
         </button>
       )}
@@ -196,10 +196,10 @@ export const SafetyAssistant: React.FC = () => {
                 <Bot className="h-5 w-5 text-brand-black" />
               </div>
               <div>
-                <h3 className="text-white font-bold text-sm">Justrite Safety Advisor</h3>
+                <h3 className="text-white font-bold text-sm">{t.title[language]}</h3>
                 <p className="text-xs text-gray-400 flex items-center gap-1">
                   <span className="w-2 h-2 bg-green-500 rounded-full animate-pulse"></span>
-                  Powered by Llama 3.1
+                  {t.poweredBy[language]}
                 </p>
               </div>
             </div>
