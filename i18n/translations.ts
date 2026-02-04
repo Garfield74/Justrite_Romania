@@ -139,10 +139,27 @@ export const translations = {
     safetyProducts: { en: 'Safety Products', ro: 'Produse de Siguranță' },
     contactUs: { en: 'Contact Us', ro: 'Contactează-ne' },
     sendInquiry: { en: 'Send Inquiry', ro: 'Trimite Solicitare' },
+    yourName: { en: 'Your Name', ro: 'Numele Tău' },
     yourEmail: { en: 'Your Email', ro: 'Email-ul Tău' },
+    phone: { en: 'Phone (optional)', ro: 'Telefon (opțional)' },
+    company: { en: 'Company (optional)', ro: 'Companie (opțional)' },
+    subject: { en: 'Subject', ro: 'Subiect' },
     message: { en: 'Message', ro: 'Mesaj' },
-    submit: { en: 'Submit', ro: 'Trimite' },
+    submit: { en: 'Send Message', ro: 'Trimite Mesajul' },
+    sending: { en: 'Sending...', ro: 'Se trimite...' },
+    successTitle: { en: 'Message Sent!', ro: 'Mesaj Trimis!' },
+    successMessage: { en: 'Thank you for contacting us. We will respond within 24-48 hours.', ro: 'Mulțumim că ne-ai contactat. Vom răspunde în 24-48 de ore.' },
+    errorTitle: { en: 'Error', ro: 'Eroare' },
+    errorMessage: { en: 'Failed to send message. Please try again or email us directly.', ro: 'Nu s-a putut trimite mesajul. Încercați din nou sau trimiteți-ne un email direct.' },
+    sendAnother: { en: 'Send Another Message', ro: 'Trimite Alt Mesaj' },
     allRightsReserved: { en: 'All rights reserved. Part of Justrite Safety Group.', ro: 'Toate drepturile rezervate. Parte din Justrite Safety Group.' },
+    subjects: {
+      quote: { en: 'Request a Quote', ro: 'Solicitare Ofertă' },
+      product: { en: 'Product Information', ro: 'Informații Produs' },
+      support: { en: 'Technical Support', ro: 'Suport Tehnic' },
+      partnership: { en: 'Partnership Inquiry', ro: 'Întrebare Parteneriat' },
+      other: { en: 'Other', ro: 'Altele' },
+    }
   },
 
   // Resources Section
