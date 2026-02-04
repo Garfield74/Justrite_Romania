@@ -43,7 +43,7 @@ Located in `/app/public/catalogues/`:
 - NoTrax-Ergonomic-Anti-Fatigue-Safety-Matting.pdf
 - Sall-Materials-Storage-and-Handling-Essentials.pdf
 
-### 4. AI Safety Advisor ✅ COMPLETED (Feb 3, 2025)
+### 4. AI Safety Advisor ✅ COMPLETED (Feb 3-4, 2025)
 - [x] Floating chatbot button on page
 - [x] Real-time streaming responses
 - [x] Knowledge base from 7 PDF catalogues
@@ -52,6 +52,8 @@ Located in `/app/public/catalogues/`:
 - [x] Multi-turn conversation support
 - [x] Contact information in responses
 - [x] Quick Questions feature with 5 common queries
+- [x] Chat History persistence via localStorage
+- [x] Clear Chat button to start fresh conversation
 
 ## Technical Architecture
 
