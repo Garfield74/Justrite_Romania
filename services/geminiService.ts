@@ -288,7 +288,7 @@ INSTRUCTIONS:
 
     try {
       // Create streaming response with OpenRouter
-      const stream = await client.chat.completions.create({
+      const stream = await getClient().chat.completions.create({
         model: 'meta-llama/llama-3.1-70b-instruct',
         messages: this.messages,
         stream: true,
