@@ -93,6 +93,9 @@ ${formData.message}
       // Store for potential copy
       setSubmittedData({ subject: subjectText, body });
       
+      // Track form submission
+      trackFormSubmission('contact_footer', formData.subject);
+      
       // Small delay for UX
       await new Promise(resolve => setTimeout(resolve, 800));
       
