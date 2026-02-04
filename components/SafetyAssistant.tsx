@@ -190,12 +190,24 @@ export const SafetyAssistant: React.FC = () => {
                 </p>
               </div>
             </div>
-            <button 
-              onClick={() => setIsOpen(false)}
-              className="text-gray-400 hover:text-white transition-colors"
-            >
-              <X className="h-5 w-5" />
-            </button>
+            <div className="flex items-center gap-2">
+              {messages.length > 1 && (
+                <button 
+                  onClick={handleClearChat}
+                  data-testid="clear-chat-btn"
+                  title="Start new conversation"
+                  className="text-gray-400 hover:text-white transition-colors p-1"
+                >
+                  <RotateCcw className="h-4 w-4" />
+                </button>
+              )}
+              <button 
+                onClick={() => setIsOpen(false)}
+                className="text-gray-400 hover:text-white transition-colors"
+              >
+                <X className="h-5 w-5" />
+              </button>
+            </div>
           </div>
 
           {/* Messages Area */}
