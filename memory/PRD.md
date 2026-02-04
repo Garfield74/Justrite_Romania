@@ -54,6 +54,16 @@ Located in `/app/public/catalogues/`:
 - [x] Quick Questions feature with 5 common queries
 - [x] Chat History persistence via localStorage
 - [x] Clear Chat button to start fresh conversation
+- [x] Multi-language support (English/Romanian)
+
+### 5. Multi-Language Support ✅ COMPLETED (Feb 4, 2025)
+- [x] Language toggle button in navbar (Globe icon with EN/RO)
+- [x] Complete translations for:
+  - Navigation menu
+  - Hero section
+  - AI Chatbot (title, quick questions, placeholder, disclaimer)
+- [x] Language preference persisted in localStorage
+- [x] Instant UI updates when switching languages
 
 ## Technical Architecture
 
