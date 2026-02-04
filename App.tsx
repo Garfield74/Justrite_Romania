@@ -1,4 +1,5 @@
 import React from 'react';
+import { LanguageProvider } from './i18n';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
 import { AboutSection } from './components/AboutSection';
@@ -14,22 +15,24 @@ import { ContactFooter } from './components/ContactFooter';
 
 function App() {
   return (
-    <div className="min-h-screen bg-white font-sans">
-      <Navbar />
-      <main>
-        <Hero />
-        <AboutSection />
-        <StatisticsSection />
-        <ProductSection />
-        <SallAdvantageSection />
-        <IndustriesSection />
-        <ResourcesSection />
-        <SafetySurveySection />
-        <MissionSection />
-      </main>
-      <SafetyAssistant />
-      <ContactFooter />
-    </div>
+    <LanguageProvider>
+      <div className="min-h-screen bg-white font-sans">
+        <Navbar />
+        <main>
+          <Hero />
+          <AboutSection />
+          <StatisticsSection />
+          <ProductSection />
+          <SallAdvantageSection />
+          <IndustriesSection />
+          <ResourcesSection />
+          <SafetySurveySection />
+          <MissionSection />
+        </main>
+        <SafetyAssistant />
+        <ContactFooter />
+      </div>
+    </LanguageProvider>
   );
 }
 
