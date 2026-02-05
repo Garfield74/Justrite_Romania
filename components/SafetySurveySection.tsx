@@ -22,29 +22,30 @@ export const SafetySurveySection: React.FC = () => {
 
   const [submitted, setSubmitted] = useState(false);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
-    const emailBody = `
-STUD-E™ Site Safety Assessment Request
-
-User Type: ${formData.userType}
-Name: ${formData.firstName} ${formData.lastName}
-Company: ${formData.company}
-Email: ${formData.email}
-Postal Code: ${formData.postalCode}
-Phone: ${formData.phone}
-
-Additional Information:
-${formData.additionalInfo}
-
-Marketing Consent: ${formData.agreeMarketing ? 'Yes' : 'No'}
-    `.trim();
-
-    // Track survey submission
-    trackSurveySubmission(formData.userType);
-
-    window.location.href = `mailto:sales.ro@justrite.com?subject=STUD-E Survey Request&body=${encodeURIComponent(emailBody)}`;
-    setSubmitted(true);
+    
+    try {
+      // Submit to backend API
+      const response = await fetch('/api/survey', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(formData)
+      });
+      
+      if (!response.ok) throw new Error('Failed to submit');
+      
+      // Track survey submission
+      trackSurveySubmission(formData.userType);
+      
+      setSubmitted(true);
+    } catch (error) {
+      console.error('Survey submission error:', error);
+      // Fallback to mailto if API fails
+      const emailBody = `STUD-E Survey Request\n\nUser Type: ${formData.userType}\nName: ${formData.firstName} ${formData.lastName}\nCompany: ${formData.company}\nEmail: ${formData.email}`;
+      window.location.href = `mailto:sales.ro@justrite.com?subject=STUD-E Survey Request&body=${encodeURIComponent(emailBody)}`;
+      setSubmitted(true);
+    }
   };
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
