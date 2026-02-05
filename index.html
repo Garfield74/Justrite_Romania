@@ -107,16 +107,35 @@
     }
     </script>
     
-    <!-- Google Analytics 4 -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-XXXXXXXXXX"></script>
+    <!-- Google Analytics 4 - Dynamic Loading -->
     <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
-      gtag('js', new Date());
-      gtag('config', 'G-XXXXXXXXXX', {
-        'anonymize_ip': true,
-        'cookie_flags': 'SameSite=None;Secure'
-      });
+      // Load GA only if measurement ID is configured
+      (function() {
+        // Default to placeholder, can be overridden via window.GA_MEASUREMENT_ID
+        var gaId = window.GA_MEASUREMENT_ID || 'G-XXXXXXXXXX';
+        if (gaId && gaId !== 'G-XXXXXXXXXX') {
+          var script = document.createElement('script');
+          script.async = true;
+          script.src = 'https://www.googletagmanager.com/gtag/js?id=' + gaId;
+          document.head.appendChild(script);
+          
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          window.gtag = gtag;
+          gtag('js', new Date());
+          gtag('config', gaId, {
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+          });
+        } else {
+          // Stub gtag for development
+          window.dataLayer = window.dataLayer || [];
+          window.gtag = function(){
+            console.log('[GA Debug]', arguments);
+            dataLayer.push(arguments);
+          };
+        }
+      })();
     </script>
     
     <!-- Tailwind CSS -->
