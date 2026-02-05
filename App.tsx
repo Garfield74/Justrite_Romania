@@ -2,6 +2,7 @@ import React, { useEffect } from 'react';
 import { LanguageProvider } from './i18n';
 import { SEOHead } from './components/SEOHead';
 import { CookieConsent } from './components/CookieConsent';
+import { ScrollToTop } from './components/ScrollToTop';
 import { initAnalytics } from './utils/analytics';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -40,6 +41,7 @@ function App() {
         </main>
         <SafetyAssistant />
         <ContactFooter />
+        <ScrollToTop />
       </div>
       <CookieConsent />
     </LanguageProvider>
