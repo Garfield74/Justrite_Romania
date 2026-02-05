@@ -72,36 +72,29 @@ export const ContactFooter: React.FC = () => {
     
     try {
       const subjectText = t.subjects[formData.subject as keyof typeof t.subjects]?.[language] || formData.subject;
-      const body = `
-${language === 'en' ? 'Name' : 'Nume'}: ${formData.name}
-Email: ${formData.email}
-${language === 'en' ? 'Phone' : 'Telefon'}: ${formData.phone || (language === 'en' ? 'Not provided' : 'Nespecificat')}
-${language === 'en' ? 'Company' : 'Companie'}: ${formData.company || (language === 'en' ? 'Not provided' : 'Nespecificat')}
-
-${language === 'en' ? 'Message' : 'Mesaj'}:
-${formData.message}
-      `.trim();
       
-      // Store submission in localStorage
-      const submissions = JSON.parse(localStorage.getItem('contact_submissions') || '[]');
-      submissions.push({
-        ...formData,
-        timestamp: new Date().toISOString(),
+      // Submit to backend API
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone || '',
+          company: formData.company || '',
+          subject: subjectText,
+          message: formData.message
+        })
       });
-      localStorage.setItem('contact_submissions', JSON.stringify(submissions.slice(-10)));
       
-      // Store for potential copy
-      setSubmittedData({ subject: subjectText, body });
+      if (!response.ok) throw new Error('Failed to submit');
       
       // Track form submission
       trackFormSubmission('contact_footer', formData.subject);
       
-      // Small delay for UX
-      await new Promise(resolve => setTimeout(resolve, 800));
-      
-      // Try to open mailto
-      const mailtoLink = `mailto:sales.ro@justrite.com?subject=${encodeURIComponent(subjectText)}&body=${encodeURIComponent(body)}`;
-      window.location.href = mailtoLink;
+      // Store for copy functionality
+      const body = `Name: ${formData.name}\nEmail: ${formData.email}\nPhone: ${formData.phone || 'N/A'}\nCompany: ${formData.company || 'N/A'}\n\nMessage:\n${formData.message}`;
+      setSubmittedData({ subject: subjectText, body });
       
       setStatus('success');
       setFormData(initialFormData);
