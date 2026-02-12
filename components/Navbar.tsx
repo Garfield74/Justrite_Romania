@@ -19,14 +19,20 @@ export const Navbar: React.FC = () => {
   return (
     <nav className="bg-white shadow-md sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between h-20">
+        <div className="flex justify-between h-24">
           <div className="flex-shrink-0 flex items-center">
-            <a href="#" className="flex items-center">
+            <a href="#" className="flex items-center gap-3">
               <img 
-                src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/vko0e048_Logo-1024x1024.png" 
-                alt="Justrite Safety Group - 50 Years" 
-                className="h-16 w-auto object-contain"
-                data-testid="navbar-logo"
+                src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/a4axkh6h_Sall_JRSG-2.jpg" 
+                alt="Sall - Justrite Safety Group" 
+                className="h-14 w-auto object-contain"
+                data-testid="navbar-logo-sall"
+              />
+              <img 
+                src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/xhr25gv4_Justrite_Logo_CMYK.jpg" 
+                alt="Justrite" 
+                className="h-10 w-auto object-contain"
+                data-testid="navbar-logo-justrite"
               />
             </a>
           </div>
