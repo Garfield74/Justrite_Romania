@@ -25,7 +25,7 @@ export const Navbar: React.FC = () => {
               <img 
                 src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/xhr25gv4_Justrite_Logo_CMYK.jpg" 
                 alt="Justrite" 
-                className="h-14 w-auto object-contain"
+                className="h-[62px] w-auto object-contain"
                 data-testid="navbar-logo-justrite"
               />
               <img 
