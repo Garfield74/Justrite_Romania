@@ -142,7 +142,7 @@ export const ContactFooter: React.FC = () => {
           {/* Brand Info */}
           <div>
             <div className="flex items-center mb-6">
-              <div className="flex items-center gap-4">
+              <div className="flex items-center gap-4 bg-white p-3 rounded-lg w-fit">
                 <img 
                   src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/xhr25gv4_Justrite_Logo_CMYK.jpg" 
                   alt="Justrite" 
