@@ -21,18 +21,18 @@ export const Navbar: React.FC = () => {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between h-24">
           <div className="flex-shrink-0 flex items-center">
-            <a href="#" className="flex items-center gap-3">
+            <a href="#" className="flex items-center gap-4">
+              <img 
+                src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/xhr25gv4_Justrite_Logo_CMYK.jpg" 
+                alt="Justrite" 
+                className="h-14 w-auto object-contain"
+                data-testid="navbar-logo-justrite"
+              />
               <img 
                 src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/a4axkh6h_Sall_JRSG-2.jpg" 
                 alt="Sall - Justrite Safety Group" 
                 className="h-14 w-auto object-contain"
                 data-testid="navbar-logo-sall"
-              />
-              <img 
-                src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/xhr25gv4_Justrite_Logo_CMYK.jpg" 
-                alt="Justrite" 
-                className="h-10 w-auto object-contain"
-                data-testid="navbar-logo-justrite"
               />
             </a>
           </div>

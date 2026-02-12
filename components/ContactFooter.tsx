@@ -142,18 +142,18 @@ export const ContactFooter: React.FC = () => {
           {/* Brand Info */}
           <div>
             <div className="flex items-center mb-6">
-              <div className="flex flex-col gap-2">
+              <div className="flex items-center gap-4">
+                <img 
+                  src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/xhr25gv4_Justrite_Logo_CMYK.jpg" 
+                  alt="Justrite" 
+                  className="h-14 w-auto object-contain"
+                  data-testid="footer-logo-justrite"
+                />
                 <img 
                   src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/a4axkh6h_Sall_JRSG-2.jpg" 
                   alt="Sall - Justrite Safety Group" 
                   className="h-14 w-auto object-contain"
                   data-testid="footer-logo-sall"
-                />
-                <img 
-                  src="https://customer-assets.emergentagent.com/job_b482c598-833c-4b73-bb0a-46ff30f52167/artifacts/xhr25gv4_Justrite_Logo_CMYK.jpg" 
-                  alt="Justrite" 
-                  className="h-10 w-auto object-contain"
-                  data-testid="footer-logo-justrite"
                 />
               </div>
             </div>
