@@ -1,12 +1,15 @@
 // OpenRouter RAG Service for Justrite Safety Advisor
 import OpenAI from 'openai';
 
-const OPENROUTER_API_KEY = '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';
+const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY || '';
 
 // Initialize client lazily to avoid window reference issues
 let _client: OpenAI | null = null;
 
 const getClient = (): OpenAI => {
+  if (!OPENROUTER_API_KEY) {
+    console.warn('OpenRouter API key not configured');
+  }
   if (!_client) {
     _client = new OpenAI({
       apiKey: OPENROUTER_API_KEY,
