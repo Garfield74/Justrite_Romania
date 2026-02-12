@@ -174,3 +174,70 @@ Located in `/app/public/catalogues/`:
 **Files Created:**
 - `/app/utils/analytics.ts` - Analytics utility functions
 - `/app/components/SEOHead.tsx` - Dynamic SEO component
+
+### 8. Vercel Deployment Support ✅ COMPLETED (Feb 12, 2025)
+
+**Problem Solved:**
+The application had a FastAPI backend that couldn't run on Vercel's static/serverless platform. Converted to Vercel Serverless Functions.
+
+**Changes Made:**
+- [x] Created `/app/api/contact.py` - Serverless function for contact form
+- [x] Created `/app/api/survey.py` - Serverless function for survey form
+- [x] Created `/app/api/health.py` - Health check endpoint
+- [x] Created `/app/vercel.json` - Vercel deployment configuration
+- [x] Created `/app/.env.example` - Example environment variables
+- [x] Updated `/app/.gitignore` - Proper ignore patterns for deployment
+
+**Vercel Configuration:**
+- Framework: Vite
+- Build Command: `yarn build`
+- Output Directory: `dist`
+- Serverless Runtime: Python 3.9
+
+**Required Environment Variable (set in Vercel Dashboard):**
+```
+VITE_OPENROUTER_API_KEY=your_api_key_here
+```
+
+**Note:** Form submissions are logged to Vercel's serverless logs. For persistent storage, integrate with a database service like Vercel KV, MongoDB Atlas, or similar.
+
+---
+
+## Updated Architecture
+
+```
+/app/
+├── api/                          # Vercel Serverless Functions
+│   ├── contact.py                # Contact form handler
+│   ├── survey.py                 # Survey form handler
+│   └── health.py                 # Health check endpoint
+├── backend/                      # Local development only
+│   └── server.py                 # FastAPI (for local dev)
+├── components/                   # React components
+├── services/
+│   └── geminiService.ts          # AI advisor (needs renaming)
+├── public/
+│   └── catalogues/               # PDF files
+├── vercel.json                   # Vercel config
+├── .env.example                  # Environment template
+└── vite.config.ts                # Vite configuration
+```
+
+## Deployment Checklist
+
+### For Vercel:
+1. Push code to GitHub via "Save to Github"
+2. Import project in Vercel Dashboard
+3. Add Environment Variable: `VITE_OPENROUTER_API_KEY`
+4. Deploy
+
+### Environment Variables Required:
+| Variable | Description | Where to Set |
+|----------|-------------|--------------|
+| VITE_OPENROUTER_API_KEY | OpenRouter API key for AI chatbot | Vercel Dashboard → Settings → Environment Variables |
+
+## Backlog / Future Tasks
+- [ ] Rename `geminiService.ts` to `aiAdvisorService.ts`
+- [ ] Add persistent storage for form submissions (Vercel KV/MongoDB)
+- [ ] Add feedback mechanism to chatbot responses
+- [ ] Replace placeholder Google Analytics ID
