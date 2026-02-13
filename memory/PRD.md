@@ -102,9 +102,9 @@ Located in `/app/public/catalogues/`:
 - **Port**: 3000
 
 ### AI Integration
-- **Provider**: OpenRouter API
-- **Model**: meta-llama/llama-3.1-70b-instruct
-- **SDK**: OpenAI SDK (compatible with OpenRouter)
+- **Provider**: Google Gemini API
+- **Model**: gemini-1.5-flash
+- **SDK**: Google GenAI SDK (@google/genai)
 - **Knowledge Base**: Comprehensive product catalogue data
 
 ### Key Files
@@ -139,8 +139,8 @@ Located in `/app/public/catalogues/`:
 - [x] Streaming responses working
 
 ## Credentials
-- **OpenRouter API Key**: Configured in geminiService.ts
-- **Model**: meta-llama/llama-3.1-70b-instruct
+- **Gemini API Key**: Configured in geminiService.ts
+- **Model**: gemini-1.5-flash
 
 ## Future Enhancements (Backlog)
 - [ ] Backend email integration (Resend/SendGrid)
@@ -196,7 +196,7 @@ The application had a FastAPI backend that couldn't run on Vercel's static/serve
 
 **Required Environment Variable (set in Vercel Dashboard):**
 ```
-VITE_OPENROUTER_API_KEY=your_api_key_here
+VITE_GEMINI_API_KEY=your_api_key_here
 ```
 
 **Note:** Form submissions are logged to Vercel's serverless logs. For persistent storage, integrate with a database service like Vercel KV, MongoDB Atlas, or similar.
@@ -228,16 +228,15 @@ VITE_OPENROUTER_API_KEY=your_api_key_here
 ### For Vercel:
 1. Push code to GitHub via "Save to Github"
 2. Import project in Vercel Dashboard
-3. Add Environment Variable: `VITE_OPENROUTER_API_KEY`
+3. Add Environment Variable: `GEMINI_API_KEY`
 4. Deploy
 
 ### Environment Variables Required:
 | Variable | Description | Where to Set |
 |----------|-------------|--------------|
-| VITE_OPENROUTER_API_KEY | OpenRouter API key for AI chatbot | Vercel Dashboard → Settings → Environment Variables |
+| VITE_GEMINI_API_KEY | Google Gemini API key for AI chatbot | Vercel Dashboard → Settings → Environment Variables |
 
 ## Backlog / Future Tasks
-- [ ] Rename `geminiService.ts` to `aiAdvisorService.ts`
 - [ ] Add persistent storage for form submissions (Vercel KV/MongoDB)
 - [ ] Add feedback mechanism to chatbot responses
 - [ ] Replace placeholder Google Analytics ID
