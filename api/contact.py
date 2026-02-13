@@ -28,7 +28,7 @@ class handler(BaseHTTPRequestHandler):
             if missing:
                 self.send_response(400)
                 self.send_header('Content-Type', 'application/json')
-                self.send_header('Access-Control-Allow-Origin', '*')
+                self.send_header('Access-Control-Allow-Origin', 'https://justriteromania.netlify.app')
                 self.end_headers()
                 self.wfile.write(json.dumps({
                     'success': False,
@@ -40,7 +40,7 @@ class handler(BaseHTTPRequestHandler):
             if not validate_email(data['email']):
                 self.send_response(400)
                 self.send_header('Content-Type', 'application/json')
-                self.send_header('Access-Control-Allow-Origin', '*')
+                self.send_header('Access-Control-Allow-Origin', 'https://justriteromania.netlify.app')
                 self.end_headers()
                 self.wfile.write(json.dumps({
                     'success': False,
