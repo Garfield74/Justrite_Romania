@@ -1,25 +1,18 @@
-// OpenRouter RAG Service for Justrite Safety Advisor
-import OpenAI from 'openai';
+// Gemini Service for Justrite Safety Advisor
+import { GoogleGenerativeAI, HarmCategory, HarmBlockThreshold } from '@google/generative-ai';
 
-const OPENROUTER_API_KEY = import.meta.env.VITE_OPENROUTER_API_KEY || '';
+// Access API Key from import.meta.env (Vite standard)
+const API_KEY = import.meta.env.VITE_GEMINI_API_KEY || '';
 
 // Initialize client lazily to avoid window reference issues
-let _client: OpenAI | null = null;
+let _client: GoogleGenerativeAI | null = null;
 
-const getClient = (): OpenAI => {
-  if (!OPENROUTER_API_KEY) {
-    console.warn('OpenRouter API key not configured');
+const getClient = (): GoogleGenerativeAI => {
+  if (!API_KEY) {
+    console.warn('Gemini API key not configured (VITE_GEMINI_API_KEY)');
   }
   if (!_client) {
-    _client = new OpenAI({
-      apiKey: OPENROUTER_API_KEY,
-      baseURL: 'https://openrouter.ai/api/v1',
-      dangerouslyAllowBrowser: true,
-      defaultHeaders: {
-        'HTTP-Referer': typeof window !== 'undefined' ? window.location.origin : 'https://justrite-romania.com',
-        'X-Title': 'Justrite Romania Safety Advisor'
-      }
-    });
+    _client = new GoogleGenerativeAI(API_KEY);
   }
   return _client;
 };
@@ -245,18 +238,23 @@ const PRODUCT_KNOWLEDGE_BASE = `
 `;
 
 export interface ChatMessage {
-  role: 'system' | 'user' | 'assistant';
-  content: string;
+  role: 'user' | 'model';
+  text: string;
 }
 
 export class SafetyChat {
-  private messages: ChatMessage[] = [];
+  private chat: any;
+  private history: Array<{ role: string; parts: Array<{ text: string }> }> = [];
 
   constructor() {
-    // Initialize with system message containing full knowledge base
-    this.messages.push({
-      role: 'system',
-      content: `You are the Justrite Safety Advisor for Justrite Romania S.R.L. Use this knowledge base to answer customer questions accurately and professionally:
+     this.initSession();
+  }
+
+  private initSession() {
+      const client = getClient();
+      this.chat = client.getGenerativeModel({
+          model: "gemini-1.5-flash",
+          systemInstruction: `You are the Justrite Safety Advisor for Justrite Romania S.R.L. Use this knowledge base to answer customer questions accurately and professionally:
 
 ${PRODUCT_KNOWLEDGE_BASE}
 
@@ -268,62 +266,42 @@ INSTRUCTIONS:
 - Be professional, safety-focused, and helpful
 - If asked about something not in the knowledge base, acknowledge limitations and offer to connect them with sales team
 - Emphasize Romanian operations in Galați with global quality standards`
-    });
+      }).startChat({
+          history: this.history,
+          generationConfig: {
+              maxOutputTokens: 1500,
+              temperature: 0.7,
+          }
+      });
   }
 
   // Restore conversation history from saved messages
-  restoreHistory(savedMessages: Array<{ role: 'user' | 'model'; text: string }>) {
-    savedMessages.forEach(msg => {
-      if (msg.role === 'user') {
-        this.messages.push({ role: 'user', content: msg.text });
-      } else if (msg.role === 'model') {
-        this.messages.push({ role: 'assistant', content: msg.text });
-      }
-    });
+  restoreHistory(savedMessages: Array<{ role: string; text: string }>) {
+    // Convert to Gemini format
+    this.history = savedMessages.map(msg => ({
+        role: (msg.role === 'assistant' || msg.role === 'model') ? 'model' : 'user',
+        parts: [{ text: msg.text }]
+    }));
+    // Re-initialize session with history
+    this.initSession();
   }
 
   async sendMessage(userMessage: string): Promise<AsyncIterable<string>> {
-    // Add user message to history
-    this.messages.push({
-      role: 'user',
-      content: userMessage
-    });
-
     try {
-      // Create streaming response with OpenRouter
-      const stream = await getClient().chat.completions.create({
-        model: 'meta-llama/llama-3.1-70b-instruct',
-        messages: this.messages,
-        stream: true,
-        temperature: 0.7,
-        max_tokens: 1500,
-      });
-
-      // Return async generator that yields text chunks
-      return this.streamText(stream);
+      const result = await this.chat.sendMessageStream(userMessage);
+      return this.streamText(result);
     } catch (error) {
-      console.error('OpenRouter API error:', error);
+      console.error('Gemini API error:', error);
       throw error;
     }
   }
 
-  private async *streamText(stream: AsyncIterable<OpenAI.Chat.Completions.ChatCompletionChunk>): AsyncIterable<string> {
-    let fullResponse = '';
-    
-    for await (const chunk of stream) {
-      const content = chunk.choices[0]?.delta?.content || '';
-      if (content) {
-        fullResponse += content;
-        yield content;
+  private async *streamText(result: any): AsyncIterable<string> {
+    for await (const chunk of result.stream) {
+      const chunkText = chunk.text();
+      if (chunkText) {
+        yield chunkText;
       }
-    }
-
-    // Add assistant response to history
-    if (fullResponse) {
-      this.messages.push({
-        role: 'assistant',
-        content: fullResponse
-      });
     }
   }
 }

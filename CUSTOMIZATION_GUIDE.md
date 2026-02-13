@@ -292,13 +292,13 @@ const navLinks = [
 
 **File:** `/app/.env.local`
 
-This file contains the Emergent LLM Key for the AI chatbot. Don't share this file publicly.
+To enable the AI chatbot, you need to set your Gemini API key.
 
 ```
-VITE_EMERGENT_LLM_KEY=sk-emergent-8C52c644a808c9f080
+VITE_GEMINI_API_KEY=your_gemini_api_key_here
 ```
 
-If you get your own Gemini API key, replace this value.
+You can obtain a key from [Google AI Studio](https://aistudio.google.com/).
 
 ## 💡 Tips
 
@@ -311,8 +311,7 @@ If you get your own Gemini API key, replace this value.
 ## 🐛 Common Issues
 
 ### AI Chatbot Not Working
-- Check that `.env.local` file exists with the correct API key
-- Ensure the key is prefixed with `VITE_`
+- Check that `.env.local` file exists with the correct API key (`VITE_GEMINI_API_KEY`)
 - Restart the development server after changing `.env.local`
 
 ### Images Not Loading
