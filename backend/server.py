@@ -11,7 +11,7 @@ app = FastAPI(title="Justrite Romania API")
 # CORS
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["https://justriteromania.netlify.app"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
