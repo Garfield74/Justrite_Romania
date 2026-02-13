@@ -23,26 +23,14 @@ dist-ssr
 *.sln
 *.sw?
 
-# Environment files (keep .env.example)
+# Environment files
 .env
 .env.local
-.env.*.local
 
 # Backend local files (not needed for Vercel)
 backend/submissions.json
 backend/__pycache__/
+api/__pycache__/
 
 # Vercel
 .vercel
--e 
-# Environment files
-*.env
-*.env.*
--e 
-# Environment files
-*.env
-*.env.*
--e 
-# Environment files
-*.env
-*.env.*
