@@ -76,6 +76,33 @@ export const ProductSection: React.FC = () => {
       features: language === 'en'
         ? ['Oily Waste Cans', 'Safety Plunger Cans', 'Safety Bench Cans', 'FM Approved']
         : ['Recipiente Deșeuri Uleioase', 'Recipiente Plunger', 'Recipiente Banc', 'Aprobat FM']
+    },
+    {
+      id: 'hot-dip-galvanized-cylinder-pallets',
+      title: pt.hotDipGalvanizedPallets.title[language],
+      description: pt.hotDipGalvanizedPallets.description[language],
+      imageUrl: '/metal_pallets.jpg',
+      features: language === 'en'
+        ? ['Hot-dip galvanized finish', 'Gas cylinder pallets', 'Cylinder baskets', 'Corrosion resistant']
+        : ['Finisaj galvanizat la cald', 'Paleți pentru butelii', 'Coșuri pentru butelii', 'Rezistent la coroziune']
+    },
+    {
+      id: 'wire-mesh-containers',
+      title: pt.wireMeshContainers.title[language],
+      description: pt.wireMeshContainers.description[language],
+      imageUrl: '/industrial_metal_containers.jpg',
+      features: language === 'en'
+        ? ['Ventilated design', 'Stackable frames', 'High visibility', 'Secure storage']
+        : ['Design ventilat', 'Cadre stivuibile', 'Vizibilitate ridicată', 'Depozitare sigură']
+    },
+    {
+      id: 'plunger-cans',
+      title: pt.plungerCans.title[language],
+      description: pt.plungerCans.description[language],
+      imageUrl: '/waste_cans.jpg',
+      features: language === 'en'
+        ? ['Self-closing lid', 'Flame arrestor', 'Oily waste safe', 'FM approved']
+        : ['Capac auto-închidere', 'Arester de flacără', 'Sigur pentru deșeuri uleioase', 'Aprobat FM']
     }
   ];
 
