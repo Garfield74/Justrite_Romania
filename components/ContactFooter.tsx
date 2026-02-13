@@ -386,6 +386,9 @@ export const ContactFooter: React.FC = () => {
           <p className="text-sm text-gray-500">
             &copy; {new Date().getFullYear()} Justrite Romania S.R.L. {t.allRightsReserved[language]}
           </p>
+          <p className="text-sm text-gray-400 mt-3" data-testid="footer-built-with-love">
+            Built with ❤️ for industrial safety in Romania
+          </p>
         </div>
       </div>
     </footer>
