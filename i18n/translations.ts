@@ -120,6 +120,27 @@ export const translations = {
         ro: 'Suporturi și cadre robuste FIBC (Container Intermediar Flexibil pentru Materiale în Vrac) proiectate pentru manipularea și depozitarea în siguranță a materialelor în vrac în saci mari.'
       }
     },
+    hotDipGalvanizedPallets: {
+      title: { en: 'Hot-dip Galvanized Steel Gas Cylinder Pallets & Baskets', ro: 'Paleți și coșuri pentru butelii din oțel galvanizat la cald' },
+      description: {
+        en: 'Corrosion-resistant pallets and baskets designed for safe storage and transport of gas cylinders in industrial environments.',
+        ro: 'Paleți și coșuri rezistente la coroziune, proiectate pentru depozitarea și transportul sigur al buteliilor în medii industriale.'
+      }
+    },
+    wireMeshContainers: {
+      title: { en: 'Wire Mesh Containers', ro: 'Containere din Plasă de Sârmă' },
+      description: {
+        en: 'Ventilated, stackable containers that provide visibility and secure storage for parts, tools, and materials.',
+        ro: 'Containere ventilate, stivuibile, care oferă vizibilitate și depozitare sigură pentru piese, unelte și materiale.'
+      }
+    },
+    plungerCans: {
+      title: { en: 'Plunger Cans', ro: 'Recipiente Plunger' },
+      description: {
+        en: 'Self-closing safety cans for oily waste and solvent-soaked rags, reducing fire risk and improving compliance.',
+        ro: 'Recipiente de siguranță cu auto-închidere pentru deșeuri uleioase și cârpe îmbibate cu solvenți, reducând riscul de incendiu și îmbunătățind conformitatea.'
+      }
+    },
     wasteCans: {
       title: { en: 'Waste & Plunger Cans', ro: 'Recipiente pentru Deșeuri și Plunger' },
       description: {
