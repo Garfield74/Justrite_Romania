@@ -9,7 +9,10 @@ const getIcon = (id: string) => {
     'metal-pallets': <Layers className="h-8 w-8 text-brand-red" />,
     'open-bottom-containers': <PackageOpen className="h-8 w-8 text-brand-red" />,
     'big-bag-holders': <Package className="h-8 w-8 text-brand-red" />,
-    'waste-cans-receptacles': <Trash2 className="h-8 w-8 text-brand-red" />
+    'waste-cans-receptacles': <Trash2 className="h-8 w-8 text-brand-red" />,
+    'hot-dip-galvanized-cylinder-pallets': <Layers className="h-8 w-8 text-brand-red" />,
+    'wire-mesh-containers': <Box className="h-8 w-8 text-brand-red" />,
+    'plunger-cans': <Trash2 className="h-8 w-8 text-brand-red" />
   };
   return icons[id] || <Box className="h-8 w-8 text-brand-red" />;
 };
