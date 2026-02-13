@@ -157,6 +157,7 @@ export const ProductSection: React.FC = () => {
                 <a
                   href="#contact"
                   className="block w-full text-center bg-brand-black text-white py-2 rounded-md font-semibold hover:bg-gray-800 transition-colors text-sm"
+                  data-testid={`product-${product.id}-request-info`}
                 >
                   {t.requestInfo[language]}
                 </a>
