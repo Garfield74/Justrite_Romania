@@ -90,7 +90,7 @@ export const ProductSection: React.FC = () => {
       id: 'wire-mesh-containers',
       title: pt.wireMeshContainers.title[language],
       description: pt.wireMeshContainers.description[language],
-      imageUrl: '/industrial_metal_containers.jpg',
+      imageUrl: '/Wire_mesh_containers.jpg',
       features: language === 'en'
         ? ['Ventilated design', 'Stackable frames', 'High visibility', 'Secure storage']
         : ['Design ventilat', 'Cadre stivuibile', 'Vizibilitate ridicată', 'Depozitare sigură']
