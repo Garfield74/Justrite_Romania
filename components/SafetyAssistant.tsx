@@ -76,6 +76,7 @@ export const SafetyAssistant: React.FC = () => {
   const [input, setInput] = useState('');
   const [isGenerating, setIsGenerating] = useState(false);
   const [showQuickQuestions, setShowQuickQuestions] = useState(true);
+  const [sessionId, setSessionId] = useState<string>(() => getSessionId());
   const chatSessionRef = useRef<SafetyChat | null>(null);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const previousLanguageRef = useRef<Language>(language);
