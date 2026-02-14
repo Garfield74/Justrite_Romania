@@ -8,6 +8,35 @@ import { trackChatbotOpen, trackChatbotClose, trackChatbotMessage } from '../uti
 // LocalStorage keys
 const CHAT_HISTORY_KEY = 'justrite_chat_history';
 const CHAT_LANGUAGE_KEY = 'justrite_chat_language';
+const CHAT_SESSION_KEY = 'justrite_chat_session_id';
+
+const generateSessionId = () => {
+  if (typeof window !== 'undefined' && window.crypto?.randomUUID) {
+    return window.crypto.randomUUID();
+  }
+  return `session-${Date.now()}-${Math.random().toString(16).slice(2)}`;
+};
+
+const getSessionId = () => {
+  if (typeof window === 'undefined') {
+    return generateSessionId();
+  }
+  const existing = localStorage.getItem(CHAT_SESSION_KEY);
+  if (existing) {
+    return existing;
+  }
+  const newId = generateSessionId();
+  localStorage.setItem(CHAT_SESSION_KEY, newId);
+  return newId;
+};
+
+const resetSessionId = () => {
+  const newId = generateSessionId();
+  if (typeof window !== 'undefined') {
+    localStorage.setItem(CHAT_SESSION_KEY, newId);
+  }
+  return newId;
+};
 
 // Save chat history to localStorage
 const saveChatHistory = (messages: ChatMessage[], lang: Language) => {
