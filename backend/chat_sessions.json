@@ -130,5 +130,19 @@
       "content": "I appreciate you reaching out, but I notice your message appears to be empty or contains only a formatting object.\n\nHow can I help you today? I'm here to answer questions about Justrite safety products and solutions for Romania.\n\nFeel free to ask me about:\n- Safety storage solutions\n- Dust control entrance matting\n- Materials handling and storage products\n- Product specifications and standards\n- Or any other Justrite product inquiries\n\nIf you have a specific question, please share it and I'll be happy to assist!\n\n**Contact Information:**\n- Email: sales.ro@justrite.com\n- Phone: +40 751 556 555",
       "timestamp": "2026-02-14T06:53:45.422602+00:00"
     }
+  ],
+  "proxy-test": [
+    {
+      "id": "92cd9c2b-c3b0-4e30-8a6d-ba8d340b17ce",
+      "role": "user",
+      "content": "What spill pallets do you offer?",
+      "timestamp": "2026-02-14T06:54:30.627114+00:00"
+    },
+    {
+      "id": "c9104fcd-89b0-4bca-b3fb-c9b9c86cb364",
+      "role": "assistant",
+      "content": "# Justrite Spill Pallets\n\nBased on our product catalogue, Justrite offers the following spill pallet solutions:\n\n## **EcoPolyBlend\u2122 Spill Control Pallets**\nOur primary range for drum storage with seamless, leakproof construction:\n\n- **2-Drum Pallets** (250L sump capacity, 1134 kg load capacity)\n  - Models: 28623 (Black), 28625 (Black with Drain), 28622 (Yellow)\n\n- **3-Drum Pallets** (284L sump capacity, 1701 kg load capacity)\n  - Models: 28627 (Black), 28629 (Black with Drain), 28626 (Yellow), 28628 (Yellow with Drain)\n\n- **4-Drum Pallets** - Two configurations:\n  - Rectangular: 284L capacity, 2268 kg load (Model 28631 Black)\n  - Square: 276L capacity, 2268 kg load (Models 28635 Black, 28637 Black with Drain, 28634 Yellow, 28636 Yellow with Drain)\n\n## **Key Features:**\n- High-density polyethylene (HDPE) construction with 100% recycled material options\n- Removable grates for easy cleaning\n- Forklift pockets for relocation\n- Optional ramps available\n- EPA compliant and supports SPCC requirements\n- Suitable for drum filling and dispensing operations\n\nFor specific recommendations based on your needs or to discuss custom solutions, please contact **sales.ro@justrite.com** or **+40 751 556 555**.",
+      "timestamp": "2026-02-14T06:54:34.943100+00:00"
+    }
   ]
 }
