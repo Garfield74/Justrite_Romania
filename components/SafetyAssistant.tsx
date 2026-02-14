@@ -104,7 +104,9 @@ export const SafetyAssistant: React.FC = () => {
       clearChatHistory();
       setMessages([getWelcomeMessage()]);
       setShowQuickQuestions(true);
-      chatSessionRef.current = createSafetyChat();
+      const newSessionId = resetSessionId();
+      setSessionId(newSessionId);
+      chatSessionRef.current = createSafetyChat(newSessionId);
       previousLanguageRef.current = language;
     }
   }, [language, getWelcomeMessage]);
