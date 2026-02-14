@@ -137,8 +137,8 @@ export const translations = {
     plungerCans: {
       title: { en: 'Plunger Cans', ro: 'Recipiente Plunger' },
       description: {
-        en: 'Self-closing safety cans for oily waste and solvent-soaked rags, reducing fire risk and improving compliance.',
-        ro: 'Recipiente de siguranță cu auto-închidere pentru deșeuri uleioase și cârpe îmbibate cu solvenți, reducând riscul de incendiu și îmbunătățind conformitatea.'
+        en: 'Smart-pump plunger cans dispense flammables safely with a perforated flame-arresting pan, minimal-waste design, and rugged 24-gauge powder-coated steel; FM/TÜV approved.',
+        ro: 'Recipiente plunger cu pompă inteligentă pentru distribuirea sigură a lichidelor inflamabile, cu tavă perforată anti-flacără, design cu pierderi minime și oțel de 24 gauge cu finisaj powder-coat; aprobate FM/TÜV.'
       }
     },
     wasteCans: {
