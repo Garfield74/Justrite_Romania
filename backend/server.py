@@ -45,6 +45,9 @@ RAG_TOP_K = 5
 rag_lock = threading.Lock()
 rag_index: Optional[BM25Okapi] = None
 rag_chunks: List[Dict[str, Any]] = []
+embedding_lock = threading.Lock()
+embedding_matrix: Optional[np.ndarray] = None
+embedding_hash: Optional[str] = None
 
 # Models
 class ContactForm(BaseModel):
