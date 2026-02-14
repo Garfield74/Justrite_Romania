@@ -142,7 +142,7 @@ export const translations = {
       }
     },
     wasteCans: {
-      title: { en: 'Waste & Plunger Cans', ro: 'Recipiente pentru Deșeuri și Plunger' },
+      title: { en: 'Waste Cans', ro: 'Recipiente pentru Deșeuri' },
       description: {
         en: 'Industry-leading safety waste containers including oily waste cans, safety plunger cans, and safety bench cans for compliant hazardous material disposal.',
         ro: 'Recipiente de siguranță pentru deșeuri de top din industrie, incluzând recipiente pentru deșeuri uleioase, recipiente de siguranță cu plunger și recipiente de siguranță pentru bancuri pentru eliminarea conformă a materialelor periculoase.'
