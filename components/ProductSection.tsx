@@ -81,7 +81,7 @@ export const ProductSection: React.FC = () => {
       id: 'hot-dip-galvanized-cylinder-pallets',
       title: pt.hotDipGalvanizedPallets.title[language],
       description: pt.hotDipGalvanizedPallets.description[language],
-      imageUrl: '/metal_pallets.jpg',
+      imageUrl: '/Hot-dip Galvanized Steel Gas Cylinder Pallets & Baskets.jpg',
       features: language === 'en'
         ? ['Hot-dip galvanized finish', 'Gas cylinder pallets', 'Cylinder baskets', 'Corrosion resistant']
         : ['Finisaj galvanizat la cald', 'Paleți pentru butelii', 'Coșuri pentru butelii', 'Rezistent la coroziune']
