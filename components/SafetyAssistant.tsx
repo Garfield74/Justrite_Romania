@@ -43,10 +43,12 @@ const saveChatHistory = (messages: ChatMessage[], lang: Language) => {
   try {
     // Only save if we have actual conversation (more than welcome message)
     if (messages.length > 1) {
-      const toSave = messages.map(m => ({
-        role: m.role,
-        text: m.text
-      }));
+      const toSave = messages
+        .filter(m => !m.isThinking) // Exclude thinking messages
+        .map(m => ({
+          role: m.role,
+          text: typeof m.text === 'string' ? m.text : String(m.text || '')
+        }));
       localStorage.setItem(CHAT_HISTORY_KEY, JSON.stringify(toSave));
       localStorage.setItem(CHAT_LANGUAGE_KEY, lang);
     }
