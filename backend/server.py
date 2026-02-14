@@ -271,7 +271,6 @@ def safety_chat(payload: ChatRequest):
     context = format_context(relevant_chunks)
     system_prompt = build_system_prompt(payload.language or "en", context)
 
-    append_chat_message(payload.session_id, "user", payload.message)
     history = get_chat_history(payload.session_id)
 
     messages: List[Dict[str, str]] = [
@@ -280,6 +279,7 @@ def safety_chat(payload: ChatRequest):
         {"role": "user", "content": payload.message}
     ]
 
+    append_chat_message(payload.session_id, "user", payload.message)
     client = get_openrouter_client()
 
     def generate():
