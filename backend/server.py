@@ -188,6 +188,86 @@ def build_rag_index():
         rag_index = BM25Okapi(tokenized_chunks)
 
 
+def compute_chunks_hash(chunks: List[Dict[str, str]]) -> str:
+    hasher = hashlib.md5()
+    for chunk in chunks:
+        hasher.update(chunk["text"].encode("utf-8"))
+    return hasher.hexdigest()
+
+
+def load_embeddings_cache() -> Optional[Dict[str, Any]]:
+    if not os.path.exists(EMBEDDINGS_CACHE_FILE):
+        return None
+    try:
+        with open(EMBEDDINGS_CACHE_FILE, "r") as f:
+            return json.load(f)
+    except Exception:
+        return None
+
+
+def save_embeddings_cache(cache_data: Dict[str, Any]) -> None:
+    with open(EMBEDDINGS_CACHE_FILE, "w") as f:
+        json.dump(cache_data, f)
+
+
+def get_openai_client() -> OpenAI:
+    if not OPENAI_API_KEY:
+        raise HTTPException(status_code=500, detail="OpenAI API key not configured")
+    return OpenAI(api_key=OPENAI_API_KEY)
+
+
+def build_embedding_index() -> None:
+    global embedding_matrix, embedding_hash
+    build_rag_index()
+    if not rag_chunks:
+        return
+    with embedding_lock:
+        if embedding_matrix is not None:
+            return
+        current_hash = compute_chunks_hash(rag_chunks)
+        cache = load_embeddings_cache()
+        if cache and cache.get("hash") == current_hash and cache.get("model") == OPENAI_EMBEDDING_MODEL:
+            embedding_matrix = np.array(cache.get("embeddings", []), dtype=float)
+            embedding_hash = current_hash
+            if embedding_matrix.size:
+                norms = np.linalg.norm(embedding_matrix, axis=1, keepdims=True)
+                norms[norms == 0] = 1
+                embedding_matrix = embedding_matrix / norms
+            return
+
+        client = get_openai_client()
+        embeddings: List[List[float]] = []
+        batch_size = 64
+        texts = [chunk["text"] for chunk in rag_chunks]
+        for i in range(0, len(texts), batch_size):
+            batch = texts[i:i + batch_size]
+            response = client.embeddings.create(model=OPENAI_EMBEDDING_MODEL, input=batch)
+            embeddings.extend([item.embedding for item in response.data])
+        embedding_matrix = np.array(embeddings, dtype=float)
+        if embedding_matrix.size:
+            norms = np.linalg.norm(embedding_matrix, axis=1, keepdims=True)
+            norms[norms == 0] = 1
+            embedding_matrix = embedding_matrix / norms
+        embedding_hash = current_hash
+        save_embeddings_cache({
+            "model": OPENAI_EMBEDDING_MODEL,
+            "hash": current_hash,
+            "embeddings": embeddings
+        })
+
+
+def get_query_embedding(query: str) -> Optional[np.ndarray]:
+    if not OPENAI_API_KEY:
+        return None
+    client = get_openai_client()
+    response = client.embeddings.create(model=OPENAI_EMBEDDING_MODEL, input=query)
+    vector = np.array(response.data[0].embedding, dtype=float)
+    norm = np.linalg.norm(vector)
+    if norm == 0:
+        return vector
+    return vector / norm
+
+
 def get_relevant_chunks(query: str) -> List[Dict[str, str]]:
     build_rag_index()
     if rag_index is None or not rag_chunks:
