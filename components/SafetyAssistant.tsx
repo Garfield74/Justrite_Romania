@@ -174,7 +174,7 @@ export const SafetyAssistant: React.FC = () => {
     } finally {
       setIsGenerating(false);
     }
-  }, [input, isGenerating]);
+  }, [input, isGenerating, language]);
 
   const handleKeyPress = (e: React.KeyboardEvent) => {
     if (e.key === 'Enter' && !e.shiftKey) {
