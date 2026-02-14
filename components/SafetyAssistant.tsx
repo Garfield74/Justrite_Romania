@@ -130,7 +130,7 @@ export const SafetyAssistant: React.FC = () => {
   }, [messages, isOpen]);
 
   const handleSendMessage = useCallback(async (quickQuestion?: string) => {
-    const messageToSend = quickQuestion || input.trim();
+    const messageToSend = String(quickQuestion || input.trim());
     if (!messageToSend || !chatSessionRef.current || isGenerating) return;
 
     // Track message type
