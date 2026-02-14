@@ -147,7 +147,7 @@ export const SafetyAssistant: React.FC = () => {
       // Create a placeholder for the model response
       setMessages(prev => [...prev, { role: MessageRole.MODEL, text: '', isThinking: true }]);
 
-      const stream = await chatSessionRef.current.sendMessage(messageToSend, language);
+      const stream = await chatSessionRef.current.sendMessage(messageToSend, String(language));
       
       let fullText = '';
       
