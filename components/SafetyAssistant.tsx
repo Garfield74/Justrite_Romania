@@ -192,8 +192,10 @@ export const SafetyAssistant: React.FC = () => {
     clearChatHistory();
     setMessages([getWelcomeMessage()]);
     setShowQuickQuestions(true);
+    const newSessionId = resetSessionId();
+    setSessionId(newSessionId);
     // Reset the chat session
-    chatSessionRef.current = createSafetyChat();
+    chatSessionRef.current = createSafetyChat(newSessionId);
   };
 
   return (
