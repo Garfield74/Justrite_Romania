@@ -359,7 +359,7 @@ export const translations = {
   // Safety Assistant / Chatbot
   chatbot: {
     title: { en: 'Justrite Safety Advisor', ro: 'Consilier de Siguranță Justrite' },
-    poweredBy: { en: 'Powered by Llama 3.1', ro: 'Alimentat de Llama 3.1' },
+    poweredBy: { en: 'Powered by Claude Haiku 4.5', ro: 'Alimentat de Claude Haiku 4.5' },
     welcomeMessage: {
       en: "Hello! I'm the Justrite Safety Advisor. Ask me about our plunger cans, oily waste containers, or general industrial safety standards.",
       ro: "Bună! Sunt Consilierul de Siguranță Justrite. Întreabă-mă despre recipientele noastre cu plunger, recipientele pentru deșeuri uleioase sau standardele generale de siguranță industrială."
