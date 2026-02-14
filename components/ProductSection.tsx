@@ -99,7 +99,7 @@ export const ProductSection: React.FC = () => {
       id: 'plunger-cans',
       title: pt.plungerCans.title[language],
       description: pt.plungerCans.description[language],
-      imageUrl: '/waste_cans.jpg',
+      imageUrl: '/Plunger_can.jpg',
       features: language === 'en'
         ? ['Self-closing lid', 'Flame arrestor', 'Oily waste safe', 'FM approved']
         : ['Capac auto-închidere', 'Arester de flacără', 'Sigur pentru deșeuri uleioase', 'Aprobat FM']
