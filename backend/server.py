@@ -270,7 +270,18 @@ def get_query_embedding(query: str) -> Optional[np.ndarray]:
 
 def get_relevant_chunks(query: str) -> List[Dict[str, str]]:
     build_rag_index()
-    if rag_index is None or not rag_chunks:
+    if not rag_chunks:
+        return []
+
+    build_embedding_index()
+    if embedding_matrix is not None and embedding_matrix.size:
+        query_vector = get_query_embedding(query)
+        if query_vector is not None:
+            scores = embedding_matrix @ query_vector
+            top_indices = np.argsort(scores)[::-1][:RAG_TOP_K]
+            return [rag_chunks[idx] for idx in top_indices if scores[idx] > 0]
+
+    if rag_index is None:
         return []
     tokens = tokenize(query)
     if not tokens:
