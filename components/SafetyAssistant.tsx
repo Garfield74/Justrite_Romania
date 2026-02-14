@@ -92,10 +92,10 @@ export const SafetyAssistant: React.FC = () => {
 
   // Initialize Chat Session
   useEffect(() => {
-    if (!chatSessionRef.current) {
-      chatSessionRef.current = createSafetyChat();
+    if (sessionId) {
+      chatSessionRef.current = createSafetyChat(sessionId);
     }
-  }, []);
+  }, [sessionId]);
 
   // Handle language change - reset chat to avoid mixing languages
   useEffect(() => {
