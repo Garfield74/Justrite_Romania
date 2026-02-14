@@ -102,5 +102,19 @@
       "content": "# Spill Pallets from the Sall Catalogue\n\nBased on the Sall Materials Storage and Handling Essentials catalogue, here's what's available:\n\n## **Polyethylene Spill Pallets for Drums**\n\n### POLYSAFE Series (for 200L drums):\n- **POLYSAFE1**: Single 200L drum capacity\n  - Collection volume: 225L\n  - Dimensions: 925 x 755 x 555mm\n\n- **POLYSAFE2P**: Two 200L drums capacity\n  - Collection volume: 220L\n  - Dimensions: 1265 x 700 x 495mm\n\n- **POLYSAFE4P**: Four 200L drums capacity\n  - Collection volume: 450L\n  - Dimensions: 1280 x 1280 x 485mm\n\n### **Key Features:**\n- **Sturdy construction** using rotational molding process\n- **High corrosion resistance** - made of polyethylene\n- **Chemical compatibility** - suitable for acids, bases, oils, and non-flammable chemical substances\n- **Removable polyethylene grid** for easy cleaning\n- **Stackable design** when empty to save transport and storage space\n- **Forklift/pallet truck compatible**\n- Standard light black color\n\n## **Spill Pallets for IBCs (1000L)**\n\n- **POLYSAFE1IBCP**: Single 1000L IBC capacity\n  - Collection volume: 1100L\n  - Dimensions: 1380 x 1280 x 1000mm\n\nFor more detailed specifications or to discuss your specific needs, contact **sales.ro@justrite.com** or **+40 751 556 555**.",
       "timestamp": "2026-02-14T06:35:10.727814+00:00"
     }
+  ],
+  "test-123": [
+    {
+      "id": "f542a6bd-577a-4cc1-bcdd-a766ceb367b7",
+      "role": "user",
+      "content": "What are spill pallets?",
+      "timestamp": "2026-02-14T06:53:16.891872+00:00"
+    },
+    {
+      "id": "c50312d2-b338-4012-8f37-459d16e0e4c3",
+      "role": "assistant",
+      "content": "# Spill Pallets - Overview\n\nSpill pallets are **secondary containment systems designed to safely store drums, IBCs (Intermediate Bulk Containers), and other hazardous materials** while preventing environmental contamination and workplace hazards.\n\n## Key Features:\n\n**Construction Materials:**\n- **Polyethylene (HDPE)** - lightweight, chemical-resistant, ideal for indoor use\n- **Steel** - heavy-duty option for demanding applications, often galvanized or painted for corrosion resistance\n\n**Main Functions:**\n- Contain accidental spills and leaks from drums and containers\n- Prevent hazardous liquids from reaching the ground or floor\n- Support safe storage of acids, bases, oils, and other compatible chemical substances\n- Facilitate easy cleaning with removable grates\n\n**Practical Advantages:**\n- Removable grids/grates for simplified cleaning\n- Forklift pockets for easy relocation\n- Stackable designs (when empty) to save storage space\n- Available with optional drain fittings for fluid transfer\n- EPA compliant and support SPCC (Spill Prevention Control and Countermeasure) requirements\n\n## Available Capacities:\nJustrite offers spill pallets for various needs, from 2-drum models (250L capacity) up to large IBC systems (1000L+ capacity).\n\n**For specific product recommendations based on your storage needs, please contact:**\n- **Email:** sales.ro@justrite.com\n- **Phone:** +40 751 556 555",
+      "timestamp": "2026-02-14T06:53:21.205371+00:00"
+    }
   ]
 }
