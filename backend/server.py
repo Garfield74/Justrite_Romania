@@ -31,9 +31,12 @@ app.add_middleware(
 
 OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
 OPENROUTER_MODEL = os.environ.get("OPENROUTER_MODEL", "anthropic/claude-haiku-4.5")
+OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
+OPENAI_EMBEDDING_MODEL = os.environ.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-large")
 CATALOGUE_DIR = "/app/public/catalogues"
 SUBMISSIONS_FILE = "/app/backend/submissions.json"
 CHAT_SESSIONS_FILE = "/app/backend/chat_sessions.json"
+EMBEDDINGS_CACHE_FILE = "/app/backend/embeddings_cache.json"
 
 RAG_CHUNK_WORDS = 220
 RAG_CHUNK_OVERLAP = 40
