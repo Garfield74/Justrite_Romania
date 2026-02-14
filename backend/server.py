@@ -279,7 +279,9 @@ def get_relevant_chunks(query: str) -> List[Dict[str, str]]:
         if query_vector is not None:
             scores = embedding_matrix @ query_vector
             top_indices = np.argsort(scores)[::-1][:RAG_TOP_K]
-            return [rag_chunks[idx] for idx in top_indices if scores[idx] > 0]
+            embedding_results = [rag_chunks[idx] for idx in top_indices if scores[idx] > 0]
+            if embedding_results:
+                return embedding_results
 
     if rag_index is None:
         return []
