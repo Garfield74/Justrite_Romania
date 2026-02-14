@@ -281,7 +281,7 @@ export const SafetyAssistant: React.FC = () => {
                   ) : (
                     <div className="whitespace-pre-wrap markdown-body">
                         {/* Very basic bold rendering */}
-                        {msg.text.split('**').map((part, i) => 
+                        {(msg.text || '').toString().split('**').map((part, i) => 
                             i % 2 === 1 ? <strong key={i}>{part}</strong> : part
                         )}
                     </div>
