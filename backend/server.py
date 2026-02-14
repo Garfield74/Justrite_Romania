@@ -13,6 +13,8 @@ import json
 import uuid
 import re
 import threading
+import hashlib
+import numpy as np
 
 load_dotenv()
 
