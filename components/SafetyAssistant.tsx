@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, useCallback } from 'react';
 import { MessageSquare, Send, Bot, Loader2, X, Sparkles, RotateCcw } from 'lucide-react';
-import { createSafetyChat, SafetyChat } from '../services/geminiService';
+import { createSafetyChat, SafetyChat } from '../services/safetyChatService';
 import { ChatMessage, MessageRole } from '../types';
 import { useLanguage, translations, Language } from '../i18n';
 import { trackChatbotOpen, trackChatbotClose, trackChatbotMessage } from '../utils/analytics';
