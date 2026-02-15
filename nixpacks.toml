@@ -1,0 +1,40 @@
+[phases.setup]
+nixPkgs = ["python311"]
+
+[phases.install]
+cmds = ["pip install -r requirements.txt"]
+
+[start]
+cmd = "uvicorn main:app --host 0.0.0.0 --port $PORT"
+```
+
+5. Commit the file
+
+## Alternative: Use Railway's Python Buildpack
+
+If `nixpacks.toml` doesn't work, let's try a different approach.
+
+### Click "View logs" to see the full error
+
+Can you click **"View logs"** on the failed deployment and share what you see? This will tell us exactly what Railway is struggling with.
+
+## Or Try: Procfile Instead
+
+Some platforms prefer a `Procfile`. Create this file:
+
+**Filename:** `Procfile` (no extension)
+**Content:**
+```
+web: uvicorn main:app --host 0.0.0.0 --port $PORT
+```
+
+## Quick Checklist
+
+Make sure your repo has these files:
+```
+Justrite_Romania/
+├── main.py              # Your FastAPI app
+├── requirements.txt     # Python packages
+├── runtime.txt          # python-3.11.7
+├── nixpacks.toml        # ← Add this
+└── Procfile             # ← Or add this
