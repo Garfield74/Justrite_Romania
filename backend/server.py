@@ -21,9 +21,12 @@ load_dotenv()
 app = FastAPI(title="Justrite Romania API")
 
 # CORS
+# Get allowed origins from environment variable
+ALLOWED_ORIGINS = os.environ.get("ALLOWED_ORIGINS", "").split(",")
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["https://justriteromania.netlify.app"],
+    allow_origins=ALLOWED_ORIGINS if ALLOWED_ORIGINS[0] else ["*"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -33,12 +36,16 @@ OPENROUTER_API_KEY = os.environ.get("OPENROUTER_API_KEY", "")
 OPENROUTER_MODEL = os.environ.get("OPENROUTER_MODEL", "anthropic/claude-haiku-4.5")
 OPENAI_API_KEY = os.environ.get("OPENAI_API_KEY", "")
 OPENAI_EMBEDDING_MODEL = os.environ.get("OPENAI_EMBEDDING_MODEL", "text-embedding-3-large")
-CATALOGUE_DIR = "/app/public/catalogues"
-SUBMISSIONS_FILE = "/app/backend/submissions.json"
-CHAT_SESSIONS_FILE = "/app/backend/chat_sessions.json"
-EMBEDDINGS_CACHE_FILE = "/app/backend/embeddings_cache.json"
 
-RAG_CHUNK_WORDS = 220
+
+# Get the directory where server.py is located
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+
+# Fix paths to be relative
+CATALOGUE_DIR = os.path.join(BASE_DIR, "..", "public", "catalogues")
+SUBMISSIONS_FILE = os.path.join(BASE_DIR, "submissions.json")
+CHAT_SESSIONS_FILE = os.path.join(BASE_DIR, "chat_sessions.json")
+EMBEDDINGS_CACHE_FILE = os.path.join(BASE_DIR, "embeddings_cache.json")RAG_CHUNK_WORDS = 220
 RAG_CHUNK_OVERLAP = 40
 RAG_TOP_K = 5
 
