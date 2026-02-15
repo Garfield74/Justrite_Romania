@@ -1,8 +1,43 @@
-fastapi==0.109.0
-uvicorn[standard]==0.27.0
-openai==1.12.0
-anthropic==0.18.0
-python-dotenv==1.0.0
-pydantic==2.6.0
-httpx==0.26.0
-python-multipart==0.0.9
+fastapi==0.115.0
+uvicorn[standard]==0.32.0
+openai==1.54.0
+anthropic==0.39.0
+python-dotenv==1.0.1
+pydantic==2.9.2
+httpx==0.27.2
+python-multipart==0.0.12
+```
+
+**Why these changes?**
+- Newer versions are compatible with all Python versions
+- Pre-built wheels available (no Rust compilation needed)
+- More stable and tested
+
+## Alternative: Quick Fix (Use Pre-built Wheels)
+
+If you want to keep your current package versions, just fix the Python version:
+
+### Create `runtime.txt`:
+```
+python-3.11.7
+```
+
+This tells Render to use Python 3.11 instead of 3.14, which has better package compatibility.
+
+## Step-by-Step Fix
+
+### Option A: Just Fix Python Version (Easiest)
+
+1. **Add `runtime.txt` to your repo:**
+   - File name: `runtime.txt`
+   - Content: `python-3.11.7`
+
+2. **Commit and push**
+
+3. **Render will auto-redeploy** with Python 3.11
+
+### Option B: Fix Python + Update Packages (Recommended)
+
+1. **Add `runtime.txt`:**
+```
+   python-3.11.7
